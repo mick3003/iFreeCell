@@ -54,21 +54,6 @@
         
         self.backgroundColor = [SKColor colorWithRed:.14 green:.22 blue:.3 alpha:1.0];
         
-        if( !_freeCellSlots )
-        {
-            _freeCellSlots = [NSMutableArray arrayWithCapacity:4];
-        }
-        
-        if( !_cardsSlots )
-        {
-            _cardsSlots = [NSMutableArray arrayWithCapacity:4];
-        }
-        
-        if( !_gameSlots )
-        {
-            _gameSlots = [NSMutableArray arrayWithCapacity:8];
-        }
-        
         self.physicsWorld.gravity = CGVectorMake(0.F, 0.F);
         self.physicsWorld.contactDelegate = self;
         
@@ -76,10 +61,6 @@
         _menuScene.delegate = self;
         
         [self addChild:_menuScene];
-        
-//        UILongPressGestureRecognizer *gr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongTap:)];
-//        gr.minimumPressDuration = 1.5F;
-//        [[(UIViewController *)self.presentationDelegate view] addGestureRecognizer:gr];
         
         [self prepareContent];
     }
@@ -91,10 +72,6 @@
 
 - (void) prepareContent
 {
-    [_freeCellSlots removeAllObjects];
-    [_cardsSlots removeAllObjects];
-    [_gameSlots removeAllObjects];
-    
     SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"main_bgnd4.png"];
     background.anchorPoint = CGPointZero;
     background.position = CGPointZero;
@@ -102,6 +79,10 @@
     [gameLayer addChild:background];
     
     _slotTexture = [SKTexture textureWithImageNamed:@"slot2"];
+    
+    _freeCellSlots = [[FCGameState shared] freeCellSlots];
+    _gameSlots = [[FCGameState shared] gameSlots];
+    _cardsSlots = [[FCGameState shared] cardsSlots];
     
     _cards = [[FCGameState shared] cardsArray];
     
@@ -112,19 +93,16 @@
             [gameLayer addChild:card];
         }
         
-        _freeCellSlots = [[FCGameState shared] freeCellSlots];
         for( FCSlot *slot in _freeCellSlots )
         {
             [gameLayer addChild:slot];
         }
         
-        _gameSlots = [[FCGameState shared] gameSlots];
         for( FCSlot *slot in _gameSlots )
         {
             [gameLayer addChild:slot];
         }
         
-        _cardsSlots = [[FCGameState shared] cardsSlots];
         for( FCSlot *slot in _cardsSlots )
         {
             [gameLayer addChild:slot];
@@ -170,16 +148,13 @@
         
         [self prepareCards];
     }
+    
+    for( FCCard *card in _cards ) card.moveDelegate = self;
 }
 
 
 - (void) prepareCards
 {
-    if( !_cards )
-    {
-        _cards = [NSMutableArray arrayWithCapacity:52];
-    }
-    
     NSString *str = [[FCBoardHelper new] newBoardForSeed:4];
     str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
     NSArray *array = [str componentsSeparatedByString:@" "];
@@ -199,7 +174,6 @@
         
         FCCard *prevCard = nil;
         
-        //*
         FCSlot *gameSlot = [FCSlot spriteNodeWithTexture:_slotTexture];
         [gameSlot setScale:_mainScale];
         gameSlot.position = CGPointMake(x, initY);
@@ -211,7 +185,6 @@
         
         [_gameSlots addObject:gameSlot];
         [gameLayer addChild:gameSlot];
-        //*/
         
         for( int file = 0; file < maxI; file++ )
         {
@@ -219,7 +192,6 @@
             
             FCCard *card = [FCCard cardWithType:array[cardIndex] parentNode:gameLayer];
             
-            card.moveDelegate = self;
             card.position = CGPointMake(x, y);
             card.zPosition = (zPositionCount = zPositionCount + 1.F);
             card.color = [SKColor colorWithRed:.1F green:.5F blue:.8F alpha:1.F];
@@ -249,11 +221,6 @@
             gameSlot = nil;
         }
     }
-    
-    [[FCGameState shared] setCardsArray:_cards];
-    [[FCGameState shared] setFreeCellSlots:_freeCellSlots];
-    [[FCGameState shared] setCardsSlots:_cardsSlots];
-    [[FCGameState shared] setGameSlots:_gameSlots];
 }
 
 
@@ -302,9 +269,6 @@
     if( touches.count > 2 || _movingCard ) return;
     
     UITouch *touch = [touches anyObject];
-    
-    // NSLog(@"%s :: tapCount = %@", __FUNCTION__, @(touch.tapCount));
-    // NSLog(@"%@", NSStringFromCGPoint(gameLayer.position));
     
     CGPoint location = [touch locationInNode:self];
     _touchMoveLocation = location;
@@ -406,7 +370,6 @@
         {
             [_movingCard becomeChildOfSlot:(FCSlot *)_contactNode];
         }
-        // [self checkAutoStackCards];
         _autoStackedMoved = YES;
     }
     else
@@ -421,6 +384,7 @@
     {
         if( _movingCard.column == -1 )
         {
+            // Go to stacked slot
             for( FCSlot *slot in _cardsSlots )
             {
                 if( [slot.lastCard canBeParentOf:_movingCard] )
@@ -432,9 +396,18 @@
             
             for( FCSlot *slot in _gameSlots )
             {
+                // Go to empty game slot
+                if( slot.lastCard == nil )
+                {
+                    [_movingCard becomeChildOfSlot:slot];
+                    break;
+                }
+                
+                // Go to some parent card in game slot
                 if( [slot.lastCard.lastChild canBeParentOf:_movingCard] )
                 {
                     [_movingCard becomeChildOfCard:slot.lastCard.lastChild];
+                    break;
                 }
             }
         }
@@ -490,6 +463,7 @@
     }
 }
 
+#ifdef DEBUG
 - (void) handleLongTap
 {
     NSLog(@"%@", _movingCard);
@@ -503,7 +477,6 @@
             if( CGRectContainsPoint(card.frame, location) )
             {
                 targetNode = [self getLastTouchedChildFromCard:card touchLocation:location];
-                // [(FCCard *)targetNode restorePosition];
                 break;
             }
         }
@@ -524,7 +497,6 @@
         }
     }
     
-    // NSLog(@"%s -- %@", __FUNCTION__, targetNode);
     if( targetNode )
     {
         if( _previousZPosition == 0.F )
@@ -538,7 +510,7 @@
         [self.presentationDelegate shouldPresentModalForAction:FCModalActionCartDetail userInfo:userInfo];
     }
 }
-
+#endif
 
 #pragma mark - Contact delegate methods
 
@@ -554,8 +526,6 @@
     {
         contactNode = (FCSpriteNode *) contact.bodyA.node;
     }
-    
-    // NSLog(@"%s :: %@", __FUNCTION__, contactNode.name);
     
     if( [contactNode isKindOfClass:[FCSlot class]] )
     {
@@ -589,7 +559,6 @@
 
 - (void) didEndContact:(SKPhysicsContact *)contact
 {
-    // NSLog(@"%s", __FUNCTION__);
     FCSpriteNode *contactNode;
     
     if( contact.bodyA.node == _movingCard )
@@ -605,8 +574,6 @@
     [_contactNodes removeObject:contactNode];
     
     if( _contactNode == contactNode ) _contactNode = nil;
-    
-    // NSLog(@"_contactNodes.count = %lu", (unsigned long)_contactNodes.count);
 }
 
 
@@ -614,7 +581,6 @@
 
 - (void) highlighContactNodes
 {
-    // NSLog(@"%s -> _contactNodes.count = %ld", __FUNCTION__, (unsigned long)_contactNodes.count);
     if( _movingCard == nil )
     {
         for( FCSpriteNode *sprite in _contactNodes )
@@ -695,95 +661,11 @@
 }
 
 
-#pragma mark - update
-
-- (void) deltaUpdate:(CFTimeInterval) currentTime timeDelta:(CFTimeInterval) timeDelta
-{
-    // NSLog(@"- deltaUpdate:%.3f timeDelta:%.3f", currentTime, timeDelta);
-    
-    [self highlighContactNodes];
-    
-    static BOOL flag = YES;
-    
-    if( ![FCGameState shared].undoAvailable )
-    {
-        FCMenuButton *button = [_menuScene buttonWithTag:FCMainMenuButtonTagUndo];
-        SKColor *color = [SKColor colorWithRed:.5F green:.5F blue:.5F alpha:1.F];
-        button.color = color;
-        button.colorBlendFactor = 1.F;
-        flag = YES;
-    }
-    else if( flag )
-    {
-        flag = NO;
-        FCMenuButton *button = [_menuScene buttonWithTag:FCMainMenuButtonTagUndo];
-        button.colorBlendFactor = 0.F;
-    }
-    
-#ifdef DEBUG
-    _longTouchTime += timeDelta;
-    if( _longTouchTime > kLongPressTime && !_longTouchTriggered && _longTouchBeganPoint.x != 0.F )
-    {
-        [self handleLongTap];
-        _longTouchTriggered = YES;
-    }
-#endif
-    
-    if( 0 ) //[self checkGameSolved] )
-    {
-        // TODO. GAME SOLVED!!
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"iFreeCell" message:@"GAME SOLVED!" delegate:nil
-                                                  cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
-    }
-}
-
-- (void) update:(CFTimeInterval)currentTime
-{
-    static CFTimeInterval timeDelta = 0.F, timeFromZero = 0.F;
-    
-    if( timeDelta == 0.F )
-    {
-        timeDelta = currentTime;
-    }
-    
-    timeFromZero += (currentTime - timeDelta);
-    
-    [self deltaUpdate:timeFromZero timeDelta:(currentTime - timeDelta)];
-    timeDelta = currentTime;
-}
-
-
 #pragma mark - Main Menu delegate methods
 
 - (void) reset
 {
     [[FCGameState shared] resetState];
-    
-    for( SKSpriteNode *node in _cardsSlots )
-    {
-        [node removeFromParent];
-    }
-    
-    for( SKSpriteNode *node in _cards )
-    {
-        [node removeFromParent];
-    }
-    
-    for( SKSpriteNode *node in _freeCellSlots )
-    {
-        [node removeFromParent];
-    }
-    
-    for( SKSpriteNode *node in _gameSlots )
-    {
-        [node removeFromParent];
-    }
-    
-    [_freeCellSlots removeAllObjects];
-    [_cardsSlots removeAllObjects];
-    [_gameSlots removeAllObjects];
-    [_cards removeAllObjects];
 }
 
 - (void) mainMenu:(FCMenuScene *)menu didSelectButtonWithTag:(FCMainMenuButtonTag)buttonTag
@@ -873,12 +755,71 @@
     return nil;
 }
 
+#pragma mark - FCCardMoveEndedDelegate methods
+
 - (void) card:(FCCard *)card didMoveToPosition:(CGPoint)position
 {
     if( _autoStackedMoved )
     {
         [self checkAutoStackCards];
     }
+}
+
+
+#pragma mark - update
+
+- (void) deltaUpdate:(CFTimeInterval) currentTime timeDelta:(CFTimeInterval) timeDelta
+{
+    [self highlighContactNodes];
+    
+    static BOOL flag = YES;
+    
+    if( ![FCGameState shared].undoAvailable )
+    {
+        FCMenuButton *button = [_menuScene buttonWithTag:FCMainMenuButtonTagUndo];
+        SKColor *color = [SKColor colorWithRed:.5F green:.5F blue:.5F alpha:1.F];
+        button.color = color;
+        button.colorBlendFactor = 1.F;
+        flag = YES;
+    }
+    else if( flag )
+    {
+        flag = NO;
+        FCMenuButton *button = [_menuScene buttonWithTag:FCMainMenuButtonTagUndo];
+        button.colorBlendFactor = 0.F;
+    }
+    
+#ifdef DEBUG
+    _longTouchTime += timeDelta;
+    if( _longTouchTime > kLongPressTime && !_longTouchTriggered && _longTouchBeganPoint.x != 0.F )
+    {
+        [self handleLongTap];
+        _longTouchTriggered = YES;
+    }
+#endif
+    
+    if( 0 ) //[self checkGameSolved] )
+    {
+        // TODO. GAME SOLVED!!
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"iFreeCell" message:@"GAME SOLVED!" delegate:nil
+                                                  cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    }
+}
+
+- (void) update:(CFTimeInterval)currentTime
+{
+    static CFTimeInterval timeDelta = 0.F, timeFromZero = 0.F;
+    
+    if( timeDelta == 0.F )
+    {
+        timeDelta = currentTime;
+    }
+    
+    timeFromZero += (currentTime - timeDelta);
+    
+    [self deltaUpdate:timeFromZero timeDelta:(currentTime - timeDelta)];
+    timeDelta = currentTime;
 }
 
 @end

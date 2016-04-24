@@ -31,7 +31,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    [[FCGameState shared] restoreState];
+    // [[FCGameState shared] restoreState];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

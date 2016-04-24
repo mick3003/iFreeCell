@@ -77,10 +77,12 @@
     if( self = [super initWithCoder:aDecoder] )
     {
         self.slotType = (FCSlotType) [[aDecoder decodeObjectForKey:@"slotType"] integerValue];
+        // self.lastCard = [aDecoder decodeObjectForKey:@"lastCard"];
         self.lastCardName = [aDecoder decodeObjectForKey:@"lastCardName"];
         self.column = [[aDecoder decodeObjectForKey:@"column"] integerValue];
         
         self.lastCard = [[FCGameState shared] cardWithName:self.lastCardName];
+        self.lastCard.parentSlot = self;
     }
     return self;
 }
@@ -111,8 +113,8 @@
 
 - (NSString *) description
 {
-    return [NSString stringWithFormat:@"<FCSlot %p>:SlotType: %@ | lastCardName = %@ | column = %@",
-            self, [self stringFromType], self.lastCardName, @(self.column)];
+    return [NSString stringWithFormat:@"<FCSlot %p>:SlotType: %@ | lastCard = %p || lastCardName = %@ | column = %@",
+            self, [self stringFromType], self.lastCard, self.lastCardName, @(self.column)];
 }
 
 @end

@@ -15,13 +15,13 @@
                         <viewControllerLayoutGuide type="bottom" id="TeB-Vz-sst"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="HCz-mz-XnC">
-                        <rect key="frame" x="0.0" y="0.0" width="260" height="340"/>
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="354"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4pP-h5-zsD">
-                                <rect key="frame" x="0.0" y="0.0" width="260" height="340"/>
+                                <rect key="frame" x="0.0" y="0.0" width="260" height="354"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="eBV-b5-Qiu">
-                                    <rect key="frame" x="0.0" y="0.0" width="260" height="340"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="260" height="354"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fAP-9I-Iv2">
@@ -178,7 +178,7 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="260" height="340"/>
+                    <size key="freeformSize" width="260" height="354"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgV-C1-flR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

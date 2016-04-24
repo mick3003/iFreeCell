@@ -48,11 +48,15 @@ static FCGameState *instance = nil;
 //        instance = [[self alloc] init];
 //        [instance initialize];
 //    });
-    if( instance == nil )
+    @synchronized (self)
     {
-        instance = [[self alloc] init];
-        [instance initialize];
+        if( instance == nil )
+        {
+            instance = [[self alloc] init];
+            [instance initialize];
+        }
     }
+    
     return instance;
 }
 
@@ -85,6 +89,10 @@ static FCGameState *instance = nil;
         {
             self.cardsArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         }
+        else
+        {
+            self.cardsArray = [NSMutableArray arrayWithCapacity:52];
+        }
     }
     
     if( self.cardsSlots == nil )
@@ -93,6 +101,10 @@ static FCGameState *instance = nil;
         if( data != nil )
         {
             self.cardsSlots = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        }
+        else
+        {
+            self.cardsSlots = [NSMutableArray arrayWithCapacity:4];
         }
     }
     
@@ -103,6 +115,10 @@ static FCGameState *instance = nil;
         {
             self.gameSlots = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         }
+        else
+        {
+            self.gameSlots = [NSMutableArray arrayWithCapacity:8];
+        }
     }
     
     if( self.freeCellSlots == nil )
@@ -111,6 +127,10 @@ static FCGameState *instance = nil;
         if( data != nil )
         {
             self.freeCellSlots = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        }
+        else
+        {
+            self.freeCellSlots = [NSMutableArray arrayWithCapacity:4];
         }
     }
 }
@@ -215,6 +235,31 @@ static FCGameState *instance = nil;
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserDefaultsKeyCardSeparations];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    for( SKSpriteNode *node in _cardsSlots )
+    {
+        [node removeFromParent];
+    }
+    
+    for( SKSpriteNode *node in _cardsArray )
+    {
+        [node removeFromParent];
+    }
+    
+    for( SKSpriteNode *node in _freeCellSlots )
+    {
+        [node removeFromParent];
+    }
+    
+    for( SKSpriteNode *node in _gameSlots )
+    {
+        [node removeFromParent];
+    }
+    
+    [_freeCellSlots removeAllObjects];
+    [_cardsSlots removeAllObjects];
+    [_gameSlots removeAllObjects];
+    [_cardsArray removeAllObjects];
 }
 
 - (BOOL) restoreState
