@@ -1,0 +1,75 @@
+//
+//  FCGameScene+MainMenu.m
+//  iFreeCell
+//
+//  Created by Miguel Estévez on 01/06/14.
+//  Copyright (c) 2014 Miguel Estévez. All rights reserved.
+//
+
+#import "FCGameScene+MainMenu.h"
+#import "FCGameState.h"
+#import "FCCard.h"
+#import "FCSlot.h"
+
+#define kMenuMaxX   270.F
+
+@implementation FCGameScene (MainMenu)
+
+- (void) moveMenuWithDeltaPoint:(CGPoint) deltaPoint
+{
+    CGFloat newX = gameLayer.position.x + deltaPoint.x;
+    
+    _menuMoveDelta = deltaPoint.x;
+    
+    if( newX < 0.F ) newX = 0.F;
+    if( newX > kMenuMaxX ) newX = kMenuMaxX;
+    
+    gameLayer.position = CGPointMake(newX, gameLayer.position.y);
+    _menuDragging = YES;
+}
+
+- (void) moveMenuTouchEnded:(CGPoint) touchLocation
+{
+    CGPoint point;
+    
+    if( _menuMoveDelta > 0 )
+    {
+        point = CGPointMake(kMenuMaxX, 0.F);
+        _menuShowing = YES;
+    }
+    else
+    {
+        point = CGPointZero;
+        _menuShowing = NO;
+    }
+    
+    if( !_menuDragging ) point = CGPointZero;
+    
+    SKAction *move = [SKAction moveTo:point duration:.25];
+    move.timingMode = SKActionTimingEaseOut;
+    
+    [gameLayer runAction:move completion:^{}];
+    
+    _menuDragging = NO;
+}
+
+- (void) resetMenuOption
+{
+    
+}
+
+- (void) undoMenuOption
+{
+    FCMove *lastMove = [[FCGameState shared] consumLastMove];
+
+    if( [lastMove.previousParent isKindOfClass:[FCCard class]] )
+    {
+        [lastMove.target becomeChildOfCard:(FCCard *) lastMove.previousParent fromUndo:YES];
+    }
+    else
+    {
+        [lastMove.target becomeChildOfSlot:(FCSlot * ) lastMove.previousParent fromUndo:YES];
+    }
+}
+
+@end

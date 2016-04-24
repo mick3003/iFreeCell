@@ -1,0 +1,135 @@
+//
+//  FCViewController.m
+//  iFreeCell
+//
+//  Created by Miguel Estévez on 03/08/13.
+//  Copyright (c) 2013 Miguel Estévez. All rights reserved.
+//
+
+#import "FCViewController.h"
+#import "FCGameScene.h"
+#import "FCModalTransitioningDelegate.h"
+#import "FCCardDetailViewController.h"
+#import "FCCard.h"
+
+@interface FCViewController () <FCModalPresentationDelegate>
+{
+}
+
+@property (nonatomic, weak) IBOutlet UIButton *popoverButton;
+@property (nonatomic, strong) NSDictionary *userInfo;
+
+@property (nonatomic, strong) FCModalTransitioningDelegate *modalTransitioningDelegate;
+
+@end
+
+
+@implementation FCViewController
+
+- (UIStatusBarStyle) preferredStatusBarStyle
+{
+    // NSLog(@"%s", __FUNCTION__);
+    return UIStatusBarStyleLightContent;
+}
+
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
+
+    self.modalTransitioningDelegate = [FCModalTransitioningDelegate new];
+    
+    // Configure the view.
+    SKView * skView = (SKView *)self.view;
+    
+//    CGRect f = [[[UIApplication sharedApplication] windows][0] bounds];
+//    f = CGRectMake(0, 0, 1334, 750);
+//    skView.frame = f;
+    
+    BOOL flag = NO;
+#ifdef DEBUG
+    flag = YES;
+#endif
+    skView.showsFPS = flag;
+    skView.showsNodeCount = flag;
+    skView.showsDrawCount = flag;
+    
+    // Create and configure the scene.
+    FCGameScene * scene = [FCGameScene sceneWithSize:skView.bounds.size];
+    scene.scaleMode = SKSceneScaleModeAspectFill;
+    scene.presentationDelegate = self;
+    
+    // Present the scene.
+    [skView presentScene:scene];
+}
+
+- (BOOL) shouldAutorotate
+{
+    return YES;
+}
+
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscape; 
+}
+
+- (void) didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Release any cached data, images, etc that aren't in use.
+}
+
+
+#pragma mark - Presentation delegate
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    UIViewController *vc = segue.destinationViewController;
+    
+    self.transitioningDelegate = self.modalTransitioningDelegate;
+    vc.transitioningDelegate = self.transitioningDelegate;
+    
+    if( [segue.identifier isEqualToString:@"CardDetailSegueId"] )
+    {
+        FCCardDetailViewController *detailVC = (FCCardDetailViewController *) vc;
+        id detailTarget = self.userInfo[@"target"];
+        
+        detailVC.showingZPosition = [self.userInfo[@"previousZ"] floatValue];
+        
+        if( [detailTarget isKindOfClass:[FCCard class]] )
+        {
+            detailVC.card = detailTarget;
+        }
+        else if( [detailTarget isKindOfClass:[FCSlot class]] )
+        {
+            detailVC.slot = detailTarget;
+        }
+    }
+}
+
+- (void) shouldPresentModalForAction:(FCModalAction)action userInfo:(NSDictionary *)userInfo
+{
+    switch( action )
+    {
+        case FCModalActionNewGame:
+            [self performSegueWithIdentifier:@"SegueOne" sender:self];
+            break;
+        case FCModalActionCartDetail:
+            self.userInfo = userInfo;
+            [self openCartDetailOnPoint:[userInfo[@"location"] CGPointValue]];
+            break;
+        default:
+            ;
+            break;
+    };
+}
+
+- (void) openCartDetailOnPoint:(CGPoint)point
+{
+    CGRect popoverButtonFrame = CGRectMake(point.x, point.y, 4.F, 4.F);
+    
+    self.popoverButton.frame = popoverButtonFrame;
+    
+    [self performSegueWithIdentifier:@"CardDetailSegueId" sender:self];
+}
+
+@end
