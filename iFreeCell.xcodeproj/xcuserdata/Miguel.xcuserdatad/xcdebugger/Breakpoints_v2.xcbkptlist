@@ -6,7 +6,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             scope = "0"
@@ -19,13 +19,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iFreeCell/FCSlot.m"
-            timestampString = "483197929.231159"
+            filePath = "iFreeCell/FCGameScene.m"
+            timestampString = "483204139.343376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "-initWithCoder:"
+            startingLineNumber = "546"
+            endingLineNumber = "546"
+            landmarkName = "-didBeginContact:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iFreeCell/FCCardDetailViewController.m"
-            timestampString = "483199544.817889"
+            filePath = "iFreeCell/FCGameScene.m"
+            timestampString = "483204139.343376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-setupContent"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "-numberOfMovableChildCards:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iFreeCell/FCCard.m"
-            timestampString = "483199574.420568"
+            filePath = "iFreeCell/FCGameScene.m"
+            timestampString = "483204112.223825"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "-firstParentSlot"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
+            landmarkName = "-numberOfMovableChildCards:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

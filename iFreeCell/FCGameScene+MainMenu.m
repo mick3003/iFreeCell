@@ -62,6 +62,8 @@
 {
     FCMove *lastMove = [[FCGameState shared] consumLastMove];
 
+    lastMove.target.zPosition = kZPositionMove;
+    
     if( [lastMove.previousParent isKindOfClass:[FCCard class]] )
     {
         [lastMove.target becomeChildOfCard:(FCCard *) lastMove.previousParent fromUndo:YES];

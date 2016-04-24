@@ -155,7 +155,7 @@
 
 - (void) prepareCards
 {
-    NSString *str = [[FCBoardHelper new] newBoardForSeed:4];
+    NSString *str = [[FCBoardHelper new] newBoardForSeed:2];
     str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
     NSArray *array = [str componentsSeparatedByString:@" "];
     static CGFloat zPositionCount = 0.F;
@@ -245,7 +245,7 @@
 }
 
 
-- (NSInteger) numberOfMovableChildCards
+- (NSInteger) numberOfMovableChildCards:(BOOL)touchingGameSlot
 {
     NSInteger freeFreecellSlots = 0, freeGameSlots = 0;
     
@@ -258,7 +258,14 @@
         if( slot.lastCard == nil ) freeGameSlots ++;
     }
     
-    return (freeFreecellSlots + 1) + (freeFreecellSlots * freeGameSlots);
+    if( touchingGameSlot )
+    {
+        freeGameSlots --;
+    }
+    
+    NSInteger res = (freeFreecellSlots + 1) + ((freeFreecellSlots?freeFreecellSlots:1) * freeGameSlots);
+    
+    return res;
 }
 
 
@@ -285,7 +292,7 @@
             {
                 _movingCard = [self getLastTouchedChildFromCard:card touchLocation:location];
                 
-                if( _movingCard.allChilds.count >= self.numberOfMovableChildCards )
+                if( _movingCard.allChilds.count >= [self numberOfMovableChildCards:NO] )
                 {
                     _movingCard = nil;
                 }
@@ -536,12 +543,15 @@
         }
         else
         {
-            if( [contactNode canBeParentOf:_movingCard] )
+            if( slot.slotType == FCSlotTypeSuitStack || _movingCard.allChilds.count < [self numberOfMovableChildCards:YES] )
             {
-                [_contactNodes addObjectOnce:contactNode];
+                if( [slot canBeParentOf:_movingCard] )
+                {
+                    [_contactNodes addObjectOnce:contactNode];
+                }
+                
+                _contactNode = contactNode;
             }
-            
-            _contactNode = contactNode;
         }
     }
     else

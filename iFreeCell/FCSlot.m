@@ -67,7 +67,6 @@
     [super encodeWithCoder:aCoder];
     
     [aCoder encodeObject:@(self.slotType) forKey:@"slotType"];
-    // [aCoder encodeObject:self.lastCard forKey:@"lastCard"];
     [aCoder encodeObject:self.lastCardName forKey:@"lastCardName"];
     [aCoder encodeObject:@(self.column) forKey:@"column"];
 }
@@ -77,7 +76,6 @@
     if( self = [super initWithCoder:aDecoder] )
     {
         self.slotType = (FCSlotType) [[aDecoder decodeObjectForKey:@"slotType"] integerValue];
-        // self.lastCard = [aDecoder decodeObjectForKey:@"lastCard"];
         self.lastCardName = [aDecoder decodeObjectForKey:@"lastCardName"];
         self.column = [[aDecoder decodeObjectForKey:@"column"] integerValue];
         
