@@ -85,9 +85,9 @@
     
     [gameLayer addChild:background];
     
-    _touchNode = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(20, 20)];
-    _touchNode.position = CGPointZero;
-    [gameLayer addChild:_touchNode];
+//    _touchNode = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(20, 20)];
+//    _touchNode.position = CGPointZero;
+//    [gameLayer addChild:_touchNode];
     
     _slotTexture = [SKTexture textureWithImageNamed:@"slot4"];
     
@@ -274,9 +274,12 @@
         freeGameSlots --;
     }
     
-    NSInteger res = (freeFreecellSlots + 1) + ((freeFreecellSlots?freeFreecellSlots:1) * freeGameSlots);
+    NSInteger ret;
     
-    return res;
+    // ret = (freeFreecellSlots + 1) + ((freeFreecellSlots?freeFreecellSlots:1) * freeGameSlots);
+    ret = (freeFreecellSlots) + ((freeFreecellSlots? freeFreecellSlots: 1) * freeGameSlots);
+    
+    return ret;
 }
 
 
@@ -348,7 +351,7 @@
     _touchNode.zPosition = kZPositionMove;
     _touchNode.position = location;
     
-    NSLog(@"-- touches.count = %d -- location = %@", touches.count, NSStringFromCGPoint(location));
+    NSLog(@"-- touches.count = %lu -- location = %@", (unsigned long)touches.count, NSStringFromCGPoint(location));
     
     CGPoint inc = CGPointMake(location.x-_touchMoveLocation.x, location.y - _touchMoveLocation.y);
     
