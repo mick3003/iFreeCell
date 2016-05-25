@@ -15,11 +15,10 @@
 		491D34431CAB21B800374872 /* FCPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D34421CAB21B800374872 /* FCPresentationController.m */; };
 		491D34461CAB228A00374872 /* FCModalTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D34451CAB228A00374872 /* FCModalTransitioningDelegate.m */; };
 		491D34491CAB233C00374872 /* FCAnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D34481CAB233C00374872 /* FCAnimatedTransitioning.m */; };
-		491EF8851CBBB46700DCB67F /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491EF8841CBBB46700DCB67F /* Storyboard.storyboard */; };
 		492BDBAF193B50EA00860623 /* FCGameScene+MainMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 492BDBAE193B50EA00860623 /* FCGameScene+MainMenu.m */; };
 		493CAA4B17BBD32000822328 /* FCCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 493CAA4A17BBD32000822328 /* FCCard.m */; };
 		4944C6BD1CB9BE1C007D4497 /* FCCardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4944C6BC1CB9BE1C007D4497 /* FCCardDetailViewController.m */; };
-		498C7DF719316DAF00425F66 /* main_bgnd4.png in Resources */ = {isa = PBXBuildFile; fileRef = 498C7DF619316DAF00425F66 /* main_bgnd4.png */; };
+		498C7DF719316DAF00425F66 /* main_bgnd4_.png in Resources */ = {isa = PBXBuildFile; fileRef = 498C7DF619316DAF00425F66 /* main_bgnd4_.png */; };
 		4991742417C7C89E00F1C1AF /* main_bgnd.png in Resources */ = {isa = PBXBuildFile; fileRef = 4991742317C7C89E00F1C1AF /* main_bgnd.png */; };
 		499D5BC017B0912800232234 /* AFreecellGameBoard.mm in Sources */ = {isa = PBXBuildFile; fileRef = 499D5BB917B0912800232234 /* AFreecellGameBoard.mm */; };
 		499D5BC117B0912800232234 /* MainBoardGenerator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 499D5BBB17B0912800232234 /* MainBoardGenerator.mm */; };
@@ -43,27 +42,12 @@
 		49F0503917AD2BB100839066 /* FCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0503817AD2BB100839066 /* FCViewController.m */; };
 		49F0503C17AD2BB100839066 /* FCGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0503B17AD2BB100839066 /* FCGameScene.m */; };
 		49F0504017AD2BB100839066 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49F0503F17AD2BB100839066 /* Images.xcassets */; };
-		49F0504717AD2BB100839066 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F0504617AD2BB100839066 /* XCTest.framework */; };
-		49F0504817AD2BB100839066 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F0502017AD2BB100839066 /* Foundation.framework */; };
-		49F0504917AD2BB100839066 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F0502417AD2BB100839066 /* UIKit.framework */; };
-		49F0505117AD2BB100839066 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49F0504F17AD2BB100839066 /* InfoPlist.strings */; };
-		49F0505317AD2BB100839066 /* iFreeCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0505217AD2BB100839066 /* iFreeCellTests.m */; };
 		49F67F4917CE3B75004C8FF4 /* particle1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 49F67F4817CE3B75004C8FF4 /* particle1.sks */; };
 		49F67F4B17CE4070004C8FF4 /* fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 49F67F4A17CE4070004C8FF4 /* fire.sks */; };
 		49F67F4E17CE6077004C8FF4 /* FCSlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F67F4D17CE6077004C8FF4 /* FCSlot.m */; };
 		49FB1FE617CE6E8B00603D32 /* FCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 49FB1FE517CE6E8B00603D32 /* FCHelper.m */; };
 		49FDE72917C15BCF00585498 /* FCPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 49FDE72817C15BCF00585498 /* FCPoint.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		49F0504A17AD2BB100839066 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 49F0501517AD2BB100839066 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 49F0501C17AD2BB100839066;
-			remoteInfo = iFreeCell;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		490050BB17B741E800E38443 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
@@ -79,14 +63,13 @@
 		491D34451CAB228A00374872 /* FCModalTransitioningDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCModalTransitioningDelegate.m; sourceTree = "<group>"; };
 		491D34471CAB233C00374872 /* FCAnimatedTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCAnimatedTransitioning.h; sourceTree = "<group>"; };
 		491D34481CAB233C00374872 /* FCAnimatedTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCAnimatedTransitioning.m; sourceTree = "<group>"; };
-		491EF8841CBBB46700DCB67F /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		492BDBAD193B50EA00860623 /* FCGameScene+MainMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FCGameScene+MainMenu.h"; sourceTree = "<group>"; };
 		492BDBAE193B50EA00860623 /* FCGameScene+MainMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FCGameScene+MainMenu.m"; sourceTree = "<group>"; };
 		493CAA4917BBD32000822328 /* FCCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCCard.h; sourceTree = "<group>"; };
 		493CAA4A17BBD32000822328 /* FCCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCCard.m; sourceTree = "<group>"; };
 		4944C6BB1CB9BE1C007D4497 /* FCCardDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCCardDetailViewController.h; sourceTree = "<group>"; };
 		4944C6BC1CB9BE1C007D4497 /* FCCardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCCardDetailViewController.m; sourceTree = "<group>"; };
-		498C7DF619316DAF00425F66 /* main_bgnd4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_bgnd4.png; sourceTree = "<group>"; };
+		498C7DF619316DAF00425F66 /* main_bgnd4_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_bgnd4_.png; sourceTree = "<group>"; };
 		4991742317C7C89E00F1C1AF /* main_bgnd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_bgnd.png; sourceTree = "<group>"; };
 		499D5BB917B0912800232234 /* AFreecellGameBoard.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AFreecellGameBoard.mm; sourceTree = "<group>"; };
 		499D5BBA17B0912800232234 /* AFreecellGameBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFreecellGameBoard.h; sourceTree = "<group>"; };
@@ -124,11 +107,7 @@
 		49F0503A17AD2BB100839066 /* FCGameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCGameScene.h; sourceTree = "<group>"; };
 		49F0503B17AD2BB100839066 /* FCGameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCGameScene.m; sourceTree = "<group>"; };
 		49F0503F17AD2BB100839066 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		49F0504517AD2BB100839066 /* iFreeCellTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iFreeCellTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F0504617AD2BB100839066 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		49F0504E17AD2BB100839066 /* iFreeCellTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iFreeCellTests-Info.plist"; sourceTree = "<group>"; };
-		49F0505017AD2BB100839066 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		49F0505217AD2BB100839066 /* iFreeCellTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iFreeCellTests.m; sourceTree = "<group>"; };
 		49F67F4817CE3B75004C8FF4 /* particle1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = particle1.sks; sourceTree = "<group>"; };
 		49F67F4A17CE4070004C8FF4 /* fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fire.sks; sourceTree = "<group>"; };
 		49F67F4C17CE6077004C8FF4 /* FCSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSlot.h; sourceTree = "<group>"; };
@@ -148,16 +127,6 @@
 				49F0502517AD2BB100839066 /* UIKit.framework in Frameworks */,
 				49F0502717AD2BB100839066 /* SpriteKit.framework in Frameworks */,
 				49F0502117AD2BB100839066 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49F0504217AD2BB100839066 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49F0504717AD2BB100839066 /* XCTest.framework in Frameworks */,
-				49F0504917AD2BB100839066 /* UIKit.framework in Frameworks */,
-				49F0504817AD2BB100839066 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +159,32 @@
 				491D34481CAB233C00374872 /* FCAnimatedTransitioning.m */,
 			);
 			name = Presentation;
+			sourceTree = "<group>";
+		};
+		4963EDCA1CCD20AA004AA4CD /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				49F0503717AD2BB100839066 /* FCViewController.h */,
+				49F0503817AD2BB100839066 /* FCViewController.m */,
+				491D343D1CAB1A8C00374872 /* FCNewGameViewController.h */,
+				491D343E1CAB1A8C00374872 /* FCNewGameViewController.m */,
+				4944C6BB1CB9BE1C007D4497 /* FCCardDetailViewController.h */,
+				4944C6BC1CB9BE1C007D4497 /* FCCardDetailViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		4963EDCB1CCD20C9004AA4CD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				49FDE72717C15BCF00585498 /* FCPoint.h */,
+				49FDE72817C15BCF00585498 /* FCPoint.m */,
+				49FB1FE417CE6E8B00603D32 /* FCHelper.h */,
+				49FB1FE517CE6E8B00603D32 /* FCHelper.m */,
+				49A723A81995417D00CDB225 /* NSMutableArray+ContactNodes.h */,
+				49A723A91995417D00CDB225 /* NSMutableArray+ContactNodes.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		499D5BB817B0911100232234 /* FCBoardGenerator */ = {
@@ -225,22 +220,12 @@
 			isa = PBXGroup;
 			children = (
 				491D34401CAB21A000374872 /* Presentation */,
+				4963EDCB1CCD20C9004AA4CD /* Helpers */,
+				4963EDCA1CCD20AA004AA4CD /* View Controllers */,
 				49F0503117AD2BB100839066 /* FCAppDelegate.h */,
 				49F0503217AD2BB100839066 /* FCAppDelegate.m */,
 				49E8B14F17C7CE1D00830389 /* FCGameState.h */,
 				49E8B15017C7CE1D00830389 /* FCGameState.m */,
-				49F0503717AD2BB100839066 /* FCViewController.h */,
-				49F0503817AD2BB100839066 /* FCViewController.m */,
-				491D343D1CAB1A8C00374872 /* FCNewGameViewController.h */,
-				491D343E1CAB1A8C00374872 /* FCNewGameViewController.m */,
-				49FDE72717C15BCF00585498 /* FCPoint.h */,
-				49FDE72817C15BCF00585498 /* FCPoint.m */,
-				49FB1FE417CE6E8B00603D32 /* FCHelper.h */,
-				49FB1FE517CE6E8B00603D32 /* FCHelper.m */,
-				49A723A81995417D00CDB225 /* NSMutableArray+ContactNodes.h */,
-				49A723A91995417D00CDB225 /* NSMutableArray+ContactNodes.m */,
-				4944C6BB1CB9BE1C007D4497 /* FCCardDetailViewController.h */,
-				4944C6BC1CB9BE1C007D4497 /* FCCardDetailViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -249,7 +234,6 @@
 			isa = PBXGroup;
 			children = (
 				49F0502817AD2BB100839066 /* iFreeCell */,
-				49F0504C17AD2BB100839066 /* iFreeCellTests */,
 				49F0501F17AD2BB100839066 /* Frameworks */,
 				49F0501E17AD2BB100839066 /* Products */,
 			);
@@ -259,7 +243,6 @@
 			isa = PBXGroup;
 			children = (
 				49F0501D17AD2BB100839066 /* iFreeCell.app */,
-				49F0504517AD2BB100839066 /* iFreeCellTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -279,14 +262,13 @@
 		49F0502817AD2BB100839066 /* iFreeCell */ = {
 			isa = PBXGroup;
 			children = (
-				49F0503417AD2BB100839066 /* Main.storyboard */,
 				499D5BB817B0911100232234 /* FCBoardGenerator */,
 				49A723A7199540F400CDB225 /* Classes */,
 				49A723A6199540C100CDB225 /* Scenes */,
 				49167289191FE75A00397574 /* Sprite Nodes */,
 				49F0503F17AD2BB100839066 /* Images.xcassets */,
+				49F0503417AD2BB100839066 /* Main.storyboard */,
 				49F0502917AD2BB100839066 /* Supporting Files */,
-				491EF8841CBBB46700DCB67F /* Storyboard.storyboard */,
 			);
 			path = iFreeCell;
 			sourceTree = "<group>";
@@ -296,7 +278,7 @@
 			children = (
 				49A5066D17BA8684002EC277 /* cards.atlas */,
 				4991742317C7C89E00F1C1AF /* main_bgnd.png */,
-				498C7DF619316DAF00425F66 /* main_bgnd4.png */,
+				498C7DF619316DAF00425F66 /* main_bgnd4_.png */,
 				490EFD1919310C5C0077E76B /* main_bgnd2.png */,
 				49A5067117BB26D0002EC277 /* beach.png */,
 				49F0502A17AD2BB100839066 /* iFreeCell-Info.plist */,
@@ -307,24 +289,6 @@
 				490050BC17B741E800E38443 /* spark.png */,
 				49F67F4817CE3B75004C8FF4 /* particle1.sks */,
 				49F67F4A17CE4070004C8FF4 /* fire.sks */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		49F0504C17AD2BB100839066 /* iFreeCellTests */ = {
-			isa = PBXGroup;
-			children = (
-				49F0505217AD2BB100839066 /* iFreeCellTests.m */,
-				49F0504D17AD2BB100839066 /* Supporting Files */,
-			);
-			path = iFreeCellTests;
-			sourceTree = "<group>";
-		};
-		49F0504D17AD2BB100839066 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				49F0504E17AD2BB100839066 /* iFreeCellTests-Info.plist */,
-				49F0504F17AD2BB100839066 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -349,24 +313,6 @@
 			productReference = 49F0501D17AD2BB100839066 /* iFreeCell.app */;
 			productType = "com.apple.product-type.application";
 		};
-		49F0504417AD2BB100839066 /* iFreeCellTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 49F0505917AD2BB100839066 /* Build configuration list for PBXNativeTarget "iFreeCellTests" */;
-			buildPhases = (
-				49F0504117AD2BB100839066 /* Sources */,
-				49F0504217AD2BB100839066 /* Frameworks */,
-				49F0504317AD2BB100839066 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				49F0504B17AD2BB100839066 /* PBXTargetDependency */,
-			);
-			name = iFreeCellTests;
-			productName = iFreeCellTests;
-			productReference = 49F0504517AD2BB100839066 /* iFreeCellTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -379,9 +325,6 @@
 				TargetAttributes = {
 					49F0501C17AD2BB100839066 = {
 						DevelopmentTeam = L5BZSQWSDE;
-					};
-					49F0504417AD2BB100839066 = {
-						TestTargetID = 49F0501C17AD2BB100839066;
 					};
 				};
 			};
@@ -399,7 +342,6 @@
 			projectRoot = "";
 			targets = (
 				49F0501C17AD2BB100839066 /* iFreeCell */,
-				49F0504417AD2BB100839066 /* iFreeCellTests */,
 			);
 		};
 /* End PBXProject section */
@@ -409,7 +351,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				498C7DF719316DAF00425F66 /* main_bgnd4.png in Resources */,
+				498C7DF719316DAF00425F66 /* main_bgnd4_.png in Resources */,
 				49F0502D17AD2BB100839066 /* InfoPlist.strings in Resources */,
 				4991742417C7C89E00F1C1AF /* main_bgnd.png in Resources */,
 				490050BE17B741E800E38443 /* spark.png in Resources */,
@@ -418,18 +360,9 @@
 				49F67F4917CE3B75004C8FF4 /* particle1.sks in Resources */,
 				49F0503617AD2BB100839066 /* Main.storyboard in Resources */,
 				49A5067217BB26D0002EC277 /* beach.png in Resources */,
-				491EF8851CBBB46700DCB67F /* Storyboard.storyboard in Resources */,
 				49F67F4B17CE4070004C8FF4 /* fire.sks in Resources */,
 				490EFD1A19310C5C0077E76B /* main_bgnd2.png in Resources */,
 				490050BD17B741E800E38443 /* MyParticle.sks in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49F0504317AD2BB100839066 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49F0505117AD2BB100839066 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,23 +400,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		49F0504117AD2BB100839066 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49F0505317AD2BB100839066 /* iFreeCellTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		49F0504B17AD2BB100839066 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 49F0501C17AD2BB100839066 /* iFreeCell */;
-			targetProxy = 49F0504A17AD2BB100839066 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		49F0502B17AD2BB100839066 /* InfoPlist.strings */ = {
@@ -500,14 +417,6 @@
 				49F0503517AD2BB100839066 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		49F0504F17AD2BB100839066 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				49F0505017AD2BB100839066 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -624,48 +533,6 @@
 			};
 			name = Release;
 		};
-		49F0505A17AD2BB100839066 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iFreeCell.app/iFreeCell";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iFreeCell/iFreeCell-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "iFreeCellTests/iFreeCellTests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mestevez.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		49F0505B17AD2BB100839066 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iFreeCell.app/iFreeCell";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iFreeCell/iFreeCell-Prefix.pch";
-				INFOPLIST_FILE = "iFreeCellTests/iFreeCellTests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mestevez.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -683,15 +550,6 @@
 			buildConfigurations = (
 				49F0505717AD2BB100839066 /* Debug */,
 				49F0505817AD2BB100839066 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		49F0505917AD2BB100839066 /* Build configuration list for PBXNativeTarget "iFreeCellTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				49F0505A17AD2BB100839066 /* Debug */,
-				49F0505B17AD2BB100839066 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

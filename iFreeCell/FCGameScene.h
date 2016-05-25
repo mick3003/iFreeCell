@@ -57,6 +57,8 @@ typedef NS_ENUM(NSInteger, FCModalAction)
     CGFloat _menuMoveDelta;
     BOOL _menuShowing;
     BOOL _menuDragging;
+    
+    BOOL _doubleSwipeDetected;
 }
 
 @property (nonatomic, weak) id <FCModalPresentationDelegate> presentationDelegate;

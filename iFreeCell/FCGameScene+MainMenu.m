@@ -13,11 +13,17 @@
 
 #define kMenuMaxX   270.F
 
+@interface FCGameScene ()
+- (void) prepareContent;
+@end
+
 @implementation FCGameScene (MainMenu)
 
 - (void) moveMenuWithDeltaPoint:(CGPoint) deltaPoint
 {
     CGFloat newX = gameLayer.position.x + deltaPoint.x;
+    
+    // NSLog(@"-- deltaPoint = %@ -- newX = %f", NSStringFromCGPoint(deltaPoint), newX);
     
     _menuMoveDelta = deltaPoint.x;
     
@@ -30,6 +36,7 @@
 
 - (void) moveMenuTouchEnded:(CGPoint) touchLocation
 {
+    NSLog(@"xxxxxxxxxxxxxxxxxxx");
     CGPoint point;
     
     if( _menuMoveDelta > 0 )
@@ -43,7 +50,10 @@
         _menuShowing = NO;
     }
     
+    if( !_doubleSwipeDetected )
+    {
     if( !_menuDragging ) point = CGPointZero;
+    }
     
     SKAction *move = [SKAction moveTo:point duration:.25];
     move.timingMode = SKActionTimingEaseOut;
@@ -55,7 +65,8 @@
 
 - (void) resetMenuOption
 {
-    
+    [[FCGameState shared] resetState];
+    [self prepareContent];
 }
 
 - (void) undoMenuOption
@@ -70,7 +81,7 @@
     }
     else
     {
-        [lastMove.target becomeChildOfSlot:(FCSlot * ) lastMove.previousParent fromUndo:YES];
+        [lastMove.target becomeChildOfSlot:(FCSlot *) lastMove.previousParent fromUndo:YES];
     }
 }
 

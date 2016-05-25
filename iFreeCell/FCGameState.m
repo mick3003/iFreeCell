@@ -48,6 +48,9 @@ static FCGameState *instance = nil;
 //        instance = [[self alloc] init];
 //        [instance initialize];
 //    });
+//    return instance;
+    
+    //*
     @synchronized (self)
     {
         if( instance == nil )
@@ -56,8 +59,8 @@ static FCGameState *instance = nil;
             [instance initialize];
         }
     }
-    
     return instance;
+     //*/
 }
 
 - (void) initialize

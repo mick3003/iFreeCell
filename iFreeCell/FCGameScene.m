@@ -27,6 +27,8 @@
     BOOL _autoStackedMoved;
     
     CGFloat _previousZPosition;
+    
+    SKSpriteNode *_touchNode;
 }
 
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
@@ -72,13 +74,22 @@
 
 - (void) prepareContent
 {
-    SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"main_bgnd4.png"];
+    SKSpriteNode *background;
+    //SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"main_bgnd4_"];
+    
+    
+    CGSize bgndSize = CGSizeMake(self.frame.size.width * 2.F, self.frame.size.height * 2.F);
+    background = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:30.F/255.F green:153.F/255.F blue:199.F/255.F alpha:1.F] size:bgndSize];
     background.anchorPoint = CGPointZero;
     background.position = CGPointZero;
     
     [gameLayer addChild:background];
     
-    _slotTexture = [SKTexture textureWithImageNamed:@"slot2"];
+    _touchNode = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(20, 20)];
+    _touchNode.position = CGPointZero;
+    [gameLayer addChild:_touchNode];
+    
+    _slotTexture = [SKTexture textureWithImageNamed:@"slot4"];
     
     _freeCellSlots = [[FCGameState shared] freeCellSlots];
     _gameSlots = [[FCGameState shared] gameSlots];
@@ -271,15 +282,35 @@
 
 #pragma mark - Touch delegate methods
 
+- (CGPoint) touchLocation:(NSSet *)touches
+{
+    CGPoint touchLocation = [touches.anyObject locationInNode:self];
+    
+    if( touches.count == 2 )
+    {
+        NSArray *allTouches = touches.allObjects;
+        UITouch *touch1 = allTouches[0];
+        UITouch *touch2 = allTouches[1];
+        
+        CGPoint p1 = [touch1 locationInNode:self];
+        CGPoint p2 = [touch2 locationInNode:self];
+        
+        touchLocation = CGPointMake( (p1.x+p2.x)/2.F, (p1.y+p2.y)/2.F );
+    }
+    
+    return touchLocation;
+}
+
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if( touches.count > 2 || _movingCard ) return;
-    
-    UITouch *touch = [touches anyObject];
-    
-    CGPoint location = [touch locationInNode:self];
-    _touchMoveLocation = location;
+    NSLog(@"%s", __FUNCTION__);
 
+    CGPoint location = [self touchLocation:touches];
+    _touchMoveLocation = location;
+    
+    if( touches.count == 2 ) _doubleSwipeDetected = YES;
+    if( touches.count > 1 || _movingCard ) return;
+    
     _longTouchTriggered = NO;
     _longTouchBeganPoint = location;
     _longTouchTime = 0.F;
@@ -292,7 +323,7 @@
             {
                 _movingCard = [self getLastTouchedChildFromCard:card touchLocation:location];
                 
-                if( _movingCard.allChilds.count >= [self numberOfMovableChildCards:NO] )
+                if( _movingCard.allChilds.count > [self numberOfMovableChildCards:NO] )
                 {
                     _movingCard = nil;
                 }
@@ -305,9 +336,6 @@
             }
         }
     }
-    
-    // OJO si algo falla mirar a ver si es por haber comentado esta línea
-    // if( _movingCard.allChilds.count >= self.numberOfMovableChildCards ) _movingCard = nil;
 }
 
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -315,17 +343,21 @@
     _longTouchBeganPoint = CGPointZero;
     _longTouchTime = 0.F;
     
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInNode:self];
+    CGPoint location = [self touchLocation:touches];
+    
+    _touchNode.zPosition = kZPositionMove;
+    _touchNode.position = location;
+    
+    NSLog(@"-- touches.count = %d -- location = %@", touches.count, NSStringFromCGPoint(location));
     
     CGPoint inc = CGPointMake(location.x-_touchMoveLocation.x, location.y - _touchMoveLocation.y);
     
-    if( _movingCard )
+    if( _movingCard && touches.count == 1 )
     {
         _dragging = YES;
         _movingCard.position = CGPointMake(_movingCard.position.x + inc.x, _movingCard.position.y + inc.y);
     }
-    else
+    else if( touches.count == 2 )
     {
         [self moveMenuWithDeltaPoint:inc];
     }
@@ -335,11 +367,20 @@
 
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if( _doubleSwipeDetected )
+    {
+        _doubleSwipeDetected = NO;
+        return;
+    }
+    
     if( !_longTouchTriggered )
     {
         UITouch *touch = [touches anyObject];
 
-        [self moveMenuTouchEnded:[touch locationInNode:self]];
+        // if( touches.count == 2 )
+        {
+            [self moveMenuTouchEnded:[touch locationInNode:self]];
+        }
 
         if( touch.tapCount == 2 )
         {
@@ -356,6 +397,7 @@
     _dragging = NO;
     
     _previousZPosition = 0.F;
+    
 }
 
 - (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
@@ -411,9 +453,10 @@
                 }
                 
                 // Go to some parent card in game slot
-                if( [slot.lastCard.lastChild canBeParentOf:_movingCard] )
+                FCCard *targetCard = slot.lastCard.lastChild? slot.lastCard.lastChild: slot.lastCard;
+                if( [targetCard canBeParentOf:_movingCard] )
                 {
-                    [_movingCard becomeChildOfCard:slot.lastCard.lastChild];
+                    [_movingCard becomeChildOfCard:targetCard];
                     break;
                 }
             }
@@ -543,7 +586,7 @@
         }
         else
         {
-            if( slot.slotType == FCSlotTypeSuitStack || _movingCard.allChilds.count < [self numberOfMovableChildCards:YES] )
+            if( slot.slotType == FCSlotTypeSuitStack || _movingCard.allChilds.count <= [self numberOfMovableChildCards:YES] )
             {
                 if( [slot canBeParentOf:_movingCard] )
                 {
@@ -673,11 +716,6 @@
 
 #pragma mark - Main Menu delegate methods
 
-- (void) reset
-{
-    [[FCGameState shared] resetState];
-}
-
 - (void) mainMenu:(FCMenuScene *)menu didSelectButtonWithTag:(FCMainMenuButtonTag)buttonTag
 {
     BOOL closeMenu = YES;
@@ -696,8 +734,7 @@
             break;
             
         case FCMainMenuButtonTagResetGame:
-            [self reset];
-            [self prepareContent];
+            [self resetMenuOption];
             break;
             
         case FCMainMenuButtonTagCredits:
@@ -709,18 +746,6 @@
     };
     if( closeMenu ) [self moveMenuTouchEnded:CGPointZero];
 }
-
-/*
- una carta que se queda sin hijos, debe subir
- al stack si su carta inmediatamente inferior esta
- stacked
- y
- ambas cartas de color contrario y
- número inmediatamente inferior están ya en el
- stacked
- o
- es un as o un dos.
- */
 
 - (void) checkAutoStackCards
 {
@@ -808,7 +833,7 @@
     }
 #endif
     
-    if( 0 ) //[self checkGameSolved] )
+    if( [self checkGameSolved] )
     {
         // TODO. GAME SOLVED!!
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"iFreeCell" message:@"GAME SOLVED!" delegate:nil

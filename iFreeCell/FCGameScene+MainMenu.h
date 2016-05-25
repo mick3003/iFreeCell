@@ -10,7 +10,6 @@
 
 @interface FCGameScene (MainMenu)
 {
-    
 }
 
 - (void) moveMenuWithDeltaPoint:(CGPoint) deltaPoint;
