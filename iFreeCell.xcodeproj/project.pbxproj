@@ -19,6 +19,7 @@
 		493CAA4B17BBD32000822328 /* FCCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 493CAA4A17BBD32000822328 /* FCCard.m */; };
 		4944C6BD1CB9BE1C007D4497 /* FCCardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4944C6BC1CB9BE1C007D4497 /* FCCardDetailViewController.m */; };
 		498C7DF719316DAF00425F66 /* main_bgnd4_.png in Resources */ = {isa = PBXBuildFile; fileRef = 498C7DF619316DAF00425F66 /* main_bgnd4_.png */; };
+		499117D21EB5179300C530E1 /* FCAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499117D11EB5179300C530E1 /* FCAlertViewController.m */; };
 		4991742417C7C89E00F1C1AF /* main_bgnd.png in Resources */ = {isa = PBXBuildFile; fileRef = 4991742317C7C89E00F1C1AF /* main_bgnd.png */; };
 		499D5BC017B0912800232234 /* AFreecellGameBoard.mm in Sources */ = {isa = PBXBuildFile; fileRef = 499D5BB917B0912800232234 /* AFreecellGameBoard.mm */; };
 		499D5BC117B0912800232234 /* MainBoardGenerator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 499D5BBB17B0912800232234 /* MainBoardGenerator.mm */; };
@@ -70,6 +71,8 @@
 		4944C6BB1CB9BE1C007D4497 /* FCCardDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCCardDetailViewController.h; sourceTree = "<group>"; };
 		4944C6BC1CB9BE1C007D4497 /* FCCardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCCardDetailViewController.m; sourceTree = "<group>"; };
 		498C7DF619316DAF00425F66 /* main_bgnd4_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_bgnd4_.png; sourceTree = "<group>"; };
+		499117D01EB5179300C530E1 /* FCAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCAlertViewController.h; sourceTree = "<group>"; };
+		499117D11EB5179300C530E1 /* FCAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCAlertViewController.m; sourceTree = "<group>"; };
 		4991742317C7C89E00F1C1AF /* main_bgnd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_bgnd.png; sourceTree = "<group>"; };
 		499D5BB917B0912800232234 /* AFreecellGameBoard.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AFreecellGameBoard.mm; sourceTree = "<group>"; };
 		499D5BBA17B0912800232234 /* AFreecellGameBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFreecellGameBoard.h; sourceTree = "<group>"; };
@@ -168,6 +171,8 @@
 				49F0503817AD2BB100839066 /* FCViewController.m */,
 				491D343D1CAB1A8C00374872 /* FCNewGameViewController.h */,
 				491D343E1CAB1A8C00374872 /* FCNewGameViewController.m */,
+				499117D01EB5179300C530E1 /* FCAlertViewController.h */,
+				499117D11EB5179300C530E1 /* FCAlertViewController.m */,
 				4944C6BB1CB9BE1C007D4497 /* FCCardDetailViewController.h */,
 				4944C6BC1CB9BE1C007D4497 /* FCCardDetailViewController.m */,
 			);
@@ -388,6 +393,7 @@
 				491D34491CAB233C00374872 /* FCAnimatedTransitioning.m in Sources */,
 				492BDBAF193B50EA00860623 /* FCGameScene+MainMenu.m in Sources */,
 				49E8B15117C7CE1D00830389 /* FCGameState.m in Sources */,
+				499117D21EB5179300C530E1 /* FCAlertViewController.m in Sources */,
 				491D34431CAB21B800374872 /* FCPresentationController.m in Sources */,
 				49F0503317AD2BB100839066 /* FCAppDelegate.m in Sources */,
 				49F0503917AD2BB100839066 /* FCViewController.m in Sources */,

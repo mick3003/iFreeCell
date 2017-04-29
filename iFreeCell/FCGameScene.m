@@ -2,7 +2,7 @@
 //  FCMyScene.m
 //  iFreeCell
 //
-//  Created by Miguel Estévez on 03/08/13.
+//  Created by Miguel Estévez on 03/08/16.
 //  Copyright (c) 2013 Miguel Estévez. All rights reserved.
 //
 
@@ -74,16 +74,17 @@
 
 - (void) prepareContent
 {
-    SKSpriteNode *background;
     //SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"main_bgnd4_"];
     
-    
-    CGSize bgndSize = CGSizeMake(self.frame.size.width * 2.F, self.frame.size.height * 2.F);
-    background = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:30.F/255.F green:153.F/255.F blue:199.F/255.F alpha:1.F] size:bgndSize];
-    background.anchorPoint = CGPointZero;
-    background.position = CGPointZero;
-    
-    [gameLayer addChild:background];
+    if( !_background )
+    {
+        CGSize bgndSize = CGSizeMake(self.frame.size.width * 2.F, self.frame.size.height * 2.F);
+        _background = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:30.F/255.F green:153.F/255.F blue:199.F/255.F alpha:1.F] size:bgndSize];
+        _background.anchorPoint = CGPointZero;
+        _background.position = CGPointZero;
+        
+        [gameLayer addChild:_background];
+    }
     
 //    _touchNode = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(20, 20)];
 //    _touchNode.position = CGPointZero;
@@ -734,10 +735,13 @@
             
         case FCMainMenuButtonTagNewGame:
             [self.presentationDelegate shouldPresentModalForAction:FCModalActionNewGame userInfo:nil];
+            _menuDragging = NO;
             break;
             
         case FCMainMenuButtonTagResetGame:
-            [self resetMenuOption];
+            [self.presentationDelegate shouldPresentModalForAction:FCModalActionReset userInfo:nil];
+            _menuDragging = NO;
+            // [self resetMenuOption];
             break;
             
         case FCMainMenuButtonTagCredits:

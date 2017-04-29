@@ -2,7 +2,7 @@
 //  FCViewController.m
 //  iFreeCell
 //
-//  Created by Miguel Estévez on 03/08/13.
+//  Created by Miguel Estévez on 03/08/16.
 //  Copyright (c) 2013 Miguel Estévez. All rights reserved.
 //
 
@@ -11,11 +11,13 @@
 #import "FCModalTransitioningDelegate.h"
 #import "FCCardDetailViewController.h"
 #import "FCCard.h"
+#import "FCAlertViewController.h"
 
-@interface FCViewController () <FCModalPresentationDelegate>
+@interface FCViewController () <FCModalPresentationDelegate, FCAlertViewControllerDelegate>
 {
 }
 
+@property (nonatomic, weak) FCGameScene * gameScene;
 @property (nonatomic, weak) IBOutlet UIButton *popoverButton;
 @property (nonatomic, strong) NSDictionary *userInfo;
 
@@ -56,12 +58,12 @@
     skView.showsDrawCount = flag;
     
     // Create and configure the scene.
-    FCGameScene * scene = [FCGameScene sceneWithSize:skView.bounds.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
-    scene.presentationDelegate = self;
+    self.gameScene = [FCGameScene sceneWithSize:skView.bounds.size];
+    self.gameScene.scaleMode = SKSceneScaleModeAspectFill;
+    self.gameScene.presentationDelegate = self;
     
     // Present the scene.
-    [skView presentScene:scene];
+    [skView presentScene:self.gameScene];
 }
 
 - (BOOL) shouldAutorotate
@@ -106,6 +108,13 @@
             detailVC.slot = detailTarget;
         }
     }
+    else if( [segue.identifier isEqualToString:@"GameToAlertSegue"] )
+    {
+        FCAlertViewController *alertViewController = segue.destinationViewController;
+        alertViewController.message = @"You are about to reset the game board. This operation can not be undone. Are you sure?";
+        alertViewController.buttonTitles = @[@"YES", @"NO"];
+        alertViewController.delegate = self;
+    }
 }
 
 - (void) shouldPresentModalForAction:(FCModalAction)action userInfo:(NSDictionary *)userInfo
@@ -114,6 +123,9 @@
     {
         case FCModalActionNewGame:
             [self performSegueWithIdentifier:@"SegueOne" sender:self];
+            break;
+        case FCModalActionReset:
+            [self performSegueWithIdentifier:@"GameToAlertSegue" sender:self];
             break;
         case FCModalActionCartDetail:
             self.userInfo = userInfo;
@@ -140,6 +152,19 @@
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"iFreeCell" message:@"GAME SOLVED!!" preferredStyle:UIAlertControllerStyleAlert];
     [self presentViewController:alert animated:YES completion:NULL];
+}
+
+
+#pragma mark - FCAlertViewControllerDelegate
+
+- (void) alertViewController:(FCAlertViewController *)alertViewController tappedButtonAtIndex:(NSInteger)index
+{
+    NSLog(@"%s :: %@", __FUNCTION__, @(index));
+    
+    if( index == 0 )
+    {
+        [self.gameScene resetMenuOption];
+    }
 }
 
 @end

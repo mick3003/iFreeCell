@@ -52,7 +52,7 @@
     
     if( !_doubleSwipeDetected )
     {
-    if( !_menuDragging ) point = CGPointZero;
+        if( !_menuDragging ) point = CGPointZero;
     }
     
     SKAction *move = [SKAction moveTo:point duration:.25];

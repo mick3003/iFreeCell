@@ -2,7 +2,7 @@
 //  FCHelper.m
 //  iFreeCell
 //
-//  Created by Miguel Estévez on 28/08/13.
+//  Created by Miguel Estévez on 28/08/16.
 //  Copyright (c) 2013 Miguel Estévez. All rights reserved.
 //
 

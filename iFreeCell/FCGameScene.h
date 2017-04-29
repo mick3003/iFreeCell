@@ -44,6 +44,8 @@ typedef NS_ENUM(NSInteger, FCModalAction)
     
     SKTexture *_slotTexture;
     
+    SKSpriteNode *_background;
+    
     FCCard *_card;
     FCCard *_movingCard;
     
@@ -63,5 +65,7 @@ typedef NS_ENUM(NSInteger, FCModalAction)
 }
 
 @property (nonatomic, weak) id <FCModalPresentationDelegate> presentationDelegate;
+
+- (void) resetMenuOption;
 
 @end
