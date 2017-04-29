@@ -119,6 +119,8 @@
             self.userInfo = userInfo;
             [self openCartDetailOnPoint:[userInfo[@"location"] CGPointValue]];
             break;
+        case FCModalActionGameSolved:
+            [self showGameSolvedAlert];
         default:
             ;
             break;
@@ -132,6 +134,12 @@
     self.popoverButton.frame = popoverButtonFrame;
     
     [self performSegueWithIdentifier:@"CardDetailSegueId" sender:self];
+}
+
+- (void) showGameSolvedAlert
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"iFreeCell" message:@"GAME SOLVED!!" preferredStyle:UIAlertControllerStyleAlert];
+    [self presentViewController:alert animated:YES completion:NULL];
 }
 
 @end

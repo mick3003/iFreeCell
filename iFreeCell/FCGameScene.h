@@ -12,6 +12,7 @@ typedef NS_ENUM(NSInteger, FCModalAction)
 {
     FCModalActionNewGame = 0,
     FCModalActionReset,
+    FCModalActionGameSolved,
     FCModalActionCartDetail
 };
 

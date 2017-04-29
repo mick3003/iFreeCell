@@ -839,9 +839,7 @@
     if( [self checkGameSolved] )
     {
         // TODO. GAME SOLVED!!
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"iFreeCell" message:@"GAME SOLVED!" delegate:nil
-                                                  cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
+        [self.presentationDelegate shouldPresentModalForAction:FCModalActionGameSolved userInfo:nil];
     }
 }
 
