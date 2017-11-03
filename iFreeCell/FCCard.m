@@ -201,8 +201,15 @@
                          {
                              if( self.parentSlot )
                              {
-                                 self.zPosition = self.parentSlot.lastCard.zPosition + 1.F;
-                                 self.parentSlot.lastCard = self;
+                                 if( self.number == FCCardNumberTypeKing )
+                                 {
+                                     self.zPosition = kZPositionGameLayer + 1;
+                                 }
+                                 else
+                                 {
+                                     self.zPosition = self.parentSlot.lastCard.zPosition + 1.F;
+                                     self.parentSlot.lastCard = self;
+                                 }
                              }
                              else
                              {

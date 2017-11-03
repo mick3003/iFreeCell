@@ -17,5 +17,4 @@
 - (void) resetMenuOption;
 - (void) undoMenuOption;
 
-
 @end

@@ -66,6 +66,4 @@ typedef NS_ENUM(NSInteger, FCModalAction)
 
 @property (nonatomic, weak) id <FCModalPresentationDelegate> presentationDelegate;
 
-- (void) resetMenuOption;
-
 @end

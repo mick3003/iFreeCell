@@ -12,6 +12,7 @@
 #import "FCCardDetailViewController.h"
 #import "FCCard.h"
 #import "FCAlertViewController.h"
+#import "FCGameScene+MainMenu.h"
 
 @interface FCViewController () <FCModalPresentationDelegate, FCAlertViewControllerDelegate>
 {
