@@ -18,7 +18,7 @@
 {
 }
 
-@property (nonatomic, weak) FCGameScene * gameScene;
+@property (nonatomic, strong) FCGameScene * gameScene;
 @property (nonatomic, weak) IBOutlet UIButton *popoverButton;
 @property (nonatomic, strong) NSDictionary *userInfo;
 
@@ -57,9 +57,11 @@
     skView.showsFPS = flag;
     skView.showsNodeCount = flag;
     skView.showsDrawCount = flag;
+    skView.ignoresSiblingOrder = YES;
     
     // Create and configure the scene.
     self.gameScene = [FCGameScene sceneWithSize:skView.bounds.size];
+//    self.gameScene = [FCGameScene sceneWithSize:CGSizeMake(1024.0, 768.0)];
     self.gameScene.scaleMode = SKSceneScaleModeAspectFill;
     self.gameScene.presentationDelegate = self;
     
