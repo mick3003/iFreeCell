@@ -22,6 +22,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *popoverButton;
 @property (nonatomic, strong) NSDictionary *userInfo;
 
+@property (nonatomic, weak) IBOutlet SKView *skView;
+
 @property (nonatomic, strong) FCModalTransitioningDelegate *modalTransitioningDelegate;
 
 @end
@@ -42,7 +44,7 @@
     self.modalTransitioningDelegate = [FCModalTransitioningDelegate new];
     
     // Configure the view.
-    SKView * skView = (SKView *)self.view;
+    SKView * skView = (SKView *)self.skView;
     
     skView.multipleTouchEnabled = YES;
     
