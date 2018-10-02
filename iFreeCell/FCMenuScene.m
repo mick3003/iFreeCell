@@ -9,24 +9,26 @@
 #import "FCMenuScene.h"
 
 
-struct _Buttons
-{
-    void *text;
-    FCMainMenuButtonTag buttonTag;
-} _buttons[] =
-{
-    { @"Undo"           , FCMainMenuButtonTagUndo      },
-    { @"New Game"       , FCMainMenuButtonTagNewGame   },
-    { @"Reset Game"     , FCMainMenuButtonTagResetGame },
-    { @"Credits"        , FCMainMenuButtonTagCredits   },
-    { nil }
-};
+//struct _Buttons
+//{
+//    void *text;
+//    FCMainMenuButtonTag buttonTag;
+//} _buttons[] =
+//{
+//    { @"Undo"           , FCMainMenuButtonTagUndo      },
+//    { @"New Game"       , FCMainMenuButtonTagNewGame   },
+//    { @"Reset Game"     , FCMainMenuButtonTagResetGame },
+//    { @"Credits"        , FCMainMenuButtonTagCredits   },
+//    { nil }
+//};
 
 @interface FCMenuScene ()
 {
     NSMutableArray *_buttonsArray;
     FCMenuButton *_touchedButton;
 }
+
+@property (nonatomic, strong) NSArray *buttonsDS;
 @end
 
 
@@ -41,6 +43,13 @@ struct _Buttons
         self.name = @"menuScene";
         self.userInteractionEnabled = YES;
         
+        self.buttonsDS = @[
+                             @{ @"name": @"Undo"       , @"tag": @(FCMainMenuButtonTagUndo)      },
+                             @{ @"name": @"New game"   , @"tag": @(FCMainMenuButtonTagNewGame)   },
+                             @{ @"name": @"Reset game" , @"tag": @(FCMainMenuButtonTagResetGame) },
+                             @{ @"name": @"Credits"    , @"tag": @(FCMainMenuButtonTagCredits)   }
+                          ];
+        
         [self prepareContent];
     }
     return self;
@@ -50,29 +59,34 @@ struct _Buttons
 {
     _buttonsArray = [NSMutableArray new];
     
-    SKTexture *buttonTexture = [SKTexture textureWithImageNamed:@"menuButtonBgnd"];
-    
     NSInteger i = 0;
     
     CGFloat initX = 134.F;
     CGFloat initY = 650.F;
     CGFloat deltaY = 180.F;
     
-    while( _buttons[i].text )
+    for( NSDictionary *buttonDict in self.buttonsDS )
     {
-        FCMenuButton *button = [FCMenuButton buttonWithTexture:buttonTexture tag:_buttons[i].buttonTag andName:(__bridge NSString *) _buttons[i].text];
+        SKTexture *buttonTexture = [SKTexture textureWithImageNamed:@"menuButtonBgnd"];
+        
+        FCMenuButton *button = [FCMenuButton buttonWithTexture:buttonTexture tag:(FCMainMenuButtonTag)[buttonDict[@"tag"] integerValue] andName:buttonDict[@"name"]];
         
         button.centerRect = CGRectMake(9.F/68.0, 4.F/68.F, 50.F/68.F, 49.F/68.F);
         
         CGFloat x = initX;
         CGFloat y = initY - (i * deltaY);
         button.position = CGPointMake(x, y);
-        button.name = (__bridge NSString *) _buttons[i].text;
+        button.name = buttonDict[@"name"];
         
         [_buttonsArray addObject:button];
         [self addChild:button];
 
         i++;
+    }
+    
+    for( FCMenuButton *button in _buttonsArray )
+    {
+        NSLog(@"Button %p with name = '%@' and label = '%@'", button, button.name, button.labelNode.text);
     }
 }
 
@@ -137,14 +151,25 @@ struct _Buttons
     FCMenuButton *retButton = nil;
     NSInteger i = 0;
     
-    while( _buttons[i].text )
+    for( NSDictionary *button in self.buttonsDS )
     {
-        if( _buttons[i].buttonTag == tag )
+        NSInteger buttonTag = [button[@"tag"] integerValue];
+        if( buttonTag == tag )
         {
             retButton = _buttonsArray[i];
+            i += 1;
             break;
         }
     }
+    
+//    while( _buttons[i].text )
+//    {
+//        if( _buttons[i].buttonTag == tag )
+//        {
+//            retButton = _buttonsArray[i];
+//            break;
+//        }
+//    }
     return retButton;
 }
 

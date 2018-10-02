@@ -197,23 +197,25 @@
 {
     SKAction *move = [SKAction moveTo:point duration:.15];
     
+    __weak typeof(self) weakSelf = self;
+    
     [self runAction:move completion:^
                          {
-                             if( self.parentSlot )
+                             if( weakSelf.parentSlot )
                              {
-                                 if( self.number == FCCardNumberTypeKing )
+                                 if( weakSelf.number == FCCardNumberTypeKing )
                                  {
-                                     self.zPosition = kZPositionGameLayer + 1;
+                                     weakSelf.zPosition = kZPositionGameLayer + 1;
                                  }
                                  else
                                  {
-                                     self.zPosition = self.parentSlot.lastCard.zPosition + 1.F;
-                                     self.parentSlot.lastCard = self;
+                                     weakSelf.zPosition = self.parentSlot.lastCard.zPosition + 1.F;
+                                     weakSelf.parentSlot.lastCard = self;
                                  }
                              }
                              else
                              {
-                                 self.zPosition = _parentCard.zPosition + 1.F;
+                                 weakSelf.zPosition = weakSelf.parentCard.zPosition + 1.F;
                              }
                              [self.moveDelegate card:self didMoveToPosition:self.position];
                          }];

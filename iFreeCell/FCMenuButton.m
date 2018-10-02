@@ -18,21 +18,24 @@
     {
         button.tag = tag;
         
-        SKLabelNode *label = [[SKLabelNode alloc] init];
+        button.labelNode = [[SKLabelNode alloc] init];
         // [label setFontName:@"AppleSDGothicNeo-Bold"];
-        [label setFontName:@"HelveticaNeue-Bold"];
-        [label setFontSize:16.F];
-        [label setText:name];
+        [button.labelNode setFontName:@"HelveticaNeue-Bold"];
+        [button.labelNode setFontSize:16.F];
+        [button.labelNode setName:name];
+        [button.labelNode setText:name];
+        
+        button.name = name;
         
         CGPoint pos = button.position;
         pos.y += 3.F;
-        label.position = pos;
-        label.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
-        label.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
-        //label.xScale = 0.7F;
-        //label.yScale = 2.5F;
+        button.labelNode.position = pos;
+        button.labelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+        button.labelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+        //button.labelNode.xScale = 0.7F;
+        //button.labelNode.yScale = 2.5F;
         
-        [button addChild:label];
+        [button addChild:button.labelNode];
     }
     
     return button;
