@@ -123,7 +123,7 @@
     else
     {
         CGFloat margin = -35.F;
-        CGFloat y = _screenSize.height - 100.F;
+        CGFloat y = _screenSize.height - 125.F;
         CGFloat screenWidth = _screenSize.width;
         
         for( NSInteger i = 1; i < 5; i++ )
