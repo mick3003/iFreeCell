@@ -330,11 +330,11 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = FC;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = "Miguel Estévez";
 				TargetAttributes = {
 					49F0501C17AD2BB100839066 = {
-						DevelopmentTeam = 77K8A6G48K;
+						DevelopmentTeam = L5BZSQWSDE;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -541,7 +541,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 77K8A6G48K;
+				DEVELOPMENT_TEAM = L5BZSQWSDE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iFreeCell/iFreeCell-Prefix.pch";
 				INFOPLIST_FILE = "iFreeCell/iFreeCell-Info.plist";
@@ -563,7 +563,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 77K8A6G48K;
+				DEVELOPMENT_TEAM = L5BZSQWSDE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iFreeCell/iFreeCell-Prefix.pch";
 				INFOPLIST_FILE = "iFreeCell/iFreeCell-Info.plist";

@@ -224,7 +224,8 @@ static FCGameState *instance = nil;
     data = [NSKeyedArchiver archivedDataWithRootObject:self.cardSep];
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefaultsKeyCardSeparations];
     
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    // [[NSUserDefaults standardUserDefaults] synchronize];
+    NSLog(@"-------> SAVE STATE program complete!");
 }
 
 - (void) resetState
