@@ -224,7 +224,6 @@ static FCGameState *instance = nil;
 - (void) saveState
 {
     NSError *error = nil;
-    // NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initRequiringSecureCoding:false];
     
     // NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.cardSep];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.cardSep requiringSecureCoding:YES error:&error];
@@ -232,17 +231,10 @@ static FCGameState *instance = nil;
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefaultsKeyCardSeparations];
     
     
-    
     // data = [NSKeyedArchiver archivedDataWithRootObject:self.cardsArray];
     data = [NSKeyedArchiver archivedDataWithRootObject:self.cardsArray requiringSecureCoding:NO error:&error];
     if( error ) [self traceError:error withTitle:@"save data CARDSARRAY"];
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefaultsKeySavedCardsState];
-    
-//    [archiver encodeObject:self.cardsArray];
-//    NSData *data2 = archiver.encodedData;
-//    [[NSUserDefaults standardUserDefaults] setObject:data2 forKey:kUserDefaultsKeySavedCardsState];
-    
-    
     
     // data = [NSKeyedArchiver archivedDataWithRootObject:self.gameSlots];
     data = [NSKeyedArchiver archivedDataWithRootObject:self.gameSlots requiringSecureCoding:NO error:&error];
