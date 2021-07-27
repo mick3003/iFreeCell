@@ -22,12 +22,12 @@
 {
 }
 
-@property (nonatomic, strong) NSMutableArray *cardsArray;
-@property (nonatomic, strong) NSMutableArray *freeCellSlots;
-@property (nonatomic, strong) NSMutableArray *cardsSlots;
-@property (nonatomic, strong) NSMutableArray *gameSlots;
+@property (nonatomic, strong) NSMutableArray <FCCard *> *cardsArray;
+@property (nonatomic, strong) NSMutableArray <FCSlot *> *freeCellSlots;
+@property (nonatomic, strong) NSMutableArray <FCSlot *> *cardsSlots;
+@property (nonatomic, strong) NSMutableArray <FCSlot *> *gameSlots;
 
-@property (nonatomic, strong) NSMutableArray *cardSep;
+@property (nonatomic, strong) NSMutableArray <NSNumber *> *cardSep;
 
 @property (nonatomic, strong) NSMutableArray <FCMove *> *movesStack;
 

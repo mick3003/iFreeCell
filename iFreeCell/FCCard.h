@@ -20,26 +20,28 @@
 
 @end
 
-typedef enum _cardNumber
+typedef NS_ENUM(NSInteger, FCCardNumber)
+// typedef enum _cardNumber
 {
     FCCardNumberInvalid = 0,
     FCCardNumberTypeAce = 1,
     FCCardNumberTypeJack = 11,
     FCCardNumberTypeQueen = 12,
     FCCardNumberTypeKing = 13
-} FCCardNumber;
+}; // FCCardNumber;
 
-typedef enum _cardSuit
+typedef NS_ENUM(NSInteger, FCCardSuit)
+// typedef enum _cardSuit
 {
     FCCardSuitInvalid = 0,
     FCCardSuitDiamond = 1,
     FCCardSuitSpade,
     FCCardSuitHeart,
     FCCardSuitClub
-} FCCardSuit;
+}; // FCCardSuit;
 
 
-@interface FCCard : FCSpriteNode
+@interface FCCard : FCSpriteNode <NSSecureCoding>
 {
     
 }

@@ -12,8 +12,12 @@
 
 @implementation FCCard
 
+#pragma mark - Constructors & initialization
 
-#pragma mark - Constructors & initialization2 3
++ (BOOL) supportsSecureCoding
+{
+    return YES;
+}
 
 + (id) cardWithType:(NSString *)type parentNode:(SKNode *)parent
 {
@@ -22,7 +26,7 @@
 
 - (id) initWithType:(NSString *)type parentNode:(SKNode *)parent
 {
-    NSLog(@"%s:%@", __FUNCTION__, type);
+    // NSLog(@"%s:%@", __FUNCTION__, type);
     
     type = [type lowercaseString];
     
@@ -441,7 +445,7 @@
             break;
         case FCCardNumberInvalid:
         default:
-            ret = [NSString stringWithFormat:@"%d", _number];
+            ret = [NSString stringWithFormat:@"%ld", (long)_number];
             break;
     };
     return ret;

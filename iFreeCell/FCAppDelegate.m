@@ -12,7 +12,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[FCGameState shared] restoreState];
+    // [[FCGameState shared] restoreState];
     return YES;
 }
 							

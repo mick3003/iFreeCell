@@ -13,7 +13,7 @@ static const uint32_t cardCategory = 0x1 << 0;
 static const uint32_t slotCategory = 0x1 << 1;
 
 
-@interface FCSpriteNode : SKSpriteNode
+@interface FCSpriteNode : SKSpriteNode <NSSecureCoding>
 {
     
 }

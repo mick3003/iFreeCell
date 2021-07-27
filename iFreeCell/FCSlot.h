@@ -9,16 +9,16 @@
 #import <SpriteKit/SpriteKit.h>
 #import "FCSpriteNode.h"
 
-typedef enum
+typedef NS_ENUM(NSInteger, FCSlotType)
 {
     FCSlotTypeFreeCell = 1,
     FCSlotTypeSuitStack,
     FCSlotTypeGame
-} FCSlotType;
+};
 
 @class FCCard;
 
-@interface FCSlot : FCSpriteNode
+@interface FCSlot : FCSpriteNode <NSSecureCoding>
 {
     
 }

@@ -11,6 +11,11 @@
 
 @implementation FCSlot
 
++ (BOOL) supportsSecureCoding
+{
+    return YES;
+}
+
 - (void) setLastCard:(FCCard *)lastCard
 {
     _lastCard = lastCard;

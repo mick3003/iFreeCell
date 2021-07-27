@@ -67,12 +67,16 @@ static FCGameState *instance = nil;
 {
     self.movesStack = [NSMutableArray new];
     
+    NSError *error = nil;
+    
     if( self.cardSep == nil )
     {
         NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyCardSeparations];
         if( data != nil )
         {
-            self.cardSep = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            // self.cardSep = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            self.cardSep = [NSKeyedUnarchiver unarchivedArrayOfObjectsOfClass:[NSNumber class] fromData:data error:&error].mutableCopy;
+            if( error ) [self traceError:error withTitle:@"Unarchive cardsArray"];
         }
         else
         {
@@ -85,12 +89,16 @@ static FCGameState *instance = nil;
         }
     }
     
+    NSSet *classesSet = [NSSet setWithArray:@[[NSMutableArray class], [FCCard class], [FCSlot class]]];
+    
     if( self.cardsArray == nil )
     {
         NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeySavedCardsState];
         if( data != nil )
         {
-            self.cardsArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            // self.cardsArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            self.cardsArray = ((NSMutableArray *)[NSKeyedUnarchiver unarchivedObjectOfClasses:classesSet fromData:data error:&error]).mutableCopy;
+            if( error ) [self traceError:error withTitle:@"Unarchive cardsArray"];
         }
         else
         {
@@ -103,7 +111,9 @@ static FCGameState *instance = nil;
         NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeySavedCardsSlots];
         if( data != nil )
         {
-            self.cardsSlots = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            // self.cardsSlots = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            self.cardsSlots = ((NSMutableArray *)[NSKeyedUnarchiver unarchivedObjectOfClasses:classesSet fromData:data error:&error]).mutableCopy;
+            if( error ) [self traceError:error withTitle:@"Unarchive cardsSlot"];
         }
         else
         {
@@ -116,7 +126,9 @@ static FCGameState *instance = nil;
         NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefatulsKeySavedGameSlots];
         if( data != nil )
         {
-            self.gameSlots = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            // self.gameSlots = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            self.gameSlots = ((NSMutableArray *)[NSKeyedUnarchiver unarchivedObjectOfClasses:classesSet fromData:data error:&error]).mutableCopy;
+            if( error ) [self traceError:error withTitle:@"Unarchive gameSlots"];
         }
         else
         {
@@ -129,7 +141,9 @@ static FCGameState *instance = nil;
         NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeySavedFreeCellSlots];
         if( data != nil )
         {
-            self.freeCellSlots = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            // self.freeCellSlots = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            self.freeCellSlots = ((NSMutableArray *)[NSKeyedUnarchiver unarchivedObjectOfClasses:classesSet fromData:data error:&error]).mutableCopy;
+            if( error ) [self traceError:error withTitle:@"Unarchive freeCellSlots"];
         }
         else
         {
@@ -209,22 +223,42 @@ static FCGameState *instance = nil;
 
 - (void) saveState
 {
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.cardsArray];
-    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefaultsKeySavedCardsState];
+    NSError *error = nil;
+    // NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initRequiringSecureCoding:false];
     
-    data = [NSKeyedArchiver archivedDataWithRootObject:self.gameSlots];
-    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefatulsKeySavedGameSlots];
-    
-    data = [NSKeyedArchiver archivedDataWithRootObject:self.freeCellSlots];
-    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefaultsKeySavedFreeCellSlots];
-    
-    data = [NSKeyedArchiver archivedDataWithRootObject:self.cardsSlots];
-    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefaultsKeySavedCardsSlots];
-    
-    data = [NSKeyedArchiver archivedDataWithRootObject:self.cardSep];
+    // NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.cardSep];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.cardSep requiringSecureCoding:YES error:&error];
+    if( error ) [self traceError:error withTitle:@"save data CARDSEP"];
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefaultsKeyCardSeparations];
     
-    // [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    // data = [NSKeyedArchiver archivedDataWithRootObject:self.cardsArray];
+    data = [NSKeyedArchiver archivedDataWithRootObject:self.cardsArray requiringSecureCoding:NO error:&error];
+    if( error ) [self traceError:error withTitle:@"save data CARDSARRAY"];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefaultsKeySavedCardsState];
+    
+//    [archiver encodeObject:self.cardsArray];
+//    NSData *data2 = archiver.encodedData;
+//    [[NSUserDefaults standardUserDefaults] setObject:data2 forKey:kUserDefaultsKeySavedCardsState];
+    
+    
+    
+    // data = [NSKeyedArchiver archivedDataWithRootObject:self.gameSlots];
+    data = [NSKeyedArchiver archivedDataWithRootObject:self.gameSlots requiringSecureCoding:NO error:&error];
+    if( error ) [self traceError:error withTitle:@"save data GAMESLOTS"];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefatulsKeySavedGameSlots];
+    
+    // data = [NSKeyedArchiver archivedDataWithRootObject:self.freeCellSlots];
+    data = [NSKeyedArchiver archivedDataWithRootObject:self.freeCellSlots requiringSecureCoding:NO error:&error];
+    if( error ) [self traceError:error withTitle:@"save data FREECELLSOLTS"];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefaultsKeySavedFreeCellSlots];
+    
+    // data = [NSKeyedArchiver archivedDataWithRootObject:self.cardsSlots];
+    data = [NSKeyedArchiver archivedDataWithRootObject:self.cardsSlots requiringSecureCoding:NO error:&error];
+    if( error ) [self traceError:error withTitle:@"save data CARDSLOTS"];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefaultsKeySavedCardsSlots];
+    
     NSLog(@"-------> SAVE STATE program complete!");
 }
 
@@ -337,6 +371,11 @@ static FCGameState *instance = nil;
         NSLog(@"-----------------------------------------");
         NSLog(@"%@\n", slot);
     }
+}
+
+- (void) traceError:(NSError *)error withTitle:(NSString *)title
+{
+    NSLog(@"------> %@: %@", title.uppercaseString, error.localizedDescription);
 }
 
 @end
