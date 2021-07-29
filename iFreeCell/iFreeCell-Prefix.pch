@@ -12,8 +12,6 @@
 
 #ifdef __OBJC__
 
-
-
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 
@@ -22,7 +20,9 @@
     #import "FCHelper.h"
 
     #define kZPositionMenu 10.F
-    #define kZPositionGameLayer 20.F
+    #define kZPositionMenuButtons 15.F
+    #define kZPositionMenuLabel 25.F
+    #define kZPositionGameLayer 100.F
     #define kZPositionMove 10000000.F
 
 #endif

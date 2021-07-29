@@ -103,8 +103,6 @@
 
 - (void) label:(UILabel *)label setText:(NSString *)text
 {
-    label.text = text;
-    /*
     NSString *string = [NSString stringWithFormat:@"%@%@", self.labelsArray[label.tag], text];
  
     NSDictionary *attributes = @{ NSForegroundColorAttributeName: [UIColor blackColor] };
@@ -114,7 +112,6 @@
     [attrSting setAttributes:attributes range:[string rangeOfString:text? text: @"(null)"]];
     
     [label setAttributedText:attrSting];
-    */
 }
 
 @end

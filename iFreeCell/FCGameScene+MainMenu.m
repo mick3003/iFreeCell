@@ -36,7 +36,6 @@
 
 - (void) moveMenuTouchEnded:(CGPoint) touchLocation
 {
-    NSLog(@"xxxxxxxxxxxxxxxxxxx");
     CGPoint point;
     
     if( _menuMoveDelta > 0 )

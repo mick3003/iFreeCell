@@ -66,6 +66,7 @@
         
         [self prepareContent];
     }
+    
     return self;
 }
 
@@ -352,7 +353,7 @@
     _touchNode.zPosition = kZPositionMove;
     _touchNode.position = location;
     
-    NSLog(@"-- touches.count = %lu -- location = %@", (unsigned long)touches.count, NSStringFromCGPoint(location));
+    // NSLog(@"-- touches.count = %lu -- location = %@", (unsigned long)touches.count, NSStringFromCGPoint(location));
     
     CGPoint inc = CGPointMake(location.x-_touchMoveLocation.x, location.y - _touchMoveLocation.y);
     
@@ -703,6 +704,8 @@
 
 - (BOOL) checkGameSolved
 {
+    return NO;
+    
     BOOL bRet = YES;
     
     for( FCSlot *slot in _cardsSlots )
@@ -816,6 +819,7 @@
     
     static BOOL flag = YES;
     
+    //* THIS
     if( ![FCGameState shared].undoAvailable )
     {
         FCMenuButton *button = [_menuScene buttonWithTag:FCMainMenuButtonTagUndo];
@@ -830,7 +834,7 @@
         FCMenuButton *button = [_menuScene buttonWithTag:FCMainMenuButtonTagUndo];
         button.colorBlendFactor = 0.F;
     }
-    
+    // */
 #ifdef DEBUG
     _longTouchTime += timeDelta;
     if( _longTouchTime > kLongPressTime && !_longTouchTriggered && _longTouchBeganPoint.x != 0.F )

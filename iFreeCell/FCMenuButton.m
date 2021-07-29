@@ -13,32 +13,35 @@
 + (id) buttonWithTexture:(SKTexture *) texture tag:(FCMainMenuButtonTag)tag andName:(NSString *) name
 {
     FCMenuButton *button = [super spriteNodeWithTexture:texture];
+    button.tag = tag;
+    button.text = name;
+    button.name = name;
+    button.zPosition = kZPositionMenuButtons;
     
-    if( button )
-    {
-        button.tag = tag;
-        
-        button.labelNode = [[SKLabelNode alloc] init];
-        // [label setFontName:@"AppleSDGothicNeo-Bold"];
-        [button.labelNode setFontName:@"HelveticaNeue-Bold"];
-        [button.labelNode setFontSize:16.F];
-        [button.labelNode setName:name];
-        [button.labelNode setText:name];
-        
-        button.name = name;
-        
-        CGPoint pos = button.position;
-        pos.y += 3.F;
-        button.labelNode.position = pos;
-        button.labelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
-        button.labelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
-        //button.labelNode.xScale = 0.7F;
-        //button.labelNode.yScale = 2.5F;
-        
-        [button addChild:button.labelNode];
-    }
-    
+    [button addLabel];
+
     return button;
 }
+
+- (void) addLabel
+{
+    self.labelNode = [[SKLabelNode alloc] init];
+    
+    NSDictionary *attributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor],
+                                  NSFontAttributeName: [UIFont systemFontOfSize:16.0 weight:UIFontWeightBold]
+                                  
+    };
+    
+    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.text attributes:attributes];
+    [self.labelNode setAttributedText:attrString];
+    [self.labelNode setName:self.name];
+    [self.labelNode setText:self.text]; // For trace purposes only
+
+    self.labelNode.position = CGPointZero;
+    self.labelNode.zPosition = kZPositionMenuLabel;
+    
+    [self addChild:self.labelNode];
+}
+
 
 @end

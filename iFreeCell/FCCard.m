@@ -213,8 +213,15 @@
                                  }
                                  else
                                  {
-                                     weakSelf.zPosition = self.parentSlot.lastCard.zPosition + 1.F;
-                                     weakSelf.parentSlot.lastCard = self;
+                                     if( weakSelf == self.parentSlot.lastCard )
+                                     {
+                                         weakSelf.zPosition = kZPositionGameLayer + 1;
+                                     }
+                                     else
+                                     {
+                                         weakSelf.zPosition = self.parentSlot.lastCard.zPosition + 1.F;
+                                         weakSelf.parentSlot.lastCard = self;
+                                     }
                                  }
                              }
                              else

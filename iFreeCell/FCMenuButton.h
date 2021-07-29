@@ -24,7 +24,9 @@ typedef enum _mainMenuButtonTag
 
 @property (nonatomic, assign) FCMainMenuButtonTag tag;
 @property (nonatomic, strong) SKLabelNode *labelNode;
+@property (nonatomic, strong) NSString *text;
 
 + (id) buttonWithTexture:(SKTexture *) texture tag:(FCMainMenuButtonTag)tag andName:(NSString *) name;
+- (void) addLabel;
 
 @end

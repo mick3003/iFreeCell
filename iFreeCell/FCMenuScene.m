@@ -24,11 +24,11 @@
 
 @interface FCMenuScene ()
 {
-    NSMutableArray *_buttonsArray;
     FCMenuButton *_touchedButton;
 }
 
 @property (nonatomic, strong) NSArray *buttonsDS;
+@property (nonatomic, strong) NSMutableArray *buttonsArray;
 @end
 
 
@@ -38,6 +38,7 @@
 {
     if (self = [super init])
     {
+        self.buttonsArray = @[].mutableCopy;
         self.position = CGPointMake(0.F, 0.F);
         self.zPosition = kZPositionMenu;
         self.name = @"menuScene";
@@ -57,8 +58,6 @@
 
 - (void) prepareContent
 {
-    _buttonsArray = [NSMutableArray new];
-    
     NSInteger i = 0;
     
     CGFloat initX = 134.F;
@@ -69,22 +68,22 @@
     {
         SKTexture *buttonTexture = [SKTexture textureWithImageNamed:@"menuButtonBgnd"];
         
-        FCMenuButton *button = [FCMenuButton buttonWithTexture:buttonTexture tag:(FCMainMenuButtonTag)[buttonDict[@"tag"] integerValue] andName:buttonDict[@"name"]];
+        FCMenuButton *button = [FCMenuButton buttonWithTexture:buttonTexture
+                                                           tag:(FCMainMenuButtonTag)[buttonDict[@"tag"] integerValue]
+                                                       andName:buttonDict[@"name"]];
         
         button.centerRect = CGRectMake(9.F/68.0, 4.F/68.F, 50.F/68.F, 49.F/68.F);
         
         CGFloat x = initX;
         CGFloat y = initY - (i * deltaY);
         button.position = CGPointMake(x, y);
-        button.name = buttonDict[@"name"];
         
-        [_buttonsArray addObject:button];
         [self addChild:button];
-
+        [self.buttonsArray addObject:button];
         i++;
     }
     
-    for( FCMenuButton *button in _buttonsArray )
+    for( FCMenuButton *button in self.buttonsArray )
     {
         NSLog(@"Button %p with name = '%@' and label = '%@'", button, button.name, button.labelNode.text);
     }
@@ -97,7 +96,7 @@
     
     _touchedButton = nil;
     
-    for( FCMenuButton *button in _buttonsArray )
+    for( FCMenuButton *button in self.buttonsArray )
     {
         if( CGRectContainsPoint(button.frame, touchLocation) )
         {
@@ -126,7 +125,7 @@
     UITouch *touch = [touches anyObject];
     CGPoint touchLocation = [touch locationInNode:self];
     
-    for( FCMenuButton *button in _buttonsArray )
+    for( FCMenuButton *button in self.buttonsArray )
     {
         if( CGRectContainsPoint(button.frame, touchLocation) )
         {
@@ -156,7 +155,7 @@
         NSInteger buttonTag = [button[@"tag"] integerValue];
         if( buttonTag == tag )
         {
-            retButton = _buttonsArray[i];
+            retButton = self.buttonsArray[i];
             i += 1;
             break;
         }

@@ -18,6 +18,7 @@
 		492BDBAF193B50EA00860623 /* FCGameScene+MainMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 492BDBAE193B50EA00860623 /* FCGameScene+MainMenu.m */; };
 		493CAA4B17BBD32000822328 /* FCCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 493CAA4A17BBD32000822328 /* FCCard.m */; };
 		4944C6BD1CB9BE1C007D4497 /* FCCardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4944C6BC1CB9BE1C007D4497 /* FCCardDetailViewController.m */; };
+		497AF7DB26B24F6E005DE7AE /* splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 497AF7DA26B24F6E005DE7AE /* splash@2x.png */; };
 		498C7DF719316DAF00425F66 /* main_bgnd4_.png in Resources */ = {isa = PBXBuildFile; fileRef = 498C7DF619316DAF00425F66 /* main_bgnd4_.png */; };
 		499117D21EB5179300C530E1 /* FCAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499117D11EB5179300C530E1 /* FCAlertViewController.m */; };
 		4991742417C7C89E00F1C1AF /* main_bgnd.png in Resources */ = {isa = PBXBuildFile; fileRef = 4991742317C7C89E00F1C1AF /* main_bgnd.png */; };
@@ -71,6 +72,7 @@
 		493CAA4A17BBD32000822328 /* FCCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCCard.m; sourceTree = "<group>"; };
 		4944C6BB1CB9BE1C007D4497 /* FCCardDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCCardDetailViewController.h; sourceTree = "<group>"; };
 		4944C6BC1CB9BE1C007D4497 /* FCCardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCCardDetailViewController.m; sourceTree = "<group>"; };
+		497AF7DA26B24F6E005DE7AE /* splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "splash@2x.png"; path = "Images.xcassets/LaunchImage.launchimage/splash@2x.png"; sourceTree = "<group>"; };
 		498C7DF619316DAF00425F66 /* main_bgnd4_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_bgnd4_.png; sourceTree = "<group>"; };
 		499117D01EB5179300C530E1 /* FCAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCAlertViewController.h; sourceTree = "<group>"; };
 		499117D11EB5179300C530E1 /* FCAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCAlertViewController.m; sourceTree = "<group>"; };
@@ -95,7 +97,6 @@
 		49E8B14F17C7CE1D00830389 /* FCGameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCGameState.h; sourceTree = "<group>"; };
 		49E8B15017C7CE1D00830389 /* FCGameState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCGameState.m; sourceTree = "<group>"; };
 		49ED78482434036600E96894 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		49ED784A2434040200E96894 /* splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "splash@2x.png"; path = "Images.xcassets/LaunchImage-1.launchimage/splash@2x.png"; sourceTree = "<group>"; };
 		49F0501D17AD2BB100839066 /* iFreeCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFreeCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F0502017AD2BB100839066 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49F0502217AD2BB100839066 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -298,7 +299,7 @@
 				490050BC17B741E800E38443 /* spark.png */,
 				49F67F4817CE3B75004C8FF4 /* particle1.sks */,
 				49F67F4A17CE4070004C8FF4 /* fire.sks */,
-				49ED784A2434040200E96894 /* splash@2x.png */,
+				497AF7DA26B24F6E005DE7AE /* splash@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -373,6 +374,7 @@
 				49F0503617AD2BB100839066 /* Main.storyboard in Resources */,
 				49A5067217BB26D0002EC277 /* beach.png in Resources */,
 				49F67F4B17CE4070004C8FF4 /* fire.sks in Resources */,
+				497AF7DB26B24F6E005DE7AE /* splash@2x.png in Resources */,
 				490EFD1A19310C5C0077E76B /* main_bgnd2.png in Resources */,
 				490050BD17B741E800E38443 /* MyParticle.sks in Resources */,
 			);
