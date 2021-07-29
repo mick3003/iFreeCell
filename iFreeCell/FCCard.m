@@ -251,7 +251,11 @@
 
 - (void) becomeChildOfCard:(FCCard *)pCard fromUndo:(BOOL)fromUndo
 {
-    if( !fromUndo) [[FCGameState shared] addMoveWithTargetCard:self andPreviousParent:self.parentCard? self.parentCard: self.parentSlot];
+    if( !fromUndo)
+    {
+        [[FCGameState shared] addMoveWithTargetCard:self andPreviousParent:self.parentCard? self.parentCard: self.parentSlot];
+    }
+    
     [self.parentCard setupPhysics];
     
     pCard.childCard = self;
