@@ -210,12 +210,14 @@
                                  if( weakSelf.number == FCCardNumberTypeKing )
                                  {
                                      weakSelf.zPosition = kZPositionGameLayer + 1;
+                                     weakSelf.parentSlot.lastCard = self;
                                  }
                                  else
                                  {
                                      if( weakSelf == self.parentSlot.lastCard )
                                      {
                                          weakSelf.zPosition = kZPositionGameLayer + 1;
+                                         
                                      }
                                      else
                                      {
