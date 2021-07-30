@@ -28,7 +28,7 @@
 }
 
 @property (nonatomic, strong) NSArray *buttonsDS;
-@property (nonatomic, strong) NSMutableArray *buttonsArray;
+@property (nonatomic, strong) NSMutableArray *buttonsArray; 
 @end
 
 
