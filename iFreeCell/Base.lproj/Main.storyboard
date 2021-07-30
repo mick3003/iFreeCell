@@ -42,79 +42,79 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name: 1a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rM7-hj-eGm">
-                                            <rect key="frame" x="23" y="43.5" width="202.5" height="14"/>
+                                            <rect key="frame" x="15" y="43.5" width="202.5" height="14"/>
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                             <color key="textColor" red="0.16927754510309279" green="0.16927754510309279" blue="0.16927754510309279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="isRed : YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQc-Ao-PzD">
-                                            <rect key="frame" x="23" y="63.5" width="202.5" height="14"/>
+                                            <rect key="frame" x="15" y="63.5" width="202.5" height="14"/>
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                             <color key="textColor" red="0.16927754510309279" green="0.16927754510309279" blue="0.16927754510309279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="inFreeCell: NO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5r-UU-HFK">
-                                            <rect key="frame" x="23" y="83.5" width="202.5" height="14"/>
+                                            <rect key="frame" x="15" y="83.5" width="202.5" height="14"/>
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                             <color key="textColor" red="0.16927754510309279" green="0.16927754510309279" blue="0.16927754510309279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stacked: NO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebA-sL-wUp">
-                                            <rect key="frame" x="23" y="103.5" width="202.5" height="14"/>
+                                            <rect key="frame" x="15" y="103.5" width="202.5" height="14"/>
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                             <color key="textColor" red="0.16927754510309279" green="0.16927754510309279" blue="0.16927754510309279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Position: (517.494, 273.235)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRv-DH-oN3">
-                                            <rect key="frame" x="23" y="123.5" width="202.5" height="14"/>
+                                            <rect key="frame" x="15" y="123.5" width="202.5" height="14"/>
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                             <color key="textColor" red="0.16927754510309279" green="0.16927754510309279" blue="0.16927754510309279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="zPosition: 51.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9V-rq-G4G">
-                                            <rect key="frame" x="23" y="143.5" width="202.5" height="14"/>
+                                            <rect key="frame" x="15" y="143.5" width="202.5" height="14"/>
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                             <color key="textColor" red="0.16927754510309279" green="0.16927754510309279" blue="0.16927754510309279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Column: 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3T-HE-JJX">
-                                            <rect key="frame" x="23" y="163.5" width="202.5" height="14"/>
+                                            <rect key="frame" x="15" y="163.5" width="202.5" height="14"/>
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                             <color key="textColor" red="0.16927754510309279" green="0.16927754510309279" blue="0.16927754510309279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="7" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Card Name: 7h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wwn-o4-olB">
-                                            <rect key="frame" x="23" y="183.5" width="202.5" height="14"/>
+                                            <rect key="frame" x="15" y="183.5" width="202.5" height="14"/>
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                             <color key="textColor" red="0.16927754510309279" green="0.16927754510309279" blue="0.16927754510309279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="8" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Child Card Name: 3c" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVk-kg-LWt">
-                                            <rect key="frame" x="23" y="203.5" width="202.5" height="14"/>
+                                            <rect key="frame" x="15" y="203.5" width="202.5" height="14"/>
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                             <color key="textColor" red="0.16927754510309279" green="0.16927754510309279" blue="0.16927754510309279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="9" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Child Card Name: 3c" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmK-fM-Siz">
-                                            <rect key="frame" x="23" y="223.5" width="202.5" height="14"/>
+                                            <rect key="frame" x="15" y="223.5" width="202.5" height="14"/>
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                             <color key="textColor" red="0.16927754510309279" green="0.16927754510309279" blue="0.16927754510309279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Slot Name: (null)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTP-Uf-244">
-                                            <rect key="frame" x="23" y="243.5" width="202.5" height="14"/>
+                                            <rect key="frame" x="15" y="243.5" width="202.5" height="14"/>
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                             <color key="textColor" red="0.16927754510309279" green="0.16927754510309279" blue="0.16927754510309279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Slot Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBq-OW-6s0">
-                                            <rect key="frame" x="23" y="263.5" width="202.5" height="14"/>
+                                            <rect key="frame" x="15" y="263.5" width="202.5" height="14"/>
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                             <color key="textColor" red="0.16927754510309279" green="0.16927754510309279" blue="0.16927754510309279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="slot desc" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rH-zb-cpr">
-                                            <rect key="frame" x="56" y="283.5" width="60" height="13"/>
+                                            <rect key="frame" x="48" y="283.5" width="60" height="13"/>
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="11"/>
                                             <color key="textColor" red="0.16927754510309279" green="0.16927754510309279" blue="0.16927754510309279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -126,7 +126,7 @@
                                         <constraint firstItem="bTP-Uf-244" firstAttribute="top" secondItem="cmK-fM-Siz" secondAttribute="bottom" constant="6" id="3wy-Fm-XU1"/>
                                         <constraint firstItem="rM7-hj-eGm" firstAttribute="top" secondItem="fAP-9I-Iv2" secondAttribute="bottom" constant="11.5" id="44G-aR-lvn"/>
                                         <constraint firstItem="jRv-DH-oN3" firstAttribute="centerX" secondItem="M5r-UU-HFK" secondAttribute="centerX" id="4W4-zq-IR9"/>
-                                        <constraint firstItem="rM7-hj-eGm" firstAttribute="leading" secondItem="eBV-b5-Qiu" secondAttribute="leading" constant="23" id="59Y-N8-BQy"/>
+                                        <constraint firstItem="rM7-hj-eGm" firstAttribute="leading" secondItem="eBV-b5-Qiu" secondAttribute="leading" constant="15" id="59Y-N8-BQy"/>
                                         <constraint firstItem="wBq-OW-6s0" firstAttribute="centerX" secondItem="bTP-Uf-244" secondAttribute="centerX" id="A78-db-iZZ"/>
                                         <constraint firstItem="RQc-Ao-PzD" firstAttribute="centerX" secondItem="rM7-hj-eGm" secondAttribute="centerX" id="Djs-pE-r1p"/>
                                         <constraint firstItem="N3T-HE-JJX" firstAttribute="top" secondItem="N9V-rq-G4G" secondAttribute="bottom" constant="6" id="DvM-2Y-0wc"/>
@@ -187,7 +187,7 @@
         <!--Game Scene-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController storyboardIdentifier="MainViewControllerStoryboardId" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BV1-FR-VrT" userLabel="Game Scene" customClass="FCViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewControllerStoryboardId" autoresizesArchivedViewToFullSize="NO" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BV1-FR-VrT" userLabel="Game Scene" customClass="FCViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zpk-6u-u5X"/>
                         <viewControllerLayoutGuide type="bottom" id="8yu-6P-orU"/>
@@ -203,8 +203,33 @@
                                         <rect key="frame" x="118" y="62" width="4" height="4"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </button>
+                                    <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfL-uU-t0o">
+                                        <rect key="frame" x="15" y="11" width="35" height="25.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="nfL-uU-t0o" secondAttribute="height" multiplier="1:0.8" id="Me3-Y3-JZS"/>
+                                            <constraint firstAttribute="width" constant="35" id="UgH-2X-MbA"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" backgroundImage="square.lefthalf.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="menuButtonTapped:" destination="BV1-FR-VrT" eventType="touchUpInside" id="gFo-Jc-PNJ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game #: 12345" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZE-Yk-M46">
+                                        <rect key="frame" x="905" y="15.5" width="99" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="nfL-uU-t0o" firstAttribute="top" secondItem="xq0-Zg-RRN" secondAttribute="top" constant="10" id="R5a-ja-zkh"/>
+                                    <constraint firstAttribute="trailing" secondItem="eZE-Yk-M46" secondAttribute="trailing" constant="20" id="k7t-kE-VL6"/>
+                                    <constraint firstItem="eZE-Yk-M46" firstAttribute="centerY" secondItem="nfL-uU-t0o" secondAttribute="centerY" id="kYd-UY-jK8"/>
+                                    <constraint firstItem="eZE-Yk-M46" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nfL-uU-t0o" secondAttribute="trailing" constant="20" id="rBS-ou-6hB"/>
+                                    <constraint firstItem="nfL-uU-t0o" firstAttribute="leading" secondItem="xq0-Zg-RRN" secondAttribute="leading" constant="15" id="wIl-xE-rxS"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -220,6 +245,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="gameNumberLabel" destination="eZE-Yk-M46" id="eg0-2e-LWO"/>
                         <outlet property="popoverButton" destination="r5q-RH-8DT" id="Skl-Rn-sXQ"/>
                         <outlet property="skView" destination="xq0-Zg-RRN" id="0RW-Pk-DSG"/>
                         <segue destination="pAj-FH-NTf" kind="modal" identifier="SegueOne" id="m7c-vR-A08"/>
@@ -230,8 +256,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <customObject id="8hw-PY-K4D"/>
             </objects>
-            <point key="canvasLocation" x="-688" y="51"/>
+            <point key="canvasLocation" x="-688.4765625" y="50.78125"/>
         </scene>
         <!--New Game View Controller-->
         <scene sceneID="Sx0-vN-Tvg">
@@ -373,4 +400,7 @@
             <point key="canvasLocation" x="81" y="798"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="square.lefthalf.fill" catalog="system" width="128" height="114"/>
+    </resources>
 </document>

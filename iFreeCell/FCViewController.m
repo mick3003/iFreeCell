@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSDictionary *userInfo;
 
 @property (nonatomic, weak) IBOutlet SKView *skView;
+@property (nonatomic, weak) IBOutlet UILabel *gameNumberLabel;
 
 @property (nonatomic, strong) FCModalTransitioningDelegate *modalTransitioningDelegate;
 
@@ -30,6 +31,11 @@
 
 
 @implementation FCViewController
+
+- (BOOL) prefersStatusBarHidden
+{
+    return YES;
+}
 
 - (UIStatusBarStyle) preferredStatusBarStyle
 {
@@ -85,6 +91,11 @@
 {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
+}
+
+- (IBAction)menuButtonTapped:(UIButton *)sender
+{
+    NSLog(@"%s", __FUNCTION__);
 }
 
 

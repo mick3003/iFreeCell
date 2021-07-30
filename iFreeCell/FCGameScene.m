@@ -75,12 +75,21 @@
 
 - (void) prepareContent
 {
-    //SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"main_bgnd4_"];
+    // _background = [SKSpriteNode spriteNodeWithImageNamed:@"beach"];
     
     if( !_background )
     {
         CGSize bgndSize = CGSizeMake(self.frame.size.width * 2.F, self.frame.size.height * 2.F);
         _background = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:30.F/255.F green:153.F/255.F blue:199.F/255.F alpha:1.F] size:bgndSize];
+        _background.anchorPoint = CGPointZero;
+        _background.position = CGPointZero;
+        
+        [gameLayer addChild:_background];
+    }
+    else
+    {
+        CGSize bgndSize = CGSizeMake(self.frame.size.width , self.frame.size.height );
+        _background.size = bgndSize;
         _background.anchorPoint = CGPointZero;
         _background.position = CGPointZero;
         
