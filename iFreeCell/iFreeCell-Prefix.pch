@@ -23,6 +23,6 @@
     #define kZPositionMenuButtons 15.F
     #define kZPositionMenuLabel 25.F
     #define kZPositionGameLayer 100.F
-    #define kZPositionMove 10000000.F
+    #define kZPositionMove 100000.F
 
 #endif

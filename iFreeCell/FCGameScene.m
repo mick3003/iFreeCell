@@ -89,6 +89,8 @@
 
 - (void) prepareContent
 {
+    [self menuOpen:NO];
+    
     // _background = [SKSpriteNode spriteNodeWithImageNamed:@"beach"];
     
     if( !_background )
@@ -100,6 +102,7 @@
         
         [gameLayer addChild:_background];
     }
+    /*
     else
     {
         CGSize bgndSize = CGSizeMake(self.frame.size.width , self.frame.size.height );
@@ -109,6 +112,7 @@
         
         [gameLayer addChild:_background];
     }
+    */
     
 //    _touchNode = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(20, 20)];
 //    _touchNode.position = CGPointZero;

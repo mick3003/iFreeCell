@@ -52,11 +52,7 @@
     // Configure the view.
     SKView * skView = (SKView *)self.skView;
     
-    skView.multipleTouchEnabled = YES;
-    
-//    CGRect f = [[[UIApplication sharedApplication] windows][0] bounds];
-//    f = CGRectMake(0, 0, 1334, 750);
-//    skView.frame = f;
+    skView.multipleTouchEnabled = NO;
     
     BOOL flag = NO;
 #ifdef DEBUG

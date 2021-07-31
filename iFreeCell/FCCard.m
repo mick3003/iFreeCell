@@ -296,10 +296,9 @@
     self.parentSlot.lastCard = nil;
     self.parentSlot = slot;
     
-    self.inFreeCell = NO;
-    
     if( slot.slotType == FCSlotTypeSuitStack )
     {
+        self.inFreeCell = NO;
         self.stacked = YES;
         self.column = -1;
         self.childCard = nil;
@@ -307,11 +306,14 @@
     else if( slot.slotType == FCSlotTypeFreeCell )
     {
         self.inFreeCell = YES;
+        self.stacked = NO;
         self.column = -1;
         self.childCard = nil;
     }
     else if( slot.slotType == FCSlotTypeGame )
     {
+        self.inFreeCell = NO;
+        self.stacked = NO;
         self.column = slot.column;
     }
     
