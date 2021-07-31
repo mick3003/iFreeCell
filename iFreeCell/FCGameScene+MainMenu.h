@@ -12,6 +12,8 @@
 {
 }
 
+- (void) toggleMenu;
+- (void) menuOpen:(BOOL)open;
 - (void) moveMenuWithDeltaPoint:(CGPoint) deltaPoint;
 - (void) moveMenuTouchEnded:(CGPoint) touchLocation;
 - (void) resetMenuOption;

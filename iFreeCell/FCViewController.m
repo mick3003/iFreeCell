@@ -67,9 +67,12 @@
     skView.showsDrawCount = flag;
     skView.ignoresSiblingOrder = YES;
     
+    // TODO. This must be a random number
+    NSInteger gameNumber = 2;
+    self.gameNumberLabel.text = [NSString stringWithFormat:@"Game #: %05ld", gameNumber];
+    
     // Create and configure the scene.
-    self.gameScene = [FCGameScene sceneWithSize:skView.bounds.size];
-//    self.gameScene = [FCGameScene sceneWithSize:CGSizeMake(1024.0, 768.0)];
+    self.gameScene = [FCGameScene sceneWithSize:skView.bounds.size gameNumber:gameNumber];
     self.gameScene.scaleMode = SKSceneScaleModeAspectFill;
     self.gameScene.presentationDelegate = self;
     
@@ -93,9 +96,9 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-- (IBAction)menuButtonTapped:(UIButton *)sender
+- (IBAction) menuButtonTapped:(UIButton *)sender
 {
-    NSLog(@"%s", __FUNCTION__);
+    [self.gameScene toggleMenu];
 }
 
 
@@ -153,6 +156,11 @@
             ;
             break;
     };
+}
+
+- (void) gameNumber:(NSInteger)gameNumber
+{
+    self.gameNumberLabel.text = [NSString stringWithFormat:@"Game #: %05ld", gameNumber];
 }
 
 - (void) openCartDetailOnPoint:(CGPoint)point

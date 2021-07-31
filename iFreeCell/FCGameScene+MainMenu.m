@@ -21,6 +21,7 @@
 
 - (void) moveMenuWithDeltaPoint:(CGPoint) deltaPoint
 {
+    /*
     CGFloat newX = gameLayer.position.x + deltaPoint.x;
     
     // NSLog(@"-- deltaPoint = %@ -- newX = %f", NSStringFromCGPoint(deltaPoint), newX);
@@ -32,10 +33,12 @@
     
     gameLayer.position = CGPointMake(newX, gameLayer.position.y);
     _menuDragging = YES;
+     */
 }
 
 - (void) moveMenuTouchEnded:(CGPoint) touchLocation
 {
+    /*
     CGPoint point;
     
     if( _menuMoveDelta > 0 )
@@ -60,6 +63,24 @@
     [gameLayer runAction:move completion:^{}];
     
     _menuDragging = NO;
+     */
+}
+
+- (void) toggleMenu
+{
+    [self menuOpen:!self.menuShowing];
+}
+
+- (void) menuOpen:(BOOL)open
+{
+    CGPoint point = CGPointZero;
+    if( open ) point = CGPointMake(kMenuMaxX, 0.F);
+    
+    SKAction *menuMove = [SKAction moveTo:point duration:.25];
+    menuMove.timingMode = SKActionTimingEaseOut;
+    [gameLayer runAction:menuMove completion:^{
+        self.menuShowing = open;
+    }];
 }
 
 - (void) resetMenuOption

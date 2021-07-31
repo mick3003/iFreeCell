@@ -13,6 +13,8 @@
 
 - (NSString *) newBoardForSeed:(NSInteger) seed
 {
+    NSLog(@"NEW BOARD with seed %ld", seed);
+    
     NSString *retStr = nil;
     
     char *cstr = getNewBoardString( (int)seed );

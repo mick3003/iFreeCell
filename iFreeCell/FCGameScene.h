@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger, FCModalAction)
 @protocol FCModalPresentationDelegate <NSObject>
 @required
 - (void) shouldPresentModalForAction:(FCModalAction)action userInfo:(NSDictionary *)userInfo;
-
+- (void) gameNumber:(NSInteger)gameNumber;
 @end
 
 @interface FCGameScene : SKScene 
@@ -57,13 +57,14 @@ typedef NS_ENUM(NSInteger, FCModalAction)
     
      // Menu
     
-    CGFloat _menuMoveDelta;
-    BOOL _menuShowing;
-    BOOL _menuDragging;
-    
-    BOOL _doubleSwipeDetected;
+    // CGFloat _menuMoveDelta;
 }
 
 @property (nonatomic, weak) id <FCModalPresentationDelegate> presentationDelegate;
+@property (nonatomic, assign) BOOL menuShowing;
+@property (nonatomic, assign) NSInteger gameNumber;
 
+
++ (instancetype) sceneWithSize:(CGSize)size gameNumber:(NSInteger)gameNumber;
+- (id) initWithSize:(CGSize)size gameNumber:(NSInteger)gameNumber;
 @end

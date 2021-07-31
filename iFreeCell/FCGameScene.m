@@ -39,10 +39,18 @@
 
 @implementation FCGameScene
 
--(id)initWithSize:(CGSize)size
++ (instancetype) sceneWithSize:(CGSize)size gameNumber:(NSInteger)gameNumber
+{
+    FCGameScene *gameScene = [[FCGameScene alloc] initWithSize:size gameNumber:(NSInteger)gameNumber];
+    gameScene.gameNumber = gameNumber;
+    return gameScene;
+}
+
+- (id) initWithSize:(CGSize)size gameNumber:(NSInteger)gameNumber
 {
     if (self = [super initWithSize:size])
     {
+        _gameNumber = gameNumber;
         gameLayer = [SKNode node];
         gameLayer.position = CGPointZero;
         gameLayer.zPosition = kZPositionGameLayer;
@@ -61,6 +69,7 @@
         
         _menuScene = [[FCMenuScene alloc] init];
         _menuScene.delegate = self;
+        self.menuShowing = NO;
         
         [self addChild:_menuScene];
         
@@ -70,6 +79,11 @@
     return self;
 }
 
+- (void) setGameNumber:(NSInteger)gameNumber
+{
+    _gameNumber = gameNumber;
+    [self.presentationDelegate gameNumber:_gameNumber];
+}
 
 #pragma mark - Prepare content
 
@@ -177,7 +191,7 @@
 
 - (void) prepareCards
 {
-    NSString *str = [[FCBoardHelper new] newBoardForSeed:2];
+    NSString *str = [[FCBoardHelper new] newBoardForSeed:self.gameNumber];
     str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
     NSArray *array = [str componentsSeparatedByString:@" "];
     static CGFloat zPositionCount = 0.F;
@@ -322,7 +336,6 @@
     CGPoint location = [self touchLocation:touches];
     _touchMoveLocation = location;
     
-    if( touches.count == 2 ) _doubleSwipeDetected = YES;
     if( touches.count > 1 || _movingCard ) return;
     
     _longTouchTriggered = NO;
@@ -380,22 +393,11 @@
 }
 
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if( _doubleSwipeDetected )
-    {
-        _doubleSwipeDetected = NO;
-        return;
-    }
-    
+{    
     if( !_longTouchTriggered )
     {
         UITouch *touch = [touches anyObject];
-
-        // if( touches.count == 2 )
-        {
-            [self moveMenuTouchEnded:[touch locationInNode:self]];
-        }
-
+        
         if( touch.tapCount == 2 )
         {
             [self handleDoubleTap];
@@ -403,6 +405,10 @@
         else if( _dragging )
         {
             [self handleTap];
+        }
+        else
+        {
+            [self menuOpen:NO];
         }
     }
     _longTouchTime = 0.F;
@@ -747,12 +753,10 @@
             
         case FCMainMenuButtonTagNewGame:
             [self.presentationDelegate shouldPresentModalForAction:FCModalActionNewGame userInfo:nil];
-            _menuDragging = NO;
             break;
             
         case FCMainMenuButtonTagResetGame:
             [self.presentationDelegate shouldPresentModalForAction:FCModalActionReset userInfo:nil];
-            _menuDragging = NO;
             // [self resetMenuOption];
             break;
             
