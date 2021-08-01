@@ -29,6 +29,8 @@
     CGFloat _previousZPosition;
     
     SKSpriteNode *_touchNode;
+    
+    CGFloat _yDelta, _yDeltaCards;
 }
 
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
@@ -61,6 +63,9 @@
         
         _screenSize = size;
         _mainScale = .65F;
+        BOOL rounded = [FCHelper isRoundedDisplay];
+        _yDelta = 120 + (rounded ? 22.F : 0.0F);
+        _yDeltaCards = 282 + (rounded ? 23.F : 0.F);
         
         self.backgroundColor = [SKColor colorWithRed:.14 green:.22 blue:.3 alpha:1.0];
         
@@ -114,10 +119,6 @@
     }
     */
     
-//    _touchNode = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(20, 20)];
-//    _touchNode.position = CGPointZero;
-//    [gameLayer addChild:_touchNode];
-    
     _slotTexture = [SKTexture textureWithImageNamed:@"slot4"];
     
     _freeCellSlots = [[FCGameState shared] freeCellSlots];
@@ -151,7 +152,7 @@
     else
     {
         CGFloat margin = -35.F;
-        CGFloat y = _screenSize.height - 125.F;
+        CGFloat y = _screenSize.height - _yDelta;
         CGFloat screenWidth = _screenSize.width;
         
         for( NSInteger i = 1; i < 5; i++ )
@@ -200,7 +201,7 @@
     NSArray *array = [str componentsSeparatedByString:@" "];
     static CGFloat zPositionCount = 0.F;
     
-    NSInteger initY = _screenSize.height - 280.F, cardIndex = 0;
+    NSInteger initY = _screenSize.height - _yDeltaCards, cardIndex = 0;
     CGFloat margin = -35.F;
     
     for( NSInteger column = 0; column < 8; column++ )

@@ -17,5 +17,6 @@
 + (NSInteger) randomGameNumber;
 + (NSInteger) randomNumberBetween:(NSInteger)min maxNumber:(NSInteger)max;
 + (NSInteger) intFromString:(NSString *)string;
++ (BOOL) isRoundedDisplay;
 
 @end

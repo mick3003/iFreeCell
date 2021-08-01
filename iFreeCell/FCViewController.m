@@ -78,6 +78,13 @@
     [skView presentScene:self.gameScene];
 }
 
+//- (void) viewDidLayoutSubviews
+//{
+//    [super viewDidLayoutSubviews];
+//    NSNumber *value = [[UIScreen mainScreen] valueForKey:@"_displayCornerRadius"];
+//    NSLog(@"safeArea = %f", value.floatValue);
+//}
+
 - (BOOL) shouldAutorotate
 {
     return YES;

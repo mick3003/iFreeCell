@@ -55,4 +55,16 @@
     return number.integerValue;
 }
 
++ (BOOL) isRoundedDisplay
+{
+    NSArray *components = @[@"Radius", @"Corner", @"display", @"_"];
+    NSMutableString *key = @"".mutableCopy;
+    for( NSString *c in components.reverseObjectEnumerator )
+    {
+        [key appendString:c];
+    }
+    NSNumber *number = [[UIScreen mainScreen] valueForKey:key];
+    return number.floatValue != 0.0;
+}
+
 @end
