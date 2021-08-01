@@ -107,7 +107,7 @@
 
 - (void) newGameMenuOption:(NSInteger) gameNumber
 {
-    self.gameNumber = gameNumber;
+    [FCGameState shared].gameNumber = gameNumber;
     [[FCGameState shared] resetState];
     [self prepareContent];
 }

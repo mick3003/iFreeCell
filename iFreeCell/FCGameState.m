@@ -14,6 +14,7 @@
 #define kUserDefatulsKeySavedGameSlots      @"UserDefaultsSavedGameSlots"
 #define kUserDefaultsKeySavedCardsSlots     @"UserDefaultsSavedCardsSlots"
 #define kUserDefaultsKeyCardSeparations     @"UserDefaultsCardSeparations"
+#define kUserDefaultsKeyGameNumber          @"UserDefaultsGameNumber"
 
 
 @implementation FCMove
@@ -150,6 +151,8 @@ static FCGameState *instance = nil;
             self.freeCellSlots = [NSMutableArray arrayWithCapacity:4];
         }
     }
+    
+    self.gameNumber = [[[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyGameNumber] intValue];
 }
 
 - (CGFloat) separationForColumn:(NSInteger)column
@@ -251,6 +254,7 @@ static FCGameState *instance = nil;
     if( error ) [self traceError:error withTitle:@"save data CARDSLOTS"];
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefaultsKeySavedCardsSlots];
     
+    [[NSUserDefaults standardUserDefaults] setObject:@(self.gameNumber) forKey:kUserDefaultsKeyGameNumber];
     NSLog(@"-------> SAVE STATE program complete!");
 }
 
@@ -263,8 +267,6 @@ static FCGameState *instance = nil;
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserDefaultsKeySavedFreeCellSlots];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserDefaultsKeySavedCardsSlots];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserDefaultsKeyCardSeparations];
-    
-    [[NSUserDefaults standardUserDefaults] synchronize];
     
     for( SKSpriteNode *node in _cardsSlots )
     {

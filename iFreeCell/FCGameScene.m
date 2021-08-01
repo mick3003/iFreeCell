@@ -44,7 +44,7 @@
 + (instancetype) sceneWithSize:(CGSize)size gameNumber:(NSInteger)gameNumber
 {
     FCGameScene *gameScene = [[FCGameScene alloc] initWithSize:size gameNumber:(NSInteger)gameNumber];
-    gameScene.gameNumber = gameNumber;
+    FCGameState.shared.gameNumber = gameNumber;
     return gameScene;
 }
 
@@ -52,7 +52,7 @@
 {
     if (self = [super initWithSize:size])
     {
-        _gameNumber = gameNumber;
+        FCGameState.shared.gameNumber = gameNumber;
         gameLayer = [SKNode node];
         gameLayer.position = CGPointZero;
         gameLayer.zPosition = kZPositionGameLayer;
@@ -84,11 +84,6 @@
     return self;
 }
 
-- (void) setGameNumber:(NSInteger)gameNumber
-{
-    _gameNumber = gameNumber;
-    [self.presentationDelegate gameNumber:_gameNumber];
-}
 
 #pragma mark - Prepare content
 
@@ -196,7 +191,7 @@
 
 - (void) prepareCards
 {
-    NSString *str = [[FCBoardHelper new] newBoardForSeed:self.gameNumber];
+    NSString *str = [[FCBoardHelper new] newBoardForSeed:FCGameState.shared.gameNumber];
     str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
     NSArray *array = [str componentsSeparatedByString:@" "];
     static CGFloat zPositionCount = 0.F;

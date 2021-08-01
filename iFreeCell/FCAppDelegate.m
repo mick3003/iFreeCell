@@ -12,7 +12,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // [[FCGameState shared] restoreState];
     return YES;
 }
 							
@@ -31,7 +30,6 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // [[FCGameState shared] restoreState];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

@@ -65,9 +65,15 @@
     skView.showsDrawCount = flag;
     skView.ignoresSiblingOrder = YES;
     
-    // TODO. This must be a random number
-    NSInteger gameNumber = 2;
-    self.gameNumberLabel.text = [NSString stringWithFormat:@"Game #: %05ld", gameNumber];
+    NSInteger gameNumber = FCGameState.shared.gameNumber;
+    
+    if( gameNumber == 0)
+    {
+        // TODO assign a random number
+        gameNumber = 2;
+    }
+    
+    [self drawGameNumber:gameNumber];
     
     // Create and configure the scene.
     self.gameScene = [FCGameScene sceneWithSize:skView.bounds.size gameNumber:gameNumber];
@@ -168,9 +174,9 @@
     };
 }
 
-- (void) gameNumber:(NSInteger)gameNumber
+- (void) drawGameNumber:(NSInteger)gameNumber
 {
-    self.gameNumberLabel.text = [NSString stringWithFormat:@"Game #: %05ld", gameNumber];
+    self.gameNumberLabel.text = [NSString stringWithFormat:@"Game # %05ld", gameNumber];
 }
 
 - (void) openCartDetailOnPoint:(CGPoint)point
@@ -207,6 +213,7 @@
 - (void) newGameViewController:(FCNewGameViewController *)newGameViewController finishWithGameNumber:(NSInteger)gameNumber
 {
     NSLog(@"%s", __FUNCTION__);
+    [self drawGameNumber:gameNumber];
     [self.gameScene newGameMenuOption:gameNumber];
 }
 
