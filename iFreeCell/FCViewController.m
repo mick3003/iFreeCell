@@ -48,6 +48,11 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true);
+    NSString *documentPath = [paths objectAtIndex:0];
+    NSURL *url = [NSURL fileURLWithPath:documentPath];
+    NSLog(@"Documents path:'%@'", url.absoluteString);
 
     self.modalTransitioningDelegate = [FCModalTransitioningDelegate new];
     

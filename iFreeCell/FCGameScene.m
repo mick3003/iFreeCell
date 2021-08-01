@@ -331,7 +331,7 @@
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSLog(@"%s", __FUNCTION__);
+    // NSLog(@"%s", __FUNCTION__);
 
     CGPoint location = [self touchLocation:touches];
     _touchMoveLocation = location;
@@ -417,7 +417,6 @@
     _dragging = NO;
     
     _previousZPosition = 0.F;
-    
 }
 
 - (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
@@ -719,13 +718,22 @@
 
 - (BOOL) checkGameSolved
 {
-    return NO;
-    
     BOOL bRet = YES;
-    
+        
+    /*
     for( FCSlot *slot in _cardsSlots )
     {
         if( slot.lastCard.number != FCCardNumberTypeKing )
+        {
+            bRet = NO;
+            break;
+        }
+    }
+    // */
+    
+    for( FCSlot *slot in _freeCellSlots )
+    {
+        if( slot.lastCard == nil )
         {
             bRet = NO;
             break;

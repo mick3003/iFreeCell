@@ -199,39 +199,40 @@
 
 - (void) moveToPosition:(CGPoint) point
 {
+    NSLog(@"Moving %@ TO %@", self, [[FCPoint pointWithCGPoint:point] description]);
     SKAction *move = [SKAction moveTo:point duration:.15];
     
     __weak typeof(self) weakSelf = self;
     
     [self runAction:move completion:^
-                         {
-                             if( weakSelf.parentSlot )
-                             {
-                                 if( weakSelf.number == FCCardNumberTypeKing )
-                                 {
-                                     weakSelf.zPosition = kZPositionGameLayer + 1;
-                                     weakSelf.parentSlot.lastCard = self;
-                                 }
-                                 else
-                                 {
-                                     if( weakSelf == self.parentSlot.lastCard )
-                                     {
-                                         weakSelf.zPosition = kZPositionGameLayer + 1;
-                                         
-                                     }
-                                     else
-                                     {
-                                         weakSelf.zPosition = self.parentSlot.lastCard.zPosition + 1.F;
-                                         weakSelf.parentSlot.lastCard = self;
-                                     }
-                                 }
-                             }
-                             else
-                             {
-                                 weakSelf.zPosition = weakSelf.parentCard.zPosition + 1.F;
-                             }
-                             [self.moveDelegate card:self didMoveToPosition:self.position];
-                         }];
+     {
+         if( weakSelf.parentSlot )
+         {
+             if( weakSelf.number == FCCardNumberTypeKing )
+             {
+                 weakSelf.zPosition = kZPositionGameLayer + 1;
+                 weakSelf.parentSlot.lastCard = self;
+             }
+             else
+             {
+                 if( weakSelf == self.parentSlot.lastCard )
+                 {
+                     weakSelf.zPosition = kZPositionGameLayer + 1;
+                     
+                 }
+                 else
+                 {
+                     weakSelf.zPosition = self.parentSlot.lastCard.zPosition + 1.F;
+                     weakSelf.parentSlot.lastCard = self;
+                 }
+             }
+         }
+         else
+         {
+             weakSelf.zPosition = weakSelf.parentCard.zPosition + 1.F;
+         }
+         [self.moveDelegate card:self didMoveToPosition:self.position];
+     }];
     
     self.lastPosition = point;
     [self.childCard moveToPosition:[self getPositionFromParentPosition:point]];
@@ -241,7 +242,8 @@
 {
     [self.parentCard highlight:NO];
     [self moveToPosition:self.lastPosition];
-    [self.childCard moveToPosition:[self getPositionFromParentPosition:self.lastPosition]];
+    // OJO OJO
+    // [self.childCard moveToPosition:[self getPositionFromParentPosition:self.lastPosition]];
 }
 
 - (void) becomeChildOfCard:(FCCard *) pCard

@@ -82,11 +82,6 @@
         [self.buttonsArray addObject:button];
         i++;
     }
-    
-    for( FCMenuButton *button in self.buttonsArray )
-    {
-        NSLog(@"Button %p with name = '%@' and label = '%@'", button, button.name, button.labelNode.text);
-    }
 }
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
