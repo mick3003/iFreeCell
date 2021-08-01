@@ -204,14 +204,20 @@
 
 #pragma mark - FCNewGameController delegate
 
-- (void) newGameViewController:(FCNewGameViewController *)newGameViewController finishWithGameNumber:(NSInteger)index
+- (void) newGameViewController:(FCNewGameViewController *)newGameViewController finishWithGameNumber:(NSInteger)gameNumber
 {
     NSLog(@"%s", __FUNCTION__);
+    [self.gameScene newGameMenuOption:gameNumber];
+}
+
+- (void) newGameViewControllerDidOpen:(FCNewGameViewController *)newGameViewController
+{
+    [self.gameScene menuOpen:NO];
 }
 
 - (void) newGameViewControllerWillClose:(FCNewGameViewController *)newGameViewController
 {
-    NSLog(@"%s", __FUNCTION__);
+    [self.gameScene menuOpen:NO];
 }
 
 @end

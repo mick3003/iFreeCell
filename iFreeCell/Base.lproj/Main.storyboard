@@ -289,7 +289,7 @@
                                                 <attributedString key="attributedText">
                                                     <fragment content="Select new game number (0 - 65535):">
                                                         <attributes>
-                                                            <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="NSColor" red="0.1951284027874263" green="0.43945584932803888" blue="0.51606797680412364" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <font key="NSFont" metaFont="system" size="24"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" paragraphSpacing="10" paragraphSpacingBefore="10" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
@@ -303,11 +303,11 @@
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="19h-xQ-DU5">
                                                         <rect key="frame" x="0.0" y="0.0" width="82" height="45"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1234" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dsa-0R-i7n">
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dsa-0R-i7n">
                                                                 <rect key="frame" x="10" y="5" width="62" height="35"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="tintColor" red="0.34358263020000002" green="0.77355408670000003" blue="0.90304762130000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="textColor" red="0.19512840279999999" green="0.43945584929999998" blue="0.51606797680000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" keyboardAppearance="light" returnKeyType="done"/>
                                                             </textField>
@@ -433,11 +433,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="352" height="437"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwe-st-Qgh">
-                                                <rect key="frame" x="60.5" y="20" width="231.5" height="397"/>
+                                                <rect key="frame" x="60.5" y="0.0" width="231.5" height="417"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="You are about to reset the game. This operation can not be undone. Are you sure?">
                                                         <attributes>
-                                                            <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="NSColor" red="0.1951284027874263" green="0.43945584932803888" blue="0.51606797680412364" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <font key="NSFont" metaFont="system" size="24"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" paragraphSpacing="10" paragraphSpacingBefore="10" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
@@ -451,7 +451,7 @@
                                             <constraint firstItem="uwe-st-Qgh" firstAttribute="centerX" secondItem="r2T-An-MSn" secondAttribute="centerX" id="3sb-I2-Xen"/>
                                             <constraint firstItem="uwe-st-Qgh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="r2T-An-MSn" secondAttribute="leading" constant="60" id="FO2-Qp-ZZb"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uwe-st-Qgh" secondAttribute="trailing" constant="60" id="O6v-L3-a5A"/>
-                                            <constraint firstItem="uwe-st-Qgh" firstAttribute="top" secondItem="r2T-An-MSn" secondAttribute="top" constant="20" id="ZhD-Ic-E1a"/>
+                                            <constraint firstItem="uwe-st-Qgh" firstAttribute="top" secondItem="r2T-An-MSn" secondAttribute="top" id="ZhD-Ic-E1a"/>
                                             <constraint firstAttribute="bottom" secondItem="uwe-st-Qgh" secondAttribute="bottom" constant="20" id="nxJ-ZY-uPL"/>
                                         </constraints>
                                     </view>

@@ -49,6 +49,8 @@
     self.tfView.layer.borderWidth = .5F;
     
     self.view.backgroundColor = [UIColor clearColor];
+    
+    [self.delegate newGameViewControllerDidOpen:self];
 }
 
 - (IBAction) cancelButtonTapped:(id)sender
@@ -65,6 +67,9 @@
         // Invalid number or input
         return;
     }
+    
+    [self.delegate newGameViewController:self finishWithGameNumber:gameNumber];
+    [self close];
 }
 
 - (IBAction) randomButtonTapped:(id)sender
@@ -80,9 +85,8 @@
 
 - (void) close
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        [self.delegate newGameViewControllerWillClose:self];
-    }];
+    [self dismissViewControllerAnimated:YES completion:^{}];
+    [self.delegate newGameViewControllerWillClose:self];
 }
 
 @end

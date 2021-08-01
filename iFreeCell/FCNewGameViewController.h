@@ -12,7 +12,8 @@
 
 @protocol FCNewGameControllerDelegate <NSObject>
 @required
-- (void) newGameViewController:(FCNewGameViewController *)newGameViewController finishWithGameNumber:(NSInteger)index;
+- (void) newGameViewController:(FCNewGameViewController *)newGameViewController finishWithGameNumber:(NSInteger)gameNumber;
+- (void) newGameViewControllerDidOpen:(FCNewGameViewController *)newGameViewController;
 - (void) newGameViewControllerWillClose:(FCNewGameViewController *)newGameViewController;
 @end
 

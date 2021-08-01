@@ -18,5 +18,6 @@
 - (void) moveMenuTouchEnded:(CGPoint) touchLocation;
 - (void) resetMenuOption;
 - (void) undoMenuOption;
+- (void) newGameMenuOption:(NSInteger) gameNumber;
 
 @end
