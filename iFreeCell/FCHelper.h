@@ -14,5 +14,8 @@
 }
 
 + (BOOL) cgRect:(CGRect)r1 touchesCGRect:(CGRect)r2;
++ (NSInteger) randomGameNumber;
++ (NSInteger) randomNumberBetween:(NSInteger)min maxNumber:(NSInteger)max;
++ (NSInteger) intFromString:(NSString *)string;
 
 @end

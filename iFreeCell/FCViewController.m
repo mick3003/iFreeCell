@@ -13,8 +13,10 @@
 #import "FCCard.h"
 #import "FCAlertViewController.h"
 #import "FCGameScene+MainMenu.h"
+#import "FCNewGameViewController.h"
 
-@interface FCViewController () <FCModalPresentationDelegate, FCAlertViewControllerDelegate>
+
+@interface FCViewController () <FCModalPresentationDelegate, FCAlertViewControllerDelegate, FCNewGameControllerDelegate>
 {
 }
 
@@ -126,9 +128,14 @@
     else if( [segue.identifier isEqualToString:@"GameToAlertSegue"] )
     {
         FCAlertViewController *alertViewController = segue.destinationViewController;
-        alertViewController.message = @"You are about to reset the game board. This operation can not be undone. Are you sure?";
+        alertViewController.message = @"You are about to reset the game board. This operation can not be undone.\nAre you sure?";
         alertViewController.buttonTitles = @[@"YES", @"NO"];
         alertViewController.delegate = self;
+    }
+    else if( [segue.identifier isEqualToString:@"NewGameSegue"] )
+    {
+        FCNewGameViewController *newGameViewController = segue.destinationViewController;
+        newGameViewController.delegate = self;
     }
 }
 
@@ -137,7 +144,7 @@
     switch( action )
     {
         case FCModalActionNewGame:
-            [self performSegueWithIdentifier:@"SegueOne" sender:self];
+            [self performSegueWithIdentifier:@"NewGameSegue" sender:self];
             break;
         case FCModalActionReset:
             [self performSegueWithIdentifier:@"GameToAlertSegue" sender:self];
@@ -185,6 +192,19 @@
     {
         [self.gameScene resetMenuOption];
     }
+}
+
+
+#pragma mark - FCNewGameController delegate
+
+- (void) newGameViewController:(FCNewGameViewController *)newGameViewController finishWithGameNumber:(NSInteger)index
+{
+    NSLog(@"%s", __FUNCTION__);
+}
+
+- (void) newGameViewControllerWillClose:(FCNewGameViewController *)newGameViewController
+{
+    NSLog(@"%s", __FUNCTION__);
 }
 
 @end

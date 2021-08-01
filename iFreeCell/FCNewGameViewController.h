@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class FCNewGameViewController;
+
+@protocol FCNewGameControllerDelegate <NSObject>
+@required
+- (void) newGameViewController:(FCNewGameViewController *)newGameViewController finishWithGameNumber:(NSInteger)index;
+- (void) newGameViewControllerWillClose:(FCNewGameViewController *)newGameViewController;
+@end
+
 @interface FCNewGameViewController : UIViewController
+{
+}
+
+@property (nonatomic, weak) id <FCNewGameControllerDelegate> delegate;
 
 @end

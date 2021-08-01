@@ -37,4 +37,22 @@
     return bRet;
 }
 
++ (NSInteger) randomGameNumber
+{
+    return [self randomNumberBetween:1 maxNumber:65535];
+}
+
++ (NSInteger) randomNumberBetween:(NSInteger)min maxNumber:(NSInteger)max
+{
+    return min + arc4random_uniform((uint32_t)(max - min + 1));
+}
+
++ (NSInteger) intFromString:(NSString *)string
+{
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    NSNumber *number = [formatter numberFromString:string];
+    return number.integerValue;
+}
+
 @end
