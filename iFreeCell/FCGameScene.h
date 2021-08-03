@@ -37,7 +37,6 @@
     
     SKSpriteNode *_background;
     
-    FCCard *_card;
     FCCard *_movingCard;
     
     CGPoint _touchMoveLocation;

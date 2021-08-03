@@ -11,7 +11,7 @@
 #import "FCSlot.h"
 
 #define kTextFieldInitTag   1
-#define kTextFieldNumber    11
+#define kTextFieldNumber    12
 
 @interface FCCardDetailViewController ()
 

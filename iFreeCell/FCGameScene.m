@@ -224,6 +224,7 @@
         
         for( int file = 0; file < maxI; file++ )
         {
+            zPositionCount = 0;
             CGFloat y = initY - (cardSep * file);
             
             FCCard *card = [FCCard cardWithType:array[cardIndex] parentNode:gameLayer];
@@ -695,6 +696,8 @@
         else if( _contactNodes.count != 0 )
         {
             NSLog(@"WARNING: %s -> _contactNodes.count = %ld", __FUNCTION__, (unsigned long)_contactNodes.count);
+            [_contactNodes removeAllObjects];
+            return;
         }
         
         if( spriteToHighlight )
@@ -720,7 +723,7 @@
 {
     BOOL bRet = YES;
         
-    /*
+    //*
     for( FCSlot *slot in _cardsSlots )
     {
         if( slot.lastCard.number != FCCardNumberTypeKing )
@@ -730,7 +733,7 @@
         }
     }
     // */
-    //*
+    /*
     for( FCSlot *slot in _freeCellSlots )
     {
         if( slot.lastCard == nil )
@@ -740,6 +743,7 @@
         }
     }
     // */
+    NSLog(@"checkGameSolved returning %@", bRet?@"YES":@"NO");
     return bRet;
 }
 

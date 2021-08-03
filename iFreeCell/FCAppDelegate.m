@@ -17,7 +17,7 @@
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    // [[FCGameState shared] saveState];
+    [[FCGameState shared] saveState];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -34,7 +34,6 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    [[FCGameState shared] saveState];
 }
 
 @end
