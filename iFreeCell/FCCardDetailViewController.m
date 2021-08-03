@@ -38,6 +38,7 @@
                             @"LastChildCard:  ",
                             @"ParentSlotName: ",
                             @"Stacked:        ",
+                            @"Physics:        ",
                             @"",
                         ];
     
@@ -90,6 +91,9 @@
                 [self label:label setText:self.card.stacked? @"YES": @"NO"];
                 break;
             case 12:
+                [self label:label setText:self.card.physicsEnabled?@"YES":@"NO"];
+                break;
+            case 13:
                 if(self.slot)
                     [self label:label setText:[self.slot description]];
                 else

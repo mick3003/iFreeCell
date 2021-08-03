@@ -32,6 +32,7 @@
 @property (nonatomic, strong) NSMutableArray <FCMove *> *movesStack;
 
 @property (nonatomic, assign) NSInteger gameNumber;
+@property (nonatomic, assign) BOOL autoStack;
 
 
 + (FCGameState *) shared;

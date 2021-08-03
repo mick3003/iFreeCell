@@ -199,8 +199,9 @@
 
 - (void) moveToPosition:(CGPoint) point
 {
-    NSLog(@"Moving %@ TO %@", self, [[FCPoint pointWithCGPoint:point] description]);
-    SKAction *move = [SKAction moveTo:point duration:.15];
+    // NSLog(@"Moving %@ TO %@", self, [[FCPoint pointWithCGPoint:point] description]);
+    // SKAction *move = [SKAction moveTo:point duration:.15];
+    SKAction *move = [SKAction moveTo:point duration:1.5];
     
     __weak typeof(self) weakSelf = self;
     
@@ -358,7 +359,7 @@
 
 - (void) unsetPhysics
 {
-    self.physicsBody.dynamic = NO;
+    // self.physicsBody.dynamic = NO;
 }
 
 - (BOOL) physicsEnabled
@@ -368,6 +369,7 @@
 
 - (void) unsetChildsPhysics
 {
+    /*
     FCCard *child = self.childCard;
     
     while( child )
@@ -375,6 +377,7 @@
         [child unsetPhysics];
         child = child.childCard;
     }
+    */
 }
 
 - (void) setupChildsPhysics
@@ -528,10 +531,10 @@
     return [NSString stringWithFormat:
 @"<CFCard %p>:\nnumber = %@ :: suit = %@ | isRed = %@ | \
 stacked = %@ | inFreeCell = %@ | position = (%f, %f) | \
-zPosition = %.2f | parentCardName = %@ | parentSlotName = %@ | childCardType = %@ | lastChildType = %@",
+zPosition = %.2f | physics = %@ | parentCardName = %@ | parentSlotName = %@ | childCardType = %@ | lastChildType = %@",
             self, [self numberString], [self suitString], [self colorString],
             [self stackedString], [self inFreeCellString], self.frame.origin.x, self.frame.origin.y,
-            self.zPosition, self.parentCard.name, self.parentSlot.name, self.childCard.name, self.lastChild.name];
+            self.zPosition, self.physicsEnabled?@"YES":@"NO", self.parentCard.name, self.parentSlot.name, self.childCard.name, self.lastChild.name];
 }
 
 

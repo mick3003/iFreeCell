@@ -730,7 +730,7 @@
         }
     }
     // */
-    
+    //*
     for( FCSlot *slot in _freeCellSlots )
     {
         if( slot.lastCard == nil )
@@ -739,7 +739,7 @@
             break;
         }
     }
-    
+    // */
     return bRet;
 }
 
@@ -780,6 +780,8 @@
 
 - (void) checkAutoStackCards
 {
+    if( FCGameState.shared.autoStack == NO ) return;
+    
     _autoStackedMoved = NO;
     
     for( FCCard *card in _cards )

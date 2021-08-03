@@ -67,6 +67,7 @@ static FCGameState *instance = nil;
 - (void) initialize
 {
     self.movesStack = [NSMutableArray new];
+    self.autoStack = YES;
     
     NSError *error = nil;
     

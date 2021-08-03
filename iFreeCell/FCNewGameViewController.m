@@ -78,6 +78,11 @@
     self.textField.text = [NSString stringWithFormat:@"%ld", random];
 }
 
+- (IBAction) tfDidEndOnExit:(UITextField *)sender
+{
+    [sender resignFirstResponder];
+}
+
 - (IBAction) backgroundButtonTapped:(id)sender
 {
     [self close];
