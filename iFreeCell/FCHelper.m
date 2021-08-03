@@ -8,6 +8,10 @@
 
 #import "FCHelper.h"
 
+@implementation SegueObject
+
+@end
+
 @implementation FCHelper
 
 + (BOOL) cgRect:(CGRect)r1 touchesCGRect:(CGRect)r2

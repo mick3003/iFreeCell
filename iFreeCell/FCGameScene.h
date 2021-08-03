@@ -8,14 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-typedef NS_ENUM(NSInteger, FCModalAction)
-{
-    FCModalActionNewGame = 0,
-    FCModalActionReset,
-    FCModalActionGameSolved,
-    FCModalActionCartDetail
-};
-
 @class FCSpriteNode;
 @class FCCard;
 @class FCSlot;

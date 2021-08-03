@@ -869,6 +869,7 @@
     {
         // TODO. GAME SOLVED!!
         [self.presentationDelegate shouldPresentModalForAction:FCModalActionGameSolved userInfo:nil];
+        self.paused = YES;
     }
 }
 

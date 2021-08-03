@@ -235,7 +235,8 @@
      }];
     
     self.lastPosition = point;
-    [self.childCard moveToPosition:[self getPositionFromParentPosition:point]];
+    if( self.childCard )
+        [self.childCard moveToPosition:[self getPositionFromParentPosition:point]];
 }
 
 - (void) restorePosition

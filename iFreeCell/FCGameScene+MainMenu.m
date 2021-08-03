@@ -110,6 +110,7 @@
     [FCGameState shared].gameNumber = gameNumber;
     [[FCGameState shared] resetState];
     [self prepareContent];
+    self.paused = NO;
 }
 
 @end

@@ -8,6 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, FCModalAction)
+{
+    FCModalActionNewGame = 0,
+    FCModalActionReset,
+    FCModalActionGameSolved,
+    FCModalActionCartDetail
+};
+
+@interface SegueObject : NSObject
+{
+}
+@property (nonatomic, assign) FCModalAction modalAction;
+@property (nonatomic, strong) NSString *message;
+@property (nonatomic, strong) NSArray <NSString *> *buttonsArray;
+
+@end
+
 @interface FCHelper : NSObject
 {
     

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FCHelper.h"
 
 @class FCAlertViewController;
 
@@ -20,6 +21,7 @@
 }
 
 @property (nonatomic, weak) id <FCAlertViewControllerDelegate> delegate;
+@property (nonatomic, assign) FCModalAction modalAction;
 @property (nonatomic, strong) NSString *message;
 @property (nonatomic, strong) NSArray *buttonTitles;
 

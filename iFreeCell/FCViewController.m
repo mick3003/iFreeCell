@@ -89,13 +89,6 @@
     [skView presentScene:self.gameScene];
 }
 
-//- (void) viewDidLayoutSubviews
-//{
-//    [super viewDidLayoutSubviews];
-//    NSNumber *value = [[UIScreen mainScreen] valueForKey:@"_displayCornerRadius"];
-//    NSLog(@"safeArea = %f", value.floatValue);
-//}
-
 - (BOOL) shouldAutorotate
 {
     return YES;
@@ -120,7 +113,7 @@
 
 #pragma mark - Presentation delegate
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(SegueObject *)sender
 {
     UIViewController *vc = segue.destinationViewController;
     
@@ -146,8 +139,10 @@
     else if( [segue.identifier isEqualToString:@"GameToAlertSegue"] )
     {
         FCAlertViewController *alertViewController = segue.destinationViewController;
-        alertViewController.message = @"You are about to reset the game board. This operation can not be undone.\nAre you sure?";
-        alertViewController.buttonTitles = @[@"YES", @"NO"];
+        
+        alertViewController.modalAction = sender.modalAction;
+        alertViewController.message = sender.message;
+        alertViewController.buttonTitles = sender.buttonsArray;
         alertViewController.delegate = self;
     }
     else if( [segue.identifier isEqualToString:@"NewGameSegue"] )
@@ -159,20 +154,28 @@
 
 - (void) shouldPresentModalForAction:(FCModalAction)action userInfo:(NSDictionary *)userInfo
 {
+    SegueObject *segueObject = [SegueObject new];
+    
     switch( action )
     {
         case FCModalActionNewGame:
             [self performSegueWithIdentifier:@"NewGameSegue" sender:self];
             break;
         case FCModalActionReset:
-            [self performSegueWithIdentifier:@"GameToAlertSegue" sender:self];
+            segueObject.modalAction = FCModalActionReset;
+            segueObject.message = @"You are about to reset the game board. This operation can not be undone.\nAre you sure?";
+            segueObject.buttonsArray = @[@"YES", @"NO"];
+            [self performSegueWithIdentifier:@"GameToAlertSegue" sender:segueObject];
             break;
         case FCModalActionCartDetail:
             self.userInfo = userInfo;
             [self openCartDetailOnPoint:[userInfo[@"location"] CGPointValue]];
             break;
         case FCModalActionGameSolved:
-            [self showGameSolvedAlert];
+            segueObject.modalAction = FCModalActionGameSolved;
+            segueObject.message = @"You win!!\nDo you wanto to play another game?";
+            segueObject.buttonsArray = @[@"NEW GAME"];
+            [self performSegueWithIdentifier:@"GameToAlertSegue" sender:segueObject];
         default:
             ;
             break;
@@ -193,22 +196,24 @@
     [self performSegueWithIdentifier:@"CardDetailSegueId" sender:self];
 }
 
-- (void) showGameSolvedAlert
-{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"iFreeCell" message:@"GAME SOLVED!!" preferredStyle:UIAlertControllerStyleAlert];
-    [self presentViewController:alert animated:YES completion:NULL];
-}
-
 
 #pragma mark - FCAlertViewControllerDelegate
 
 - (void) alertViewController:(FCAlertViewController *)alertViewController tappedButtonAtIndex:(NSInteger)index
 {
     NSLog(@"%s :: %@", __FUNCTION__, @(index));
-    
-    if( index == 0 )
+    if( alertViewController.modalAction == FCModalActionReset )
     {
-        [self.gameScene resetMenuOption];
+        if( index == 0 )
+        {
+            [self.gameScene resetMenuOption];
+        }
+    }
+    else if( alertViewController.modalAction == FCModalActionGameSolved )
+    {
+        NSInteger gameNumber = [FCHelper randomGameNumber];
+        [self drawGameNumber:gameNumber];
+        [self.gameScene newGameMenuOption:gameNumber];
     }
 }
 
