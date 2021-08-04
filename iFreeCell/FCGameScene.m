@@ -24,7 +24,7 @@
     CGFloat _longTouchTime;
     CGPoint _longTouchBeganPoint;
     BOOL _longTouchTriggered;
-    BOOL _autoStackedMoved;
+    BOOL _autoStackMoving;
     
     CGFloat _previousZPosition;
     
@@ -439,7 +439,7 @@
         {
             [_movingCard becomeChildOfSlot:(FCSlot *)_contactNode];
         }
-        _autoStackedMoved = YES;
+        _autoStackMoving = YES;
     }
     else
     {
@@ -527,7 +527,7 @@
             
             if( targetCard || targetSlot )
             {
-                _autoStackedMoved = YES;
+                _autoStackMoving = YES;
             }
         }
     }
@@ -722,7 +722,17 @@
 - (BOOL) checkGameSolved
 {
     BOOL bRet = YES;
-        
+    
+    /*
+    for( FCCard *card in _cards )
+    {
+        if( card.stacked == NO )
+        {
+            bRet = NO;
+            break;
+        }
+    }
+    // */
     //*
     for( FCSlot *slot in _cardsSlots )
     {
@@ -786,7 +796,7 @@
 {
     if( FCGameState.shared.autoStack == NO ) return;
     
-    _autoStackedMoved = NO;
+    _autoStackMoving = NO;
     
     for( FCCard *card in _cards )
     {
@@ -796,7 +806,7 @@
             card.zPosition = kZPositionMove;
             [card becomeChildOfSlot:slot];
             
-            _autoStackedMoved = YES;
+            _autoStackMoving = YES;
             break;
         }
         else if( !card.stacked && card.childCard == nil )
@@ -808,7 +818,7 @@
                 card.zPosition = kZPositionMove;
                 [card becomeChildOfCard:posibleParent];
                 
-                _autoStackedMoved = YES;
+                _autoStackMoving = YES;
                 break;
             }
         }
@@ -831,7 +841,9 @@
 
 - (void) card:(FCCard *)card didMoveToPosition:(CGPoint)position
 {
-    if( _autoStackedMoved )
+    _autoStackMoving = NO;
+    
+    if( _autoStackMoving )
     {
         [self checkAutoStackCards];
     }
