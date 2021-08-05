@@ -202,6 +202,8 @@
     
     for( NSInteger column = 0; column < 8; column++ )
     {
+        zPositionCount = 0;
+        
         NSInteger maxI = 7;
         if( column > 3 ) maxI = 6;
         
@@ -225,7 +227,6 @@
         
         for( int file = 0; file < maxI; file++ )
         {
-            zPositionCount = 0;
             CGFloat y = initY - (cardSep * file);
             
             FCCard *card = [FCCard cardWithType:array[cardIndex] parentNode:gameLayer];
@@ -537,7 +538,6 @@
 #ifdef DEBUG
 - (void) handleLongTap
 {
-    NSLog(@"%@", _movingCard);
     CGPoint location = _longTouchBeganPoint;
     FCSpriteNode *targetNode = nil;
     
@@ -575,6 +575,8 @@
             _previousZPosition = targetNode.zPosition;
         }
         targetNode.zPosition = _previousZPosition;
+        
+        NSLog(@"%@", targetNode);
         
         location = CGPointMake(location.x, self.frame.size.height - location.y);
         NSDictionary * userInfo = @{@"location": [NSValue valueWithCGPoint:location], @"target": targetNode, @"previousZ":@(_previousZPosition)};
@@ -832,6 +834,7 @@
             }
         }
     }
+    NSLog(@" ------> %s finished ---------------------", __FUNCTION__);
 }
 
 - (FCSlot *) firstFreeStackSlot
@@ -856,7 +859,7 @@
 
 - (void) card:(FCCard *)card didMoveToPosition:(CGPoint)position
 {
-    NSLog(@"*****> %s for card name %@", __FUNCTION__, card.name);
+    NSLog(@"*****> %s for card name %@ flag is %@", __FUNCTION__, card.name, _autoStackMoving?@"YES":@"NO");
     _autoMovingCard = NO;
     
     if( [self checkGameSolved] )
