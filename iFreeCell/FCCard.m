@@ -424,7 +424,7 @@
 
 - (void) unsetPhysics
 {
-    self.physicsBody.dynamic = NO;
+    // self.physicsBody.dynamic = NO;
 }
 
 - (BOOL) physicsEnabled
@@ -434,7 +434,7 @@
 
 - (void) unsetChildsPhysics
 {
-    //*
+    /*
     FCCard *child = self.childCard;
     
     while( child )

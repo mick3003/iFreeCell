@@ -240,7 +240,7 @@
             card.parentCard = prevCard;
             prevCard.childCard = card;
             
-            if( file == maxI-1 )
+            // if( file == maxI-1 )
             {
                 [card setupPhysics];
             }
