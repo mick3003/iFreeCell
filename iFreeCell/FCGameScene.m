@@ -850,11 +850,13 @@
 
 - (void) card:(FCCard *)card willMoveToPosition:(CGPoint)position
 {
+    NSLog(@"*****> %s for card name %@", __FUNCTION__, card.name);
     _autoMovingCard = YES;
 }
 
 - (void) card:(FCCard *)card didMoveToPosition:(CGPoint)position
 {
+    NSLog(@"*****> %s for card name %@", __FUNCTION__, card.name);
     _autoMovingCard = NO;
     
     if( [self checkGameSolved] )

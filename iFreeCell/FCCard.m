@@ -329,11 +329,8 @@
         [pCard unsetPhysics];
     }
     // */
-    
-//    if( self.parentCard.stacked )
-//        [self moveToPosition:self.parentCard.firstParentSlot.position];
-//    else
-        [self moveToPosition:[self getPositionFromParentPosition:pCard.position]];
+        
+    [self moveToPosition:[self getPositionFromParentPosition:pCard.position]];
 }
 
 - (void) becomeChildOfSlot:(FCSlot *)slot
