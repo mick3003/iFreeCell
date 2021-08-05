@@ -25,6 +25,7 @@
     CGPoint _longTouchBeganPoint;
     BOOL _longTouchTriggered;
     BOOL _autoStackMoving;
+    BOOL _autoMovingCard;
     
     CGFloat _previousZPosition;
     
@@ -239,7 +240,7 @@
             card.parentCard = prevCard;
             prevCard.childCard = card;
             
-            if(file == maxI-1)
+            if( file == maxI-1 )
             {
                 [card setupPhysics];
             }
@@ -723,7 +724,7 @@
 {
     BOOL bRet = YES;
     
-    /*
+    //*
     for( FCCard *card in _cards )
     {
         if( card.stacked == NO )
@@ -733,7 +734,7 @@
         }
     }
     // */
-    //*
+    /*
     for( FCSlot *slot in _cardsSlots )
     {
         if( slot.lastCard.number != FCCardNumberTypeKing )
@@ -753,7 +754,7 @@
         }
     }
     // */
-    NSLog(@"checkGameSolved returning %@", bRet?@"YES":@"NO");
+    // NSLog(@"checkGameSolved returning %@", bRet?@"YES":@"NO");
     return bRet;
 }
 
@@ -807,7 +808,7 @@
             [card becomeChildOfSlot:slot];
             
             _autoStackMoving = YES;
-            break;
+            return;
         }
         else if( !card.stacked && card.childCard == nil )
         {
@@ -819,7 +820,7 @@
                 [card becomeChildOfCard:posibleParent];
                 
                 _autoStackMoving = YES;
-                break;
+                return;
             }
         }
     }
@@ -839,9 +840,20 @@
 
 #pragma mark - FCCardMoveEndedDelegate methods
 
+- (void) card:(FCCard *)card willMoveToPosition:(CGPoint)position
+{
+    _autoMovingCard = YES;
+}
+
 - (void) card:(FCCard *)card didMoveToPosition:(CGPoint)position
 {
-    _autoStackMoving = NO;
+    _autoMovingCard = NO;
+    
+    if( [self checkGameSolved] )
+    {
+        [self.presentationDelegate shouldPresentModalForAction:FCModalActionGameSolved userInfo:nil];
+        self.paused = YES;
+    }
     
     if( _autoStackMoving )
     {
@@ -858,7 +870,7 @@
     
     static BOOL flag = YES;
     
-    //* THIS
+    //*
     if( ![FCGameState shared].undoAvailable )
     {
         FCMenuButton *button = [_menuScene buttonWithTag:FCMainMenuButtonTagUndo];
@@ -882,13 +894,15 @@
         _longTouchTriggered = YES;
     }
 #endif
-    
+   
+    /*
     if( [self checkGameSolved] )
     {
         // TODO. GAME SOLVED!!
         [self.presentationDelegate shouldPresentModalForAction:FCModalActionGameSolved userInfo:nil];
         self.paused = YES;
     }
+    */
 }
 
 - (void) update:(CFTimeInterval)currentTime

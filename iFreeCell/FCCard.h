@@ -16,6 +16,7 @@
 
 @protocol FCCardMoveEndedDelegate <NSObject>
 
+- (void) card:(FCCard *)card willMoveToPosition:(CGPoint)position;
 - (void) card:(FCCard *)card didMoveToPosition:(CGPoint)position;
 
 @end

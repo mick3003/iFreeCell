@@ -145,7 +145,9 @@
 
 - (BOOL) childCardIsMovable
 {
-    return ( _number+1 == _parentCard.number && _isRed == !_parentCard.isRed );
+    BOOL bRet = ( _number+1 == _parentCard.number && _isRed == !_parentCard.isRed );
+    NSLog(@"childCardIsMovable returning %@ for card with name %@", bRet?@"YES":@"NO", self.name);
+    return bRet;
 }
 
 - (BOOL) allChildCardsAreMovable
@@ -167,6 +169,7 @@
         }
     }
     
+    NSLog(@"allChildCardsAreMovable returning %@ for card with name %@", bRet? @"YES":@"NO", self.name);
     return bRet;
 }
 
@@ -201,7 +204,8 @@
 {
     // NSLog(@"Moving %@ TO %@", self, [[FCPoint pointWithCGPoint:point] description]);
     // SKAction *move = [SKAction moveTo:point duration:.15];
-    SKAction *move = [SKAction moveTo:point duration:1.2];
+    [self.moveDelegate card:self willMoveToPosition:point];
+    SKAction *move = [SKAction moveTo:point duration:0.8];
     
     __weak typeof(self) weakSelf = self;
     
@@ -231,6 +235,15 @@
          else
          {
              weakSelf.zPosition = weakSelf.parentCard.zPosition + 1.F;
+             /*
+             self.parentCard.childCard = nil;
+             self.stacked = self.parentCard.stacked;
+             
+             if( self.parentCard.stacked )
+             {
+                 [self.parentCard unsetPhysics];
+             }
+             */
          }
          [self.moveDelegate card:self didMoveToPosition:self.position];
      }];
@@ -306,22 +319,30 @@
     
     [self.parentCard setupPhysics];
     
+    self.parentCard.childCard = nil;
+    
     pCard.childCard = self;
     self.parentSlot.lastCard = nil;
     self.parentSlot = nil;
     self.inFreeCell = NO;
-    self.parentCard.childCard = nil;
+    
     self.parentCard = pCard;
     self.parentCard.colorBlendFactor = 0.F;
     self.column = pCard.column;
-    self.stacked = pCard.stacked;
+    
+    //*
+    self.stacked = self.parentCard.stacked;
     
     if( pCard.stacked )
     {
         [pCard unsetPhysics];
     }
+    // */
     
-    [self moveToPosition:[self getPositionFromParentPosition:pCard.position]];
+    if( self.parentCard.stacked )
+        [self moveToPosition:self.parentCard.firstParentSlot.position];
+    else
+        [self moveToPosition:[self getPositionFromParentPosition:pCard.position]];
 }
 
 - (void) becomeChildOfSlot:(FCSlot *)slot
@@ -403,7 +424,7 @@
 
 - (void) unsetPhysics
 {
-    // self.physicsBody.dynamic = NO;
+    self.physicsBody.dynamic = NO;
 }
 
 - (BOOL) physicsEnabled
@@ -413,7 +434,7 @@
 
 - (void) unsetChildsPhysics
 {
-    /*
+    //*
     FCCard *child = self.childCard;
     
     while( child )
@@ -421,7 +442,7 @@
         [child unsetPhysics];
         child = child.childCard;
     }
-    */
+    // */
 }
 
 - (void) setupChildsPhysics
