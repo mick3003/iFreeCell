@@ -759,6 +759,7 @@
             break;
             
         case FCMainMenuButtonTagCredits:
+            [self.presentationDelegate shouldPresentModalForAction:FCModalActionMisc userInfo:nil];
             break;
             
         default:

@@ -48,7 +48,7 @@
                              @{ @"name": @"Undo"       , @"tag": @(FCMainMenuButtonTagUndo)      },
                              @{ @"name": @"New game"   , @"tag": @(FCMainMenuButtonTagNewGame)   },
                              @{ @"name": @"Reset game" , @"tag": @(FCMainMenuButtonTagResetGame) },
-                             @{ @"name": @"Credits"    , @"tag": @(FCMainMenuButtonTagCredits)   }
+                             @{ @"name": @"Miscelanea" , @"tag": @(FCMainMenuButtonTagCredits)   }
                           ];
         
         [self prepareContent];
