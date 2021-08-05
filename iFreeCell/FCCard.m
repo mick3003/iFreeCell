@@ -146,7 +146,7 @@
 - (BOOL) childCardIsMovable
 {
     BOOL bRet = ( _number+1 == _parentCard.number && _isRed == !_parentCard.isRed );
-    NSLog(@"childCardIsMovable returning %@ for card with name %@", bRet?@"YES":@"NO", self.name);
+    // NSLog(@"childCardIsMovable returning %@ for card with name %@", bRet?@"YES":@"NO", self.name);
     return bRet;
 }
 
@@ -169,7 +169,7 @@
         }
     }
     
-    NSLog(@"allChildCardsAreMovable returning %@ for card with name %@", bRet? @"YES":@"NO", self.name);
+    // NSLog(@"allChildCardsAreMovable returning %@ for card with name %@", bRet? @"YES":@"NO", self.name);
     return bRet;
 }
 
@@ -235,15 +235,6 @@
          else
          {
              weakSelf.zPosition = weakSelf.parentCard.zPosition + 1.F;
-             /*
-             self.parentCard.childCard = nil;
-             self.stacked = self.parentCard.stacked;
-             
-             if( self.parentCard.stacked )
-             {
-                 [self.parentCard unsetPhysics];
-             }
-             */
          }
          [self.moveDelegate card:self didMoveToPosition:self.position];
      }];
@@ -339,9 +330,9 @@
     }
     // */
     
-    if( self.parentCard.stacked )
-        [self moveToPosition:self.parentCard.firstParentSlot.position];
-    else
+//    if( self.parentCard.stacked )
+//        [self moveToPosition:self.parentCard.firstParentSlot.position];
+//    else
         [self moveToPosition:[self getPositionFromParentPosition:pCard.position]];
 }
 
@@ -393,10 +384,10 @@
 {
     CGPoint retPoint = parentPosition;
     
-    if( self.parentCard.stacked == NO )
-    {
+    if( self.parentCard.stacked )
+        retPoint = self.parentCard.firstParentSlot.position;
+    else
         retPoint.y = retPoint.y - [[FCGameState shared] separationForColumn:self.column];
-    }
     
     return retPoint;
 }

@@ -795,7 +795,11 @@
 
 - (void) checkAutoStackCards
 {
+    NSLog(@" ------> %s called", __FUNCTION__);
     if( FCGameState.shared.autoStack == NO ) return;
+    if( _autoMovingCard == YES ) return;
+    
+    NSLog(@" ------> %s continuing", __FUNCTION__);
     
     _autoStackMoving = NO;
     
@@ -803,11 +807,13 @@
     {
         if( !card.stacked && card.number == FCCardNumberTypeAce && card.childCard == nil )
         {
+            NSLog(@"+++++++> %s moving card with name %@", __FUNCTION__, card.name);
             FCSlot *slot = [self firstFreeStackSlot];
             card.zPosition = kZPositionMove;
             [card becomeChildOfSlot:slot];
             
             _autoStackMoving = YES;
+            
             return;
         }
         else if( !card.stacked && card.childCard == nil )
@@ -816,6 +822,8 @@
             
             if( posibleParent.stacked && (card.number == 2 || [[FCGameState shared] possibleChildsAlreadyStackedForCard:card]) )
             {
+                NSLog(@"+++++++> %s moving card with name %@", __FUNCTION__, card.name);
+                
                 card.zPosition = kZPositionMove;
                 [card becomeChildOfCard:posibleParent];
                 
