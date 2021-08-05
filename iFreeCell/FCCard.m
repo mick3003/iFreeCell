@@ -145,9 +145,7 @@
 
 - (BOOL) childCardIsMovable
 {
-    BOOL bRet = ( _number+1 == _parentCard.number && _isRed == !_parentCard.isRed );
-    // NSLog(@"childCardIsMovable returning %@ for card with name %@", bRet?@"YES":@"NO", self.name);
-    return bRet;
+    return ( _number+1 == _parentCard.number && _isRed == !_parentCard.isRed );
 }
 
 - (BOOL) allChildCardsAreMovable
@@ -168,8 +166,6 @@
             break;
         }
     }
-    
-    // NSLog(@"allChildCardsAreMovable returning %@ for card with name %@", bRet? @"YES":@"NO", self.name);
     return bRet;
 }
 
@@ -200,12 +196,15 @@
     [self.childCard setZPosition:zPosition+1.F];
 }
 
-- (void) moveToPosition:(CGPoint) point
+- (void) moveToPosition:(CGPoint)point
 {
-    // NSLog(@"Moving %@ TO %@", self, [[FCPoint pointWithCGPoint:point] description]);
-    // SKAction *move = [SKAction moveTo:point duration:.15];
+    [self moveToPosition:point isMovingChild:NO];
+}
+
+- (void) moveToPosition:(CGPoint) point isMovingChild:(BOOL)isMovingChild
+{
     [self.moveDelegate card:self willMoveToPosition:point];
-    SKAction *move = [SKAction moveTo:point duration:0.8];
+    SKAction *move = [SKAction moveTo:point duration:0.25];
     
     __weak typeof(self) weakSelf = self;
     
@@ -236,64 +235,20 @@
          {
              weakSelf.zPosition = weakSelf.parentCard.zPosition + 1.F;
          }
-         [self.moveDelegate card:self didMoveToPosition:self.position];
+        
+         if( isMovingChild == NO )
+             [self.moveDelegate card:self didMoveToPosition:self.position];
      }];
     
     self.lastPosition = point;
     if( self.childCard )
-        [self.childCard moveToPosition:[self getPositionFromParentPosition:point]];
+        [self.childCard moveToPosition:[self getPositionFromParentPosition:point] isMovingChild:YES];
 }
-/*
- - (void) moveToPosition:(CGPoint) point
- {
-     // NSLog(@"Moving %@ TO %@", self, [[FCPoint pointWithCGPoint:point] description]);
-     // SKAction *move = [SKAction moveTo:point duration:.15];
-     SKAction *move = [SKAction moveTo:point duration:1.2];
-     
-     __weak typeof(self) weakSelf = self;
-     
-     [self runAction:move completion:^
-      {
-          if( weakSelf.parentSlot )
-          {
-              if( weakSelf.number == FCCardNumberTypeKing )
-              {
-                  weakSelf.zPosition = kZPositionGameLayer + 1;
-                  weakSelf.parentSlot.lastCard = self;
-              }
-              else
-              {
-                  if( weakSelf == self.parentSlot.lastCard )
-                  {
-                      weakSelf.zPosition = kZPositionGameLayer + 1;
-                      
-                  }
-                  else
-                  {
-                      weakSelf.zPosition = self.parentSlot.lastCard.zPosition + 1.F;
-                      weakSelf.parentSlot.lastCard = self;
-                  }
-              }
-          }
-          else
-          {
-              weakSelf.zPosition = weakSelf.parentCard.zPosition + 1.F;
-          }
-          [self.moveDelegate card:self didMoveToPosition:self.position];
-      }];
-     
-     self.lastPosition = point;
-     if( self.childCard )
-         [self.childCard moveToPosition:[self getPositionFromParentPosition:point]];
- }
- */
 
 - (void) restorePosition
 {
     [self.parentCard highlight:NO];
     [self moveToPosition:self.lastPosition];
-    // OJO OJO
-    // [self.childCard moveToPosition:[self getPositionFromParentPosition:self.lastPosition]];
 }
 
 - (void) becomeChildOfCard:(FCCard *) pCard
@@ -321,14 +276,12 @@
     self.parentCard.colorBlendFactor = 0.F;
     self.column = pCard.column;
     
-    //*
     self.stacked = self.parentCard.stacked;
     
     if( pCard.stacked )
     {
         [pCard unsetPhysics];
     }
-    // */
         
     [self moveToPosition:[self getPositionFromParentPosition:pCard.position]];
 }

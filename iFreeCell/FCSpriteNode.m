@@ -33,7 +33,6 @@
 
 - (void) highlight:(BOOL)value
 {
-    //*
     if( value != _highlighted )
     {
         _highlighted = value;
@@ -45,21 +44,6 @@
         self.color = color;
         self.colorBlendFactor = blendFactor;
     }
-    //*/
-    
-    /*
-    if( value != _highlighted )
-    {
-        _highlighted = value;
-        CGFloat blendFactor = 0.F;
-        if( value ) blendFactor = 1.F;
-        
-        SKAction *action = [SKAction colorizeWithColor:[SKColor colorWithRed:.1F green:.5F blue:.8F alpha:1.F]
-                                      colorBlendFactor:blendFactor
-                                              duration:.1F];
-        [self runAction:action];
-    }
-    //*/
 }
 
 - (void) setupPhysics

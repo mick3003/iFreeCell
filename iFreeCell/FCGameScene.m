@@ -302,11 +302,8 @@
         freeGameSlots --;
     }
     
-    NSInteger ret;
-    
-    // ret = (freeFreecellSlots + 1) + ((freeFreecellSlots?freeFreecellSlots:1) * freeGameSlots);
-    ret = (freeFreecellSlots) + ((freeFreecellSlots? freeFreecellSlots: 1) * freeGameSlots);
-    
+    NSInteger ret = (freeFreecellSlots) + ((freeFreecellSlots? freeFreecellSlots: 1) * freeGameSlots);
+    // NSLog(@"---> %s returning %ld", __FUNCTION__, ret);
     return ret;
 }
 
@@ -726,7 +723,6 @@
 {
     BOOL bRet = YES;
     
-    //*
     for( FCCard *card in _cards )
     {
         if( card.stacked == NO )
@@ -735,28 +731,6 @@
             break;
         }
     }
-    // */
-    /*
-    for( FCSlot *slot in _cardsSlots )
-    {
-        if( slot.lastCard.number != FCCardNumberTypeKing )
-        {
-            bRet = NO;
-            break;
-        }
-    }
-    // */
-    /*
-    for( FCSlot *slot in _freeCellSlots )
-    {
-        if( slot.lastCard == nil )
-        {
-            bRet = NO;
-            break;
-        }
-    }
-    // */
-    // NSLog(@"checkGameSolved returning %@", bRet?@"YES":@"NO");
     return bRet;
 }
 
@@ -782,7 +756,6 @@
             
         case FCMainMenuButtonTagResetGame:
             [self.presentationDelegate shouldPresentModalForAction:FCModalActionReset userInfo:nil];
-            // [self resetMenuOption];
             break;
             
         case FCMainMenuButtonTagCredits:
@@ -797,11 +770,11 @@
 
 - (void) checkAutoStackCards
 {
-    NSLog(@" ------> %s called", __FUNCTION__);
+    // NSLog(@" ------> %s called", __FUNCTION__);
     if( FCGameState.shared.autoStack == NO ) return;
     if( _autoMovingCard == YES ) return;
     
-    NSLog(@" ------> %s continuing", __FUNCTION__);
+    // NSLog(@" ------> %s continuing", __FUNCTION__);
     
     _autoStackMoving = NO;
     
@@ -809,13 +782,12 @@
     {
         if( !card.stacked && card.number == FCCardNumberTypeAce && card.childCard == nil )
         {
-            NSLog(@"+++++++> %s moving card with name %@", __FUNCTION__, card.name);
+            // NSLog(@"+++++++> %s moving card with name %@", __FUNCTION__, card.name);
             FCSlot *slot = [self firstFreeStackSlot];
             card.zPosition = kZPositionMove;
             [card becomeChildOfSlot:slot];
             
             _autoStackMoving = YES;
-            
             return;
         }
         else if( !card.stacked && card.childCard == nil )
@@ -824,7 +796,7 @@
             
             if( posibleParent.stacked && (card.number == 2 || [[FCGameState shared] possibleChildsAlreadyStackedForCard:card]) )
             {
-                NSLog(@"+++++++> %s moving card with name %@", __FUNCTION__, card.name);
+                // NSLog(@"+++++++> %s moving card with name %@", __FUNCTION__, card.name);
                 
                 card.zPosition = kZPositionMove;
                 [card becomeChildOfCard:posibleParent];
@@ -834,7 +806,7 @@
             }
         }
     }
-    NSLog(@" ------> %s finished ---------------------", __FUNCTION__);
+    // NSLog(@" ------> %s finished ---------------------", __FUNCTION__);
 }
 
 - (FCSlot *) firstFreeStackSlot
@@ -898,7 +870,7 @@
         FCMenuButton *button = [_menuScene buttonWithTag:FCMainMenuButtonTagUndo];
         button.colorBlendFactor = 0.F;
     }
-    // */
+
 #ifdef DEBUG
     _longTouchTime += timeDelta;
     if( _longTouchTime > kLongPressTime && !_longTouchTriggered && _longTouchBeganPoint.x != 0.F )
@@ -907,15 +879,6 @@
         _longTouchTriggered = YES;
     }
 #endif
-   
-    /*
-    if( [self checkGameSolved] )
-    {
-        // TODO. GAME SOLVED!!
-        [self.presentationDelegate shouldPresentModalForAction:FCModalActionGameSolved userInfo:nil];
-        self.paused = YES;
-    }
-    */
 }
 
 - (void) update:(CFTimeInterval)currentTime
