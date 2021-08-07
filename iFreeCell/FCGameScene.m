@@ -665,8 +665,8 @@
     }
     else
     {
+        NSMutableArray <FCSpriteNode *> *spritesToNormal = @[].mutableCopy;
         FCSpriteNode *spriteToHighlight = nil;
-        FCSpriteNode *spriteToNormal = nil;
         
         if( _contactNodes.count == 1 )
         {
@@ -685,12 +685,12 @@
             if( distance0 < distance1 )
             {
                 spriteToHighlight = n1;
-                spriteToNormal = n2;
+                [spritesToNormal addObject:n2];
             }
             else if( distance0 > distance1 )
             {
                 spriteToHighlight = n2;
-                spriteToNormal = n1;
+                [spritesToNormal addObject:n1];
             }
         }
         else if( _contactNodes.count != 0 )
@@ -709,7 +709,7 @@
             }
         }
         
-        if( spriteToNormal )
+        for( FCSpriteNode *spriteToNormal in spritesToNormal )
         {
             if( [spriteToNormal respondsToSelector:@selector(highlight:)] )
             {
@@ -826,13 +826,13 @@
 
 - (void) card:(FCCard *)card willMoveToPosition:(CGPoint)position
 {
-    NSLog(@"*****> %s for card name %@", __FUNCTION__, card.name);
+    // NSLog(@"*****> %s for card name %@", __FUNCTION__, card.name);
     _autoMovingCard = YES;
 }
 
 - (void) card:(FCCard *)card didMoveToPosition:(CGPoint)position
 {
-    NSLog(@"*****> %s for card name %@ flag is %@", __FUNCTION__, card.name, _autoStackMoving?@"YES":@"NO");
+    // NSLog(@"*****> %s for card name %@ flag is %@", __FUNCTION__, card.name, _autoStackMoving?@"YES":@"NO");
     _autoMovingCard = NO;
     
     if( [self checkGameSolved] )

@@ -44,16 +44,12 @@
     SKSpriteNode *_contactNode;
     
     BOOL _dragging;
-    
-     // Menu
-    
-    // CGFloat _menuMoveDelta;
 }
 
 @property (nonatomic, weak) id <FCModalPresentationDelegate> presentationDelegate;
 @property (nonatomic, assign) BOOL menuShowing;
 
-
 + (instancetype) sceneWithSize:(CGSize)size gameNumber:(NSInteger)gameNumber;
 - (id) initWithSize:(CGSize)size gameNumber:(NSInteger)gameNumber;
+
 @end

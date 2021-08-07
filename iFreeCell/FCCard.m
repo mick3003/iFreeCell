@@ -205,6 +205,7 @@
 {
     [self.moveDelegate card:self willMoveToPosition:point];
     SKAction *move = [SKAction moveTo:point duration:0.25];
+    move.timingMode = SKActionTimingEaseOut;
     
     __weak typeof(self) weakSelf = self;
     

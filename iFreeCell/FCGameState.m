@@ -15,6 +15,8 @@
 #define kUserDefaultsKeySavedCardsSlots     @"UserDefaultsSavedCardsSlots"
 #define kUserDefaultsKeyCardSeparations     @"UserDefaultsCardSeparations"
 #define kUserDefaultsKeyGameNumber          @"UserDefaultsGameNumber"
+#define kUserDefaultsKeyNumberOfPlayedGames @"UserDefaultsNumberOfPlayedGames"
+#define kUserDefaultsKeyNumberOfWins        @"UserDefaultsNumberOfWins"
 
 
 @implementation FCMove
@@ -348,6 +350,44 @@ static FCGameState *instance = nil;
 {
     [self.movesStack removeAllObjects];
 }
+
+
+#pragma mark - Statistics
+
+- (void) addGameToStatistics
+{
+    NSNumber *number = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyNumberOfPlayedGames];
+    NSInteger integer;
+    if( number ) integer = number.integerValue + 1;
+    else integer = 1;
+    [[NSUserDefaults standardUserDefaults] setObject:@(integer) forKey:kUserDefaultsKeyNumberOfPlayedGames];
+}
+
+- (void) addWinToStatistics
+{
+    NSNumber *number = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyNumberOfWins];
+    NSInteger integer;
+    if( number ) integer = number.integerValue + 1;
+    else integer = 1;
+    [[NSUserDefaults standardUserDefaults] setObject:@(integer) forKey:kUserDefaultsKeyNumberOfWins];
+}
+
+- (NSInteger) getNumberOfPlayedGames
+{
+    NSNumber *number = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyNumberOfPlayedGames];
+    if( number ) return number.integerValue;
+    else return 0;
+}
+
+- (NSInteger) getNumberOfWins
+{
+    NSNumber *number = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyNumberOfWins];
+    if( number ) return number.integerValue;
+    else return 0;
+}
+
+
+#pragma mark - Trace & debug
 
 - (void) printSlots:(FCSlotType)type
 {

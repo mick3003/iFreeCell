@@ -54,6 +54,11 @@
 - (BOOL) undoAvailable;
 - (void) resetUndoStack;
 
+- (void) addGameToStatistics;
+- (void) addWinToStatistics;
+- (NSInteger) getNumberOfPlayedGames;
+- (NSInteger) getNumberOfWins;
+
 - (void) printSlots:(FCSlotType)type;
 
 @end
