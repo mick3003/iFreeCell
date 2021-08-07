@@ -17,6 +17,17 @@
 
 #define kLongPressTime  .5F
 
+@interface ContactNode : NSObject
+{
+}
+@property (nonatomic, retain) FCSpriteNode *node;
+@property (nonatomic, assign) CGFloat distance;
+@property (nonatomic, assign) BOOL mustHighlight;
+@end
+
+@implementation ContactNode
+@end
+
 @interface FCGameScene () <SKPhysicsContactDelegate, FCMainMenuDelegate, FCCardMoveEndedDelegate>
 {
     FCMenuScene *_menuScene;
@@ -660,60 +671,44 @@
         {
             if( [sprite respondsToSelector:@selector(highlight:)] ) [sprite highlight:NO];
         }
-        
         [_contactNodes removeAllObjects];
     }
     else
     {
-        NSMutableArray <FCSpriteNode *> *spritesToNormal = @[].mutableCopy;
-        FCSpriteNode *spriteToHighlight = nil;
+        NSMutableArray <ContactNode *> *cNodes = @[].mutableCopy;
         
-        if( _contactNodes.count == 1 )
+        for( FCSpriteNode *node in _contactNodes )
         {
-            spriteToHighlight = _contactNodes[0];
-        }
-        else if( _contactNodes.count == 2 )
-        {
-            FCSpriteNode *n1, *n2;
+            ContactNode *cNode = [[ContactNode alloc] init];
+            cNode.node = node;
+            cNode.distance = [node distanceFromSprite:_movingCard];
             
-            n1 = _contactNodes[0];
-            n2 = _contactNodes[1];
-            
-            CGFloat distance0 = [n1 distanceFromSprite:_movingCard];
-            CGFloat distance1 = [n2 distanceFromSprite:_movingCard];
-            
-            if( distance0 < distance1 )
-            {
-                spriteToHighlight = n1;
-                [spritesToNormal addObject:n2];
-            }
-            else if( distance0 > distance1 )
-            {
-                spriteToHighlight = n2;
-                [spritesToNormal addObject:n1];
-            }
-        }
-        else if( _contactNodes.count != 0 )
-        {
-            NSLog(@"WARNING: %s -> _contactNodes.count = %ld", __FUNCTION__, (unsigned long)_contactNodes.count);
-            [_contactNodes removeAllObjects];
-            return;
+            [cNodes addObject:cNode];
         }
         
-        if( spriteToHighlight )
-        {
-            if( [spriteToHighlight respondsToSelector:@selector(highlight:)] && [spriteToHighlight canBeParentOf:_movingCard] )
-            {
-                [spriteToHighlight highlight:YES];
-                _contactNode = spriteToHighlight;
-            }
-        }
+        [cNodes sortUsingComparator:^NSComparisonResult(ContactNode *a, ContactNode *b)
+         {
+            return [@(a.distance) compare:@(b.distance)];
+        }];
         
-        for( FCSpriteNode *spriteToNormal in spritesToNormal )
+        if( cNodes.count > 0 ) cNodes[0].mustHighlight = YES;
+        
+        for( ContactNode *cNode in cNodes )
         {
-            if( [spriteToNormal respondsToSelector:@selector(highlight:)] )
+            if( cNode.mustHighlight )
             {
-                [spriteToNormal highlight:NO];
+                if( [cNode.node respondsToSelector:@selector(highlight:)] && [cNode.node canBeParentOf:_movingCard] )
+                {
+                    [cNode.node highlight:YES];
+                    _contactNode = cNode.node;
+                }
+            }
+            else
+            {
+                if( [cNode.node respondsToSelector:@selector(highlight:)] )
+                {
+                    [cNode.node highlight:NO];
+                }
             }
         }
     }
