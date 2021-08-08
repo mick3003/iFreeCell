@@ -696,17 +696,15 @@
 
 - (BOOL) checkGameSolved
 {
-    BOOL bRet = YES;
-    
     for( FCCard *card in _cards )
     {
         if( card.stacked == NO )
         {
-            bRet = NO;
-            break;
+            return NO;
         }
     }
-    return bRet;
+    [[FCGameState shared] addWinToStatistics];
+    return YES;
 }
 
 

@@ -181,7 +181,8 @@
             break;
         case FCModalActionGameSolved:
             segueObject.modalAction = FCModalActionGameSolved;
-            segueObject.message = @"You win!!\nDo you wanto to play another game?";
+            segueObject.message =
+                [NSString stringWithFormat:@"You win!!\nDo you wanto to play another game?\n%@", [self getStatisticsString]];
             segueObject.buttonsArray = @[@"NEW GAME"];
             [self performSegueWithIdentifier:@"GameToAlertSegue" sender:segueObject];
             break;
@@ -197,6 +198,15 @@
 - (void) drawGameNumber:(NSInteger)gameNumber
 {
     self.gameNumberLabel.text = [NSString stringWithFormat:@"Game # %05ld", gameNumber];
+}
+
+- (NSString *) getStatisticsString
+{
+    NSInteger playedGames = [[FCGameState shared] getNumberOfPlayedGames];
+    NSInteger wonGames = [[FCGameState shared] getNumberOfWins];
+    NSInteger perc = wonGames / playedGames * 100.0F;
+    
+    return [NSString stringWithFormat:@"Games won: %ld/%ld (%ld%%)", playedGames, wonGames, perc];
 }
 
 - (void) openCartDetailOnPoint:(CGPoint)point

@@ -86,6 +86,7 @@
 - (void) resetMenuOption
 {
     [[FCGameState shared] resetState];
+    [[FCGameState shared] addGameToStatistics];
     [self prepareContent];
 }
 
@@ -109,6 +110,7 @@
 {
     [FCGameState shared].gameNumber = gameNumber;
     [[FCGameState shared] resetState];
+    [[FCGameState shared] addGameToStatistics];
     [self prepareContent];
     self.paused = NO;
 }
