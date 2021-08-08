@@ -15,6 +15,7 @@
 #define kUserDefaultsKeySavedCardsSlots     @"UserDefaultsSavedCardsSlots"
 #define kUserDefaultsKeyCardSeparations     @"UserDefaultsCardSeparations"
 #define kUserDefaultsKeyGameNumber          @"UserDefaultsGameNumber"
+#define kUserDefaultsKeyAutoStack           @"UserDefaultsAutoStack"
 #define kUserDefaultsKeyNumberOfPlayedGames @"UserDefaultsNumberOfPlayedGames"
 #define kUserDefaultsKeyNumberOfWins        @"UserDefaultsNumberOfWins"
 
@@ -68,9 +69,6 @@ static FCGameState *instance = nil;
 
 - (void) initialize
 {
-    self.movesStack = [NSMutableArray new];
-    self.autoStack = YES;
-    
     NSError *error = nil;
     
     if( self.cardSep == nil )
@@ -154,8 +152,23 @@ static FCGameState *instance = nil;
             self.freeCellSlots = [NSMutableArray arrayWithCapacity:4];
         }
     }
+ 
+    self.movesStack = [NSMutableArray new];
+ 
+    if( [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyAutoStack] == nil )
+        self.autoStack = YES;
     
     self.gameNumber = [[[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyGameNumber] intValue];
+}
+
+- (BOOL) autoStack
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kUserDefaultsKeyAutoStack];
+}
+
+- (void) setAutoStack:(BOOL)autoStack
+{
+    [[NSUserDefaults standardUserDefaults] setBool:autoStack forKey:kUserDefaultsKeyAutoStack];
 }
 
 - (CGFloat) separationForColumn:(NSInteger)column

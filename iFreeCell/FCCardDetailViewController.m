@@ -25,6 +25,8 @@
 {
     [super viewDidLoad];
     
+    self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+    
     self.labelsArray = @[
                             @"",
                             @"Name:           ",

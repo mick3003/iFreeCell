@@ -15,8 +15,8 @@
 }
 
 @property (weak, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UIButton *okButton;
-
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
+ 
 @end
 
 
@@ -38,9 +38,7 @@
     self.contentView.clipsToBounds = YES;
     self.contentView.backgroundColor = [UIColor whiteColor];
     self.contentView.layer.cornerRadius = 15.F;
-    
-    self.okButton.layer.cornerRadius = 10.F;
-    
+    self.closeButton.layer.cornerRadius = 10.F;
     self.view.backgroundColor = [UIColor clearColor];
     
     [self.delegate miscViewControllerDidOpen:self];
@@ -49,7 +47,7 @@
 
 #pragma mark - Actions implementation
 
-- (IBAction) buttonTapped:(UIButton *)sender
+- (IBAction) closeButtonTapped:(UIButton *)sender
 {
     NSLog(@"%s", __FUNCTION__);
     [self close];
