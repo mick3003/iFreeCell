@@ -204,7 +204,7 @@
 - (void) moveToPosition:(CGPoint) point isMovingChild:(BOOL)isMovingChild
 {
     [self.moveDelegate card:self willMoveToPosition:point];
-    SKAction *move = [SKAction moveTo:point duration:0.25];
+    SKAction *move = [SKAction moveTo:point duration:0.3];
     move.timingMode = SKActionTimingEaseOut;
     
     __weak typeof(self) weakSelf = self;

@@ -17,17 +17,6 @@
 
 #define kLongPressTime  .5F
 
-@interface ContactNode : NSObject
-{
-}
-@property (nonatomic, retain) FCSpriteNode *node;
-@property (nonatomic, assign) CGFloat distance;
-@property (nonatomic, assign) BOOL mustHighlight;
-@end
-
-@implementation ContactNode
-@end
-
 @interface FCGameScene () <SKPhysicsContactDelegate, FCMainMenuDelegate, FCCardMoveEndedDelegate>
 {
     FCMenuScene *_menuScene;
@@ -675,39 +664,30 @@
     }
     else
     {
-        NSMutableArray <ContactNode *> *cNodes = @[].mutableCopy;
+        [_contactNodes sortUsingComparator:^NSComparisonResult(FCSpriteNode *a, FCSpriteNode *b)
+         {
+            CGFloat distanceA = [a distanceFromSprite:_movingCard];
+            CGFloat distanceB = [b distanceFromSprite:_movingCard];
+            return [@(distanceA) compare:@(distanceB)];
+        }];
+        
+        if( _contactNodes.count > 0 ) _contactNodes[0].mustHighlight = YES;
         
         for( FCSpriteNode *node in _contactNodes )
         {
-            ContactNode *cNode = [[ContactNode alloc] init];
-            cNode.node = node;
-            cNode.distance = [node distanceFromSprite:_movingCard];
-            
-            [cNodes addObject:cNode];
-        }
-        
-        [cNodes sortUsingComparator:^NSComparisonResult(ContactNode *a, ContactNode *b)
-         {
-            return [@(a.distance) compare:@(b.distance)];
-        }];
-        
-        if( cNodes.count > 0 ) cNodes[0].mustHighlight = YES;
-        
-        for( ContactNode *cNode in cNodes )
-        {
-            if( cNode.mustHighlight )
+            if( node.mustHighlight )
             {
-                if( [cNode.node respondsToSelector:@selector(highlight:)] && [cNode.node canBeParentOf:_movingCard] )
+                if( [node respondsToSelector:@selector(highlight:)] && [node canBeParentOf:_movingCard] )
                 {
-                    [cNode.node highlight:YES];
-                    _contactNode = cNode.node;
+                    [node highlight:YES];
+                    _contactNode = node;
                 }
             }
             else
             {
-                if( [cNode.node respondsToSelector:@selector(highlight:)] )
+                if( [node respondsToSelector:@selector(highlight:)] )
                 {
-                    [cNode.node highlight:NO];
+                    [node highlight:NO];
                 }
             }
         }

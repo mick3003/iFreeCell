@@ -33,6 +33,7 @@
 
 - (void) highlight:(BOOL)value
 {
+    self.mustHighlight = NO;
     if( value != _highlighted )
     {
         _highlighted = value;

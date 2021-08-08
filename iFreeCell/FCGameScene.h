@@ -22,12 +22,12 @@
     SKNode *gameLayer;
     
     // SKSpriteNode *background;
-    NSMutableArray *_freeCellSlots;
-    NSMutableArray *_cardsSlots;
-    NSMutableArray *_gameSlots;
+    NSMutableArray <FCSlot *> *_freeCellSlots;
+    NSMutableArray <FCSlot *> *_cardsSlots;
+    NSMutableArray <FCSlot *> *_gameSlots;
     
-    NSMutableArray *_cards;
-    NSMutableArray *_contactNodes;
+    NSMutableArray <FCCard *> *_cards;
+    NSMutableArray <FCSpriteNode *> *_contactNodes;
     
     CGFloat _mainScale;
     

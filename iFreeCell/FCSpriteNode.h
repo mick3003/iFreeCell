@@ -19,6 +19,7 @@ static const uint32_t slotCategory = 0x1 << 1;
 }
 
 @property (nonatomic) FCPoint *fcPosition;
+@property (nonatomic) BOOL mustHighlight;
 
 - (void) setupPhysics;
 - (void) highlight:(BOOL)value;
