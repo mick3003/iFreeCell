@@ -389,7 +389,7 @@ static FCGameState *instance = nil;
 {
     NSNumber *number = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyNumberOfPlayedGames];
     if( number ) return number.integerValue;
-    else return 0;
+    else return 1;
 }
 
 - (NSInteger) getNumberOfWins

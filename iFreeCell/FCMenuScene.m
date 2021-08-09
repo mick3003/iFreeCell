@@ -48,7 +48,7 @@
                              @{ @"name": @"Undo"       , @"tag": @(FCMainMenuButtonTagUndo)      },
                              @{ @"name": @"New game"   , @"tag": @(FCMainMenuButtonTagNewGame)   },
                              @{ @"name": @"Reset game" , @"tag": @(FCMainMenuButtonTagResetGame) },
-                             @{ @"name": @"Miscelanea" , @"tag": @(FCMainMenuButtonTagCredits)   }
+                             @{ @"name": @"Options"    , @"tag": @(FCMainMenuButtonTagCredits)   }
                           ];
         
         [self prepareContent];
@@ -140,7 +140,7 @@
     _touchedButton.colorBlendFactor = 0.F;
 }
 
-- (FCMenuButton *)buttonWithTag:(FCMainMenuButtonTag)tag
+- (FCMenuButton *) buttonWithTag:(FCMainMenuButtonTag)tag
 {
     FCMenuButton *retButton = nil;
     NSInteger i = 0;

@@ -696,9 +696,17 @@
 
 - (BOOL) checkGameSolved
 {
+    /*
     for( FCCard *card in _cards )
     {
         if( card.stacked == NO )
+        {
+            return NO;
+        }
+    }*/
+    for( FCSlot *slot in _freeCellSlots )
+    {
+        if( slot.lastCard == nil )
         {
             return NO;
         }
