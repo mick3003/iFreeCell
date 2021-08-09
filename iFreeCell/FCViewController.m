@@ -14,12 +14,12 @@
 #import "FCAlertViewController.h"
 #import "FCGameScene+MainMenu.h"
 #import "FCNewGameViewController.h"
-#import "FCMiscViewController.h"
+#import "FCOptionsViewController.h"
 
 @interface FCViewController () < FCModalPresentationDelegate,
                                  FCAlertViewControllerDelegate,
                                  FCNewGameControllerDelegate,
-                                 FCMiscViewControllerDelegate >
+                                 FCOptionsViewControllerDelegate >
 {
 }
 
@@ -155,7 +155,7 @@
     }
     else if( [segue.identifier isEqualToString:@"MiscToAlertSegue"] )
     {
-        FCMiscViewController *miscViewController = segue.destinationViewController;
+        FCOptionsViewController *miscViewController = segue.destinationViewController;
         miscViewController.delegate = self;
     }
 }
@@ -182,7 +182,7 @@
         case FCModalActionGameSolved:
             segueObject.modalAction = FCModalActionGameSolved;
             segueObject.message =
-                [NSString stringWithFormat:@"You win!!\nDo you want to play another game?\n%@", [self getStatisticsString]];
+                [NSString stringWithFormat:@"Game solved!\n%@\nDo you want to play another game?", [self getStatisticsString]];
             segueObject.buttonsArray = @[@"NEW GAME"];
             [self performSegueWithIdentifier:@"GameToAlertSegue" sender:segueObject];
             break;
@@ -260,14 +260,14 @@
 }
 
 
-#pragma mark - FCMiscGameController delegate
+#pragma mark - FCOptionsGameController delegate
 
-- (void) miscViewControllerDidOpen:(FCMiscViewController *)miscViewController
+- (void) optionsViewControllerDidOpen:(FCOptionsViewController *)optionsViewController
 {
     [self.gameScene menuOpen:NO];
 }
 
-- (void) miscViewController:(FCMiscViewController *)miscViewController tappedButtonAtIndex:(NSInteger)index
+- (void) optionsViewController:(FCOptionsViewController *)optionsViewController tappedButtonAtIndex:(NSInteger)index
 {
     NSLog(@"%s", __FUNCTION__);
 }

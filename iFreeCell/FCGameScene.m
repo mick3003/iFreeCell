@@ -711,6 +711,7 @@
             return NO;
         }
     }
+    [[FCGameState shared] addGameToStatistics];
     [[FCGameState shared] addWinToStatistics];
     return YES;
 }

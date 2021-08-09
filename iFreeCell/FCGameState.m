@@ -18,6 +18,7 @@
 #define kUserDefaultsKeyAutoStack           @"UserDefaultsAutoStack"
 #define kUserDefaultsKeyNumberOfPlayedGames @"UserDefaultsNumberOfPlayedGames"
 #define kUserDefaultsKeyNumberOfWins        @"UserDefaultsNumberOfWins"
+#define kUserDefaultsKeyStatisticsDate      @"UserDefaultsStatisticsDate"
 
 
 @implementation FCMove
@@ -399,6 +400,57 @@ static FCGameState *instance = nil;
     else return 0;
 }
 
+- (NSDate *) statisticsDate
+{
+    NSDate *date = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyStatisticsDate];
+    if( date )
+    {
+        return date;
+    }
+    else
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:kUserDefaultsKeyStatisticsDate];
+        return [NSDate date];
+    }
+}
+
+- (void) resetStatistics
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:kUserDefaultsKeyStatisticsDate];
+    [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:kUserDefaultsKeyNumberOfPlayedGames];
+    [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:kUserDefaultsKeyNumberOfWins];
+}
+
+- (NSString *) statisticsDateString
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"MMM dd YYYY";
+    NSDate *date = self.statisticsDate;
+    NSInteger days = [self daysBetweenDate:date andDate:[NSDate date]];
+    NSString *dayString = days == 1 ? @"day" : @"days";
+    
+    return [NSString stringWithFormat:@"%@ (%ld %@)",
+            [formatter stringFromDate:date], days, dayString];
+}
+
+
+- (NSInteger) daysBetweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime
+{
+    NSDate *fromDate;
+    NSDate *toDate;
+
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&fromDate
+        interval:NULL forDate:fromDateTime];
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&toDate
+        interval:NULL forDate:toDateTime];
+
+    NSDateComponents *difference = [calendar components:NSCalendarUnitDay
+        fromDate:fromDate toDate:toDate options:0];
+
+    return [difference day];
+}
 
 #pragma mark - Trace & debug
 

@@ -68,6 +68,7 @@
         return;
     }
     
+    [[FCGameState shared] addGameToStatistics];
     [self.delegate newGameViewController:self finishWithGameNumber:gameNumber];
     [self close];
 }

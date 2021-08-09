@@ -11,7 +11,7 @@
 		490050BE17B741E800E38443 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 490050BC17B741E800E38443 /* spark.png */; };
 		490CA1C319B2B62900C3BD01 /* FCMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CA1C219B2B62900C3BD01 /* FCMenuButton.m */; };
 		490EFD1A19310C5C0077E76B /* main_bgnd2.png in Resources */ = {isa = PBXBuildFile; fileRef = 490EFD1919310C5C0077E76B /* main_bgnd2.png */; };
-		491318C026BC816D00121D43 /* FCMiscViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491318BF26BC816D00121D43 /* FCMiscViewController.m */; };
+		491318C026BC816D00121D43 /* FCOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491318BF26BC816D00121D43 /* FCOptionsViewController.m */; };
 		491D343F1CAB1A8C00374872 /* FCNewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D343E1CAB1A8C00374872 /* FCNewGameViewController.m */; };
 		491D34431CAB21B800374872 /* FCPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D34421CAB21B800374872 /* FCPresentationController.m */; };
 		491D34461CAB228A00374872 /* FCModalTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D34451CAB228A00374872 /* FCModalTransitioningDelegate.m */; };
@@ -59,8 +59,8 @@
 		490CA1C119B2B62900C3BD01 /* FCMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCMenuButton.h; sourceTree = "<group>"; };
 		490CA1C219B2B62900C3BD01 /* FCMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCMenuButton.m; sourceTree = "<group>"; };
 		490EFD1919310C5C0077E76B /* main_bgnd2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_bgnd2.png; sourceTree = "<group>"; };
-		491318BF26BC816D00121D43 /* FCMiscViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCMiscViewController.m; sourceTree = "<group>"; };
-		491318C126BC818100121D43 /* FCMiscViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCMiscViewController.h; sourceTree = "<group>"; };
+		491318BF26BC816D00121D43 /* FCOptionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCOptionsViewController.m; sourceTree = "<group>"; };
+		491318C126BC818100121D43 /* FCOptionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCOptionsViewController.h; sourceTree = "<group>"; };
 		491D343D1CAB1A8C00374872 /* FCNewGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCNewGameViewController.h; sourceTree = "<group>"; };
 		491D343E1CAB1A8C00374872 /* FCNewGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCNewGameViewController.m; sourceTree = "<group>"; };
 		491D34411CAB21B800374872 /* FCPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCPresentationController.h; sourceTree = "<group>"; };
@@ -182,8 +182,8 @@
 				499117D11EB5179300C530E1 /* FCAlertViewController.m */,
 				4944C6BB1CB9BE1C007D4497 /* FCCardDetailViewController.h */,
 				4944C6BC1CB9BE1C007D4497 /* FCCardDetailViewController.m */,
-				491318C126BC818100121D43 /* FCMiscViewController.h */,
-				491318BF26BC816D00121D43 /* FCMiscViewController.m */,
+				491318C126BC818100121D43 /* FCOptionsViewController.h */,
+				491318BF26BC816D00121D43 /* FCOptionsViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -409,7 +409,7 @@
 				499117D21EB5179300C530E1 /* FCAlertViewController.m in Sources */,
 				491D34431CAB21B800374872 /* FCPresentationController.m in Sources */,
 				49F0503317AD2BB100839066 /* FCAppDelegate.m in Sources */,
-				491318C026BC816D00121D43 /* FCMiscViewController.m in Sources */,
+				491318C026BC816D00121D43 /* FCOptionsViewController.m in Sources */,
 				49F0503917AD2BB100839066 /* FCViewController.m in Sources */,
 				491D34461CAB228A00374872 /* FCModalTransitioningDelegate.m in Sources */,
 				499D5BC617B0945900232234 /* FCBoardHelper.mm in Sources */,

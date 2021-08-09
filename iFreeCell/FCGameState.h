@@ -33,6 +33,7 @@
 
 @property (nonatomic, assign) NSInteger gameNumber;
 @property (nonatomic, assign) BOOL autoStack;
+@property (nonatomic, strong) NSDate *statisticsDate;
 
 
 + (FCGameState *) shared;
@@ -58,7 +59,10 @@
 - (void) addWinToStatistics;
 - (NSInteger) getNumberOfPlayedGames;
 - (NSInteger) getNumberOfWins;
+- (void) resetStatistics;
+- (NSString *) statisticsDateString;
 
 - (void) printSlots:(FCSlotType)type;
 
 @end
+

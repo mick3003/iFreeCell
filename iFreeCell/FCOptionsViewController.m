@@ -6,11 +6,11 @@
 //  Copyright © 2021 Miguel Estévez. All rights reserved.
 //
 
-#import "FCMiscViewController.h"
+#import "FCOptionsViewController.h"
 #import "FCGameState.h"
 
 
-@interface FCMiscViewController ()
+@interface FCOptionsViewController ()
 {
 }
 
@@ -18,11 +18,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (weak, nonatomic) IBOutlet UISwitch *autoStackSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *resetButton;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *gamesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *wonLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lostLabel;
+
  
 @end
 
 
-@implementation FCMiscViewController
+@implementation FCOptionsViewController
 
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
@@ -48,7 +53,8 @@
     self.autoStackSwitch.on = [[FCGameState shared] autoStack];
     
     [self drawStatisticsTable];
-    [self.delegate miscViewControllerDidOpen:self];
+    
+    [self.delegate optionsViewControllerDidOpen:self];
 }
 
 
@@ -70,9 +76,18 @@
     [[FCGameState shared] setAutoStack:sender.isOn];
 }
 
-- (IBAction) resetButtonTapped:(id)sender
+- (IBAction) resetButtonTapped:(UIButton *)sender
 {
-    
+    if( [[[sender titleLabel] text] isEqualToString:@"Reset"] )
+    {
+        [sender setTitle:@"Sure?" forState:UIControlStateNormal];
+    }
+    else
+    {
+        [[FCGameState shared] resetStatistics];
+        [sender setTitle:@"Reset" forState:UIControlStateNormal];
+        [self drawStatisticsTable];
+    }
 }
 
 
@@ -80,12 +95,24 @@
 
 - (void) drawStatisticsTable
 {
-    for( NSInteger i = 1; i < 10; i++ )
+    for( NSInteger i = 1; i < 9; i++ )
     {
         UIView *view = [self.view viewWithTag:i];
         view.layer.borderColor = [UIColor lightGrayColor].CGColor;
         view.layer.borderWidth = .5F;
     }
+    
+    CGFloat playedGames = [[FCGameState shared] getNumberOfPlayedGames];
+    CGFloat wonGames = [[FCGameState shared] getNumberOfWins];
+    CGFloat lostGames = playedGames-wonGames;
+    
+    CGFloat percWon = playedGames == 0? 0: wonGames / playedGames * 100.F;
+    CGFloat percLost = playedGames == 0? 0: lostGames / playedGames * 100.F;
+    
+    self.dateLabel.text = [[FCGameState shared] statisticsDateString];
+    self.gamesLabel.text = [NSString stringWithFormat:@"%.0f", playedGames];
+    self.wonLabel.text = [NSString stringWithFormat:@"%.0f (%.0f%%)", wonGames, percWon];
+    self.lostLabel.text = [NSString stringWithFormat:@"%.0f (%.0f%%)", playedGames-wonGames, percLost];
 }
 
 @end
