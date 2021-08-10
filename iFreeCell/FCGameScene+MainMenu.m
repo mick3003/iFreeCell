@@ -94,7 +94,7 @@
 {
     FCMove *lastMove = [[FCGameState shared] consumLastMove];
 
-    lastMove.target.zPosition = kZPositionMove;
+    lastMove.target.zPosition = [[FCGameState shared] zPositionMove];
     
     if( [lastMove.previousParent isKindOfClass:[FCCard class]] )
     {

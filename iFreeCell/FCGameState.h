@@ -27,6 +27,8 @@
 @property (nonatomic, strong) NSMutableArray <FCSlot *> *cardsSlots;
 @property (nonatomic, strong) NSMutableArray <FCSlot *> *gameSlots;
 
+@property (nonatomic, readonly, assign) NSInteger zPositionMove;
+
 @property (nonatomic, strong) NSMutableArray <NSNumber *> *cardSep;
 
 @property (nonatomic, strong) NSMutableArray <FCMove *> *movesStack;
@@ -41,6 +43,8 @@
 - (BOOL) restoreState;
 - (void) resetState;
 
+- (void) resetZPositionMove;
+- (NSInteger) zPositionMoveIncrement:(BOOL)increment;
 
 - (CGFloat) separationForColumn:(NSInteger)column;
 - (void) setSeparation:(CGFloat)separation forColumn:(NSInteger)column;

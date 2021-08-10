@@ -90,6 +90,7 @@
 
 - (void) prepareContent
 {
+    [[FCGameState shared] resetZPositionMove];
     [self menuOpen:NO];
     
     // _background = [SKSpriteNode spriteNodeWithImageNamed:@"beach"];
@@ -357,7 +358,7 @@
                 else
                 {
                     _previousZPosition = _movingCard.zPosition;
-                    _movingCard.zPosition = kZPositionMove;
+                    _movingCard.zPosition = [[FCGameState shared] zPositionMove];
                 }
                 break;
             }
@@ -372,7 +373,7 @@
     
     CGPoint location = [self touchLocation:touches];
     
-    _touchNode.zPosition = kZPositionMove;
+    _touchNode.zPosition = [[FCGameState shared] zPositionMove];
     _touchNode.position = location;
     
     // NSLog(@"-- touches.count = %lu -- location = %@", (unsigned long)touches.count, NSStringFromCGPoint(location));
@@ -696,14 +697,17 @@
 
 - (BOOL) checkGameSolved
 {
-    /*
+    //*
     for( FCCard *card in _cards )
     {
         if( card.stacked == NO )
         {
             return NO;
         }
-    }*/
+    }
+    // */
+    
+    /*
     for( FCSlot *slot in _freeCellSlots )
     {
         if( slot.lastCard == nil )
@@ -711,6 +715,7 @@
             return NO;
         }
     }
+    // */
     [[FCGameState shared] addGameToStatistics];
     [[FCGameState shared] addWinToStatistics];
     return YES;
@@ -767,7 +772,7 @@
         {
             // NSLog(@"+++++++> %s moving card with name %@", __FUNCTION__, card.name);
             FCSlot *slot = [self firstFreeStackSlot];
-            card.zPosition = kZPositionMove;
+            card.zPosition = [[FCGameState shared] zPositionMove];
             [card becomeChildOfSlot:slot];
             
             _autoStackMoving = YES;
@@ -781,7 +786,7 @@
             {
                 // NSLog(@"+++++++> %s moving card with name %@", __FUNCTION__, card.name);
                 
-                card.zPosition = kZPositionMove;
+                card.zPosition = [[FCGameState shared] zPositionMove];
                 [card becomeChildOfCard:posibleParent];
                 
                 _autoStackMoving = YES;
@@ -834,6 +839,12 @@
 
 - (void) deltaUpdate:(CFTimeInterval) currentTime timeDelta:(CFTimeInterval) timeDelta
 {
+//    if( _movingCard )
+//        NSLog(@"_movingCard is setted with name '%@'", _movingCard.name);
+//    else
+//        NSLog(@"_movingCard is nil");
+        
+    _movingCard.zPosition = [[FCGameState shared] zPositionMoveIncrement:NO];
     [self highlighContactNodes];
     
     static BOOL flag = YES;

@@ -44,6 +44,11 @@
 static FCGameState *instance = nil;
 // static dispatch_once_t ot = 0L;
 
+@interface FCGameState()
+{
+    NSInteger _zPositionMove;
+}
+@end
 
 @implementation FCGameState
 
@@ -165,6 +170,23 @@ static FCGameState *instance = nil;
 - (BOOL) autoStack
 {
     return [[NSUserDefaults standardUserDefaults] boolForKey:kUserDefaultsKeyAutoStack];
+}
+
+- (NSInteger) zPositionMoveIncrement:(BOOL)increment
+{
+    if( _zPositionMove == 0 ) _zPositionMove = kZPositionMove;
+    if( increment) _zPositionMove += 1;
+    return _zPositionMove;
+}
+
+- (NSInteger) zPositionMove
+{
+    return [self zPositionMoveIncrement:YES];
+}
+
+- (void) resetZPositionMove
+{
+    _zPositionMove = 0;
 }
 
 - (void) setAutoStack:(BOOL)autoStack
@@ -390,7 +412,7 @@ static FCGameState *instance = nil;
 {
     NSNumber *number = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyNumberOfPlayedGames];
     if( number ) return number.integerValue;
-    else return 1;
+    else return 0;
 }
 
 - (NSInteger) getNumberOfWins
