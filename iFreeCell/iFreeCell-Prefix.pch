@@ -16,8 +16,8 @@
     #import <Foundation/Foundation.h>
 
     #import "FCGameState.h"
-
     #import "FCHelper.h"
+    #import "NSString+Localizable.h"
 
     #define kZPositionMenu 10.F
     #define kZPositionMenuButtons 15.F

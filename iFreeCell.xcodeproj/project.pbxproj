@@ -19,6 +19,7 @@
 		492BDBAF193B50EA00860623 /* FCGameScene+MainMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 492BDBAE193B50EA00860623 /* FCGameScene+MainMenu.m */; };
 		493CAA4B17BBD32000822328 /* FCCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 493CAA4A17BBD32000822328 /* FCCard.m */; };
 		4944C6BD1CB9BE1C007D4497 /* FCCardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4944C6BC1CB9BE1C007D4497 /* FCCardDetailViewController.m */; };
+		494B36B226CC350D00D4C529 /* NSString+Localizable.m in Sources */ = {isa = PBXBuildFile; fileRef = 494B36B126CC350D00D4C529 /* NSString+Localizable.m */; };
 		497AF7DB26B24F6E005DE7AE /* splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 497AF7DA26B24F6E005DE7AE /* splash@2x.png */; };
 		498C7DF719316DAF00425F66 /* main_bgnd4_.png in Resources */ = {isa = PBXBuildFile; fileRef = 498C7DF619316DAF00425F66 /* main_bgnd4_.png */; };
 		499117D21EB5179300C530E1 /* FCAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499117D11EB5179300C530E1 /* FCAlertViewController.m */; };
@@ -75,6 +76,8 @@
 		493CAA4A17BBD32000822328 /* FCCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCCard.m; sourceTree = "<group>"; };
 		4944C6BB1CB9BE1C007D4497 /* FCCardDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCCardDetailViewController.h; sourceTree = "<group>"; };
 		4944C6BC1CB9BE1C007D4497 /* FCCardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCCardDetailViewController.m; sourceTree = "<group>"; };
+		494B36B126CC350D00D4C529 /* NSString+Localizable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Localizable.m"; sourceTree = "<group>"; };
+		494B36B326CC352500D4C529 /* NSString+Localizable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Localizable.h"; sourceTree = "<group>"; };
 		497AF7DA26B24F6E005DE7AE /* splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "splash@2x.png"; path = "Images.xcassets/LaunchImage.launchimage/splash@2x.png"; sourceTree = "<group>"; };
 		498C7DF619316DAF00425F66 /* main_bgnd4_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_bgnd4_.png; sourceTree = "<group>"; };
 		499117D01EB5179300C530E1 /* FCAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCAlertViewController.h; sourceTree = "<group>"; };
@@ -197,6 +200,8 @@
 				49FB1FE517CE6E8B00603D32 /* FCHelper.m */,
 				49A723A81995417D00CDB225 /* NSMutableArray+ContactNodes.h */,
 				49A723A91995417D00CDB225 /* NSMutableArray+ContactNodes.m */,
+				494B36B326CC352500D4C529 /* NSString+Localizable.h */,
+				494B36B126CC350D00D4C529 /* NSString+Localizable.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -404,6 +409,7 @@
 				49F0502F17AD2BB100839066 /* main.m in Sources */,
 				49E01C8719070A3100B05A8F /* FCSpriteNode.m in Sources */,
 				491D34491CAB233C00374872 /* FCAnimatedTransitioning.m in Sources */,
+				494B36B226CC350D00D4C529 /* NSString+Localizable.m in Sources */,
 				492BDBAF193B50EA00860623 /* FCGameScene+MainMenu.m in Sources */,
 				49E8B15117C7CE1D00830389 /* FCGameState.m in Sources */,
 				499117D21EB5179300C530E1 /* FCAlertViewController.m in Sources */,

@@ -68,9 +68,12 @@
     {
         SKTexture *buttonTexture = [SKTexture textureWithImageNamed:@"menuButtonBgnd"];
         
+        NSString *buttonText = buttonDict[@"name"];
+        buttonText = buttonText.localized;
+        
         FCMenuButton *button = [FCMenuButton buttonWithTexture:buttonTexture
                                                            tag:(FCMainMenuButtonTag)[buttonDict[@"tag"] integerValue]
-                                                       andName:buttonDict[@"name"]];
+                                                       andName:buttonText];
         
         button.centerRect = CGRectMake(9.F/68.0, 4.F/68.F, 50.F/68.F, 49.F/68.F);
         
