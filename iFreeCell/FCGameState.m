@@ -440,10 +440,10 @@ static FCGameState *instance = nil;
 - (NSString *) statisticsDateString
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"MMM dd YYYY";
+    formatter.dateFormat = @"MMM dd YYYY".localized;
     NSDate *date = self.statisticsDate;
     NSInteger days = [self daysBetweenDate:date andDate:[NSDate date]];
-    NSString *dayString = days == 1 ? @"day" : @"days";
+    NSString *dayString = days == 1 ? @"day".localized : @"days".localized;
     
     return [NSString stringWithFormat:@"%@ (%ld %@)",
             [formatter stringFromDate:date], days, dayString];

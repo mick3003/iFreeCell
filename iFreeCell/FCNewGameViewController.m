@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *randomButton;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIView *tfView;
 
 @end
@@ -49,6 +50,12 @@
     self.tfView.layer.borderWidth = .5F;
     
     self.view.backgroundColor = [UIColor clearColor];
+    
+    [self.randomButton setTitle:@"Random".localized forState:UIControlStateNormal];
+    [self.okButton setTitle:@"OK".localized forState:UIControlStateNormal];
+    [self.cancelButton setTitle:@"Cancel".localized forState:UIControlStateNormal];
+    
+    self.titleLabel.text = @"Select new game number (0 - 65535):".localized;
     
     [self.delegate newGameViewControllerDidOpen:self];
 }

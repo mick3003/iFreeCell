@@ -171,8 +171,8 @@
             break;
         case FCModalActionReset:
             segueObject.modalAction = FCModalActionReset;
-            segueObject.message = @"You are about to reset the game board. This operation can not be undone.\nAre you sure?";
-            segueObject.buttonsArray = @[@"YES", @"NO"];
+            segueObject.message = @"You are about to reset the game board. This operation can not be undone.\nAre you sure?".localized;
+            segueObject.buttonsArray = @[@"YES".localized, @"NO".localized];
             [self performSegueWithIdentifier:@"GameToAlertSegue" sender:segueObject];
             break;
         case FCModalActionCartDetail:
@@ -182,8 +182,8 @@
         case FCModalActionGameSolved:
             segueObject.modalAction = FCModalActionGameSolved;
             segueObject.message =
-                [NSString stringWithFormat:@"Game solved!\n%@\nDo you want to play another game?", [self getStatisticsString]];
-            segueObject.buttonsArray = @[@"NEW GAME"];
+                [NSString stringWithFormat:@"Game solved!\n%@\nDo you want to play another game?".localized, [self getStatisticsString]];
+            segueObject.buttonsArray = @[@"NEW GAME".localized];
             [self performSegueWithIdentifier:@"GameToAlertSegue" sender:segueObject];
             break;
         case FCModalActionMisc:
@@ -197,7 +197,7 @@
 
 - (void) drawGameNumber:(NSInteger)gameNumber
 {
-    self.gameNumberLabel.text = [NSString stringWithFormat:@"Game # %05ld", gameNumber];
+    self.gameNumberLabel.text = [NSString stringWithFormat:@"Game # %05ld".localized, gameNumber];
 }
 
 - (NSString *) getStatisticsString
@@ -206,7 +206,7 @@
     CGFloat wonGames = [[FCGameState shared] getNumberOfWins];
     NSInteger perc = wonGames / playedGames * 100.0F;
     
-    return [NSString stringWithFormat:@"Games won: %.0f/%.0f (%ld%%)", wonGames, playedGames, perc];
+    return [NSString stringWithFormat:@"Games won: %.0f/%.0f (%ld%%)".localized, wonGames, playedGames, perc];
 }
 
 - (void) openCartDetailOnPoint:(CGPoint)point

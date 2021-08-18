@@ -22,6 +22,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *gamesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wonLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lostLabel;
+    
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *autoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sinceStLabel;
+@property (weak, nonatomic) IBOutlet UILabel *playedStLabel;
+@property (weak, nonatomic) IBOutlet UILabel *wonStLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lostStLabel;
 
  
 @end
@@ -52,6 +60,17 @@
     self.view.backgroundColor = [UIColor clearColor];
     self.autoStackSwitch.on = [[FCGameState shared] autoStack];
     
+    self.titleLabel.text = @"A simple FreeCell game for iPad".localized;
+    self.subtitleLabel.text = @"Game statistics:".localized;
+    self.autoLabel.text = @"Auto stack cards".localized;
+    self.sinceStLabel.text = @"Statistics since".localized;
+    self.playedStLabel.text = @"Games played".localized;
+    self.wonStLabel.text = @"Games won".localized;
+    self.lostStLabel.text = @"Games lost".localized;
+    
+    [self.resetButton setTitle:@"Reset".localized forState:UIControlStateNormal];
+    [self.closeButton setTitle:@"CLOSE".localized forState:UIControlStateNormal];
+    
     [self drawStatisticsTable];
     
     [self.delegate optionsViewControllerDidOpen:self];
@@ -78,14 +97,14 @@
 
 - (IBAction) resetButtonTapped:(UIButton *)sender
 {
-    if( [[[sender titleLabel] text] isEqualToString:@"Reset"] )
+    if( [[[sender titleLabel] text] isEqualToString:@"Reset".localized] )
     {
-        [sender setTitle:@"Sure?" forState:UIControlStateNormal];
+        [sender setTitle:@"Sure?".localized forState:UIControlStateNormal];
     }
     else
     {
         [[FCGameState shared] resetStatistics];
-        [sender setTitle:@"Reset" forState:UIControlStateNormal];
+        [sender setTitle:@"Reset".localized forState:UIControlStateNormal];
         [self drawStatisticsTable];
     }
 }

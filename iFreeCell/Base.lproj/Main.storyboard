@@ -413,6 +413,7 @@
                         <outlet property="randomButton" destination="QoQ-QN-hBh" id="H8l-fK-AYm"/>
                         <outlet property="textField" destination="Dsa-0R-i7n" id="jhq-Gq-pZf"/>
                         <outlet property="tfView" destination="19h-xQ-DU5" id="ctP-3J-Kt0"/>
+                        <outlet property="titleLabel" destination="CQc-ZM-3qv" id="8z0-zI-fUL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hhb-RO-6GV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -891,14 +892,21 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="autoLabel" destination="gns-hW-Kqn" id="fQE-rM-3mJ"/>
                         <outlet property="autoStackSwitch" destination="KG3-3O-WFx" id="Hgx-3W-5Y1"/>
                         <outlet property="closeButton" destination="8cm-nB-OqA" id="GVa-XB-ePA"/>
                         <outlet property="contentView" destination="jql-cZ-nTL" id="fFc-De-3nX"/>
                         <outlet property="dateLabel" destination="u7C-Xt-C7v" id="t4N-dP-G6s"/>
                         <outlet property="gamesLabel" destination="09R-Hj-pX3" id="9qs-cH-qit"/>
                         <outlet property="lostLabel" destination="TZe-Lc-AqE" id="VBV-GO-t2o"/>
+                        <outlet property="lostStLabel" destination="aaf-yE-v1M" id="Ryf-Uc-T9G"/>
+                        <outlet property="playedStLabel" destination="yRO-AV-HUr" id="6X6-O1-APU"/>
                         <outlet property="resetButton" destination="MeM-rs-b0b" id="lox-l7-CIB"/>
+                        <outlet property="sinceStLabel" destination="KeC-zy-IOJ" id="bF7-ec-Z6c"/>
+                        <outlet property="subtitleLabel" destination="peR-WW-let" id="oIk-03-bnU"/>
+                        <outlet property="titleLabel" destination="2g3-O5-nbu" id="qF9-Ew-eg2"/>
                         <outlet property="wonLabel" destination="Y3l-Rz-HfQ" id="FZQ-IC-pms"/>
+                        <outlet property="wonStLabel" destination="NVp-Cl-K1c" id="kZ0-jF-5Ar"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wet-sq-M8r" userLabel="First Responder" sceneMemberID="firstResponder"/>

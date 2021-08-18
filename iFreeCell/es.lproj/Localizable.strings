@@ -1,0 +1,39 @@
+/* 
+  Localizable.strings
+  iFreeCell
+
+  Created by Miguel Estévez on 17/8/21.
+  Copyright © 2021 Miguel Estévez. All rights reserved.
+*/
+
+"Undo" = "Deshacer";
+"New game" = "Nuevo juego";
+"Reset game" = "Reiniciar";
+"Options" = "Opciones";
+
+"Game # %05ld" = "Juego nº %05ld";
+"Games won: %.0f/%.0f (%ld%%)" = "Juegos ganados: %.0f/%.0f (%ld%%)";
+"You are about to reset the game board. This operation can not be undone.\nAre you sure?" = "Vas a resetear el juego. Esta operación no puede deshacerse.\n¿Estás seguro?";
+"YES" = "SÍ";
+"NO" = "NO";
+"Game solved!\n%@\nDo you want to play another game?" = "¡Juego resuelto!\n%@";
+"NEW GAME" = "NUEVO JUEGO";
+"Select new game number (0 - 65535):" = "Número del nuevo juego (0 - 65535):";
+"Random" = "Aleatorio";
+"OK" = "ACEPTAR";
+"Cancel" = "CANCELAR";
+
+"A simple FreeCell game for iPad" = "Un sencillo juego de Carta Blanca para iPad";
+"Game statistics:" = "Estadísticas del juego";
+"Auto stack cards" = "Mover cartas automáticamente";
+"Statistics since" = "Estadísticas desde";
+"Games played" = "Total jugados";
+"Games won" = "Juegos ganados";
+"Games lost" = "Juegos perdidos";
+
+"Reset" = "Reiniciar";
+"CLOSE" = "CERRAR";
+"Sure?" = "¿Seguro?";
+"day" = "día";
+"days" = "días";
+"MMM dd YYYY" = "dd MMM YYYY";

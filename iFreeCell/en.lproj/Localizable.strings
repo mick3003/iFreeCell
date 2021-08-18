@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  iFreeCell
+
+  Created by Miguel Estévez on 17/8/21.
+  Copyright © 2021 Miguel Estévez. All rights reserved.
+*/
+
+"Undo" = "Undo";
+"New game" = "New game";
+"Reset game" = "Reset game";
+"Options" = "Options";
