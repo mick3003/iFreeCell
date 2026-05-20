@@ -114,4 +114,14 @@
     self.paused = NO;
 }
 
+- (void) updateBackgroundColor
+{
+    SKColor *color = [[FCGameState shared] backgroundColor];
+    self.backgroundColor = color;
+    if( _background )
+    {
+        _background.color = color;
+    }
+}
+
 @end

@@ -19,5 +19,6 @@
 - (void) resetMenuOption;
 - (void) undoMenuOption;
 - (void) newGameMenuOption:(NSInteger) gameNumber;
+- (void) updateBackgroundColor;
 
 @end

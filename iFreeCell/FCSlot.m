@@ -27,23 +27,24 @@
 - (BOOL) canBeParentOf:(FCSpriteNode *)child
 {
     BOOL bRet = NO;
+    FCCard *childCard = (FCCard *)child;
     
     switch( self.slotType )
     {
         case FCSlotTypeFreeCell:
-            bRet = self.lastCard == nil && ((FCCard *)child).number != FCCardNumberTypeAce && ((FCCard *)child).childCard == nil;
+            bRet = self.lastCard == nil && childCard.number != FCCardNumberTypeAce && childCard.childCard == nil;
             break;
         case FCSlotTypeGame:
-            bRet = self.lastCard == nil && ((FCCard *)child).number != FCCardNumberTypeAce;
+            bRet = self.lastCard == nil && childCard.number != FCCardNumberTypeAce;
             break;
         case FCSlotTypeSuitStack:
             if( self.lastCard == nil )
             {
-                bRet = ((FCCard *)child).number == FCCardNumberTypeAce;
+                bRet = childCard.number == FCCardNumberTypeAce;
             }
             else
             {
-                bRet = [self.lastCard canBeParentOf:child];
+                bRet = [self.lastCard canBeParentOf:childCard];
             }
             break;
         default:

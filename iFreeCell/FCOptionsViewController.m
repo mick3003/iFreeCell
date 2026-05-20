@@ -8,6 +8,8 @@
 
 #import "FCOptionsViewController.h"
 #import "FCGameState.h"
+#import "FCGameScene.h"
+#import "FCGameScene+MainMenu.h"
 
 
 @interface FCOptionsViewController ()
@@ -30,8 +32,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *playedStLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wonStLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lostStLabel;
+@property (weak, nonatomic) IBOutlet UILabel *bgColorLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *bgColorSegmentedControl;
 
- 
 @end
 
 
@@ -67,9 +70,14 @@
     self.playedStLabel.text = @"Games played".localized;
     self.wonStLabel.text = @"Games won".localized;
     self.lostStLabel.text = @"Games lost".localized;
-    
+    self.bgColorLabel.text = @"Background color".localized;
+
     [self.resetButton setTitle:@"Reset".localized forState:UIControlStateNormal];
     [self.closeButton setTitle:@"CLOSE".localized forState:UIControlStateNormal];
+    
+    self.bgColorSegmentedControl.selectedSegmentIndex = [[FCGameState shared] backgroundColorIndex];
+    self.bgColorSegmentedControl.tintColor = [UIColor clearColor];
+    [self setupColorSegments];
     
     [self drawStatisticsTable];
     
@@ -109,6 +117,12 @@
     }
 }
 
+- (IBAction) bgColorSegmentedControlValueChanged:(UISegmentedControl *)sender
+{
+    [[FCGameState shared] setBackgroundColorIndex:sender.selectedSegmentIndex];
+    [self.gameScene updateBackgroundColor];
+}
+
 
 #pragma mark - Private methods
 
@@ -132,6 +146,37 @@
     self.gamesLabel.text = [NSString stringWithFormat:@"%.0f", playedGames];
     self.wonLabel.text = [NSString stringWithFormat:@"%.0f (%.0f%%)", wonGames, percWon];
     self.lostLabel.text = [NSString stringWithFormat:@"%.0f (%.0f%%)", playedGames-wonGames, percLost];
+}
+
+- (void) setupColorSegments
+{
+    NSArray<UIColor *> *colors = @[
+        [UIColor colorWithRed:30.F/255.F green:153.F/255.F blue:199.F/255.F alpha:1.F],
+        [UIColor colorWithRed:20.F/255.F green:20.F/255.F blue:20.F/255.F alpha:1.F],
+        [UIColor colorWithRed:34.F/255.F green:120.F/255.F blue:60.F/255.F alpha:1.F],
+        [UIColor colorWithRed:120.F/255.F green:60.F/255.F blue:30.F/255.F alpha:1.F],
+        [UIColor colorWithRed:60.F/255.F green:60.F/255.F blue:120.F/255.F alpha:1.F],
+    ];
+    
+    for( NSInteger i = 0; i < colors.count; i++ )
+    {
+        [self.bgColorSegmentedControl setImage:[self imageWithColor:colors[i] size:CGSizeMake(24.F, 24.F)] forSegmentAtIndex:i];
+    }
+}
+
+- (UIImage *) imageWithColor:(UIColor *)color size:(CGSize)size
+{
+    CGRect rect = CGRectMake(0.F, 0.F, size.width, size.height);
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0.F);
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:4.F];
+    [color setFill];
+    [path fill];
+    [[UIColor lightGrayColor] setStroke];
+    path.lineWidth = 1.F;
+    [path stroke];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 }
 
 @end

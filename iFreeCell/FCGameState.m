@@ -19,6 +19,7 @@
 #define kUserDefaultsKeyNumberOfPlayedGames @"UserDefaultsNumberOfPlayedGames"
 #define kUserDefaultsKeyNumberOfWins        @"UserDefaultsNumberOfWins"
 #define kUserDefaultsKeyStatisticsDate      @"UserDefaultsStatisticsDate"
+#define kUserDefaultsKeyBackgroundColor     @"UserDefaultsBackgroundColor"
 
 
 @implementation FCMove
@@ -165,6 +166,7 @@ static FCGameState *instance = nil;
         self.autoStack = YES;
     
     self.gameNumber = [[[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyGameNumber] intValue];
+    self.backgroundColorIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyBackgroundColor] intValue];
 }
 
 - (BOOL) autoStack
@@ -192,6 +194,24 @@ static FCGameState *instance = nil;
 - (void) setAutoStack:(BOOL)autoStack
 {
     [[NSUserDefaults standardUserDefaults] setBool:autoStack forKey:kUserDefaultsKeyAutoStack];
+}
+
+- (void) setBackgroundColorIndex:(NSInteger)backgroundColorIndex
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:backgroundColorIndex forKey:kUserDefaultsKeyBackgroundColor];
+    _backgroundColorIndex = backgroundColorIndex;
+}
+
+- (SKColor *)backgroundColor
+{
+    NSArray<SKColor *> *colors = @[
+        [SKColor colorWithRed:30.F/255.F green:153.F/255.F blue:199.F/255.F alpha:1.F],
+        [SKColor colorWithRed:20.F/255.F green:20.F/255.F blue:20.F/255.F alpha:1.F],
+        [SKColor colorWithRed:34.F/255.F green:120.F/255.F blue:60.F/255.F alpha:1.F],
+        [SKColor colorWithRed:120.F/255.F green:60.F/255.F blue:30.F/255.F alpha:1.F],
+        [SKColor colorWithRed:60.F/255.F green:60.F/255.F blue:120.F/255.F alpha:1.F],
+    ];
+    return colors[self.backgroundColorIndex];
 }
 
 - (CGFloat) separationForColumn:(NSInteger)column

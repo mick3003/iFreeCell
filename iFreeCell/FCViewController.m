@@ -157,6 +157,7 @@
     {
         FCOptionsViewController *miscViewController = segue.destinationViewController;
         miscViewController.delegate = self;
+        miscViewController.gameScene = self.gameScene;
     }
 }
 

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class FCOptionsViewController;
+@class FCGameScene;
 
 @protocol FCOptionsViewControllerDelegate <NSObject>
 @required
@@ -21,5 +22,6 @@
 }
 
 @property (nonatomic, weak) id <FCOptionsViewControllerDelegate> delegate;
+@property (nonatomic, weak) FCGameScene *gameScene;
 
 @end

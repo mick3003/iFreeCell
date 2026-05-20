@@ -68,7 +68,7 @@
         _yDelta = 120 + (rounded ? 22.F : 0.0F);
         _yDeltaCards = 282 + (rounded ? 23.F : 0.F);
         
-        self.backgroundColor = [SKColor colorWithRed:.14 green:.22 blue:.3 alpha:1.0];
+        self.backgroundColor = [[FCGameState shared] backgroundColor];
         
         self.physicsWorld.gravity = CGVectorMake(0.F, 0.F);
         self.physicsWorld.contactDelegate = self;
@@ -98,7 +98,7 @@
     if( !_background )
     {
         CGSize bgndSize = CGSizeMake(self.frame.size.width * 2.F, self.frame.size.height * 2.F);
-        _background = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:30.F/255.F green:153.F/255.F blue:199.F/255.F alpha:1.F] size:bgndSize];
+        _background = [SKSpriteNode spriteNodeWithColor:[[FCGameState shared] backgroundColor] size:bgndSize];
         _background.anchorPoint = CGPointZero;
         _background.position = CGPointZero;
         

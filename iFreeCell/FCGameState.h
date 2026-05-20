@@ -10,7 +10,7 @@
 #import "FCSlot.h"
 #import "FCCard.h"
 
-#define kMaxUndoActions     3
+#define kMaxUndoActions     6
 
 @interface FCMove : NSObject <NSCoding>
 {}
@@ -35,6 +35,7 @@
 
 @property (nonatomic, assign) NSInteger gameNumber;
 @property (nonatomic, assign) BOOL autoStack;
+@property (nonatomic, assign) NSInteger backgroundColorIndex;
 @property (nonatomic, strong) NSDate *statisticsDate;
 
 
@@ -67,6 +68,8 @@
 - (NSString *) statisticsDateString;
 
 - (void) printSlots:(FCSlotType)type;
+
+- (SKColor *)backgroundColor;
 
 @end
 
