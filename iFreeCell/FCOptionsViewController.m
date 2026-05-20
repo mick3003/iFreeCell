@@ -166,9 +166,9 @@
 
 - (UIImage *) imageWithColor:(UIColor *)color size:(CGSize)size
 {
-    CGRect rect = CGRectMake(0.F, 0.F, size.width, size.height);
     UIGraphicsBeginImageContextWithOptions(size, NO, 0.F);
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:4.F];
+    CGRect rect = CGRectMake(0.F, 0.F, size.width, size.height);
+    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectInset(rect, 1.F, 1.F)];
     [color setFill];
     [path fill];
     [[UIColor lightGrayColor] setStroke];
